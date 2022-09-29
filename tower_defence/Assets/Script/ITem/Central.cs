@@ -10,7 +10,7 @@ public class Central : MonoBehaviour
     {
         Debug.Log("BeginDarg : " + Item.name);
 
-        SwapItemHierarchy(invisibleItem, Item);
+        //SwapItemHierarchy(invisibleItem, Item);
     }
     void Darg(Transform Item)           // 드래그 중
     {
@@ -19,7 +19,8 @@ public class Central : MonoBehaviour
     void EndDarg(Transform Item)        // 드래그 끝
     {
         Debug.Log("EndDarg : " + Item.name);
-        SwapItemHierarchy(invisibleItem, Item);
+
+        //SwapItemHierarchy(invisibleItem, Item);
     }
 
     void SwapItemHierarchy(Transform sour, Transform dest)      //  스왑
