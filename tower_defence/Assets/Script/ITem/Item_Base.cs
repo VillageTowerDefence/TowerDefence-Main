@@ -25,7 +25,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             if (itemEA < 0)
             {
-                itemEA = 0;
+                itemEA = 0;     // 갯수 0으로 고정
             }
 
             if(itemEA <= 0)     // 아이템 갯수가 0보다 작거나 같으면 alpha값 변경
