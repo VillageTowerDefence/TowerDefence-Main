@@ -14,7 +14,7 @@ public class Central : MonoBehaviour
     }
     void Darg(Transform Item)           // 드래그 중
     {
-        Debug.Log("Darg : " + Item.name);
+        //Debug.Log("Darg : " + Item.name);
     }
     void EndDarg(Transform Item)        // 드래그 끝
     {

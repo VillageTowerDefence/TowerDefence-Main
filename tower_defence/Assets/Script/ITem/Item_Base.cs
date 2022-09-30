@@ -42,12 +42,12 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     bool itemUse = false;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         image = transform.GetChild(0).GetComponent<Image>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         root = transform.root;  // 최상위 오브젝트를 불러온다.
         parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
@@ -90,14 +90,14 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             
             transform.position = parent.position;   // 원래 자리로 돌아가기
 
-            ItemUse();  // 그 아이템 효과 사용
+            ItemUse(eventData);  // 그 아이템 효과 사용 (게임스크린 좌표값(마우스)을 보냄)
         }
 
     }
 
-    protected virtual void ItemUse()
+    protected virtual void ItemUse(PointerEventData eventData)
     {
-        // Debug.Log("아이템을 사용했습니다.");
+        
     }
 
 }
