@@ -9253,6 +9253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1337064785}
     m_Modifications:
+    - target: {fileID: 4351326112759838716, guid: 9930763cae3cab447a0728a9d9d2e9bb, type: 3}
+      propertyPath: m_TagString
+      value: ObstacleTile
+      objectReference: {fileID: 0}
     - target: {fileID: 4351326114387259704, guid: 9930763cae3cab447a0728a9d9d2e9bb, type: 3}
       propertyPath: m_RootOrder
       value: 93
@@ -13227,7 +13231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975008191713921961, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: layerName
-      value: RoadTile
+      value: ObstacleTile
       objectReference: {fileID: 0}
     - target: {fileID: 1975008191713921961, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: prePrefab
@@ -13319,7 +13323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844246521918319, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: m_Name
-      value: Item_Fire
+      value: Item_Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 4303844246840021832, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: m_Sprite
@@ -13420,11 +13424,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8113224784895532211, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
       propertyPath: m_Name
-      value: Item_BackGround
+      value: Item_Base
       objectReference: {fileID: 0}
     - target: {fileID: 8113224785617091690, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
       propertyPath: itemEA
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113224785617091690, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
+      propertyPath: layerName
+      value: RoadTile
       objectReference: {fileID: 0}
     - target: {fileID: 8113224785617091690, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
       propertyPath: prePrefab
