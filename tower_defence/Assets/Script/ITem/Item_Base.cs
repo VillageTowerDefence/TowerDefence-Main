@@ -112,7 +112,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
                 ItemEA--;           // 아이템 갯수 1 감소
 
-                Instantiate(prePrefab, MousDir, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
+                Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
 
                 ItemUse();  // 그 아이템 효과 사용 (게임스크린 좌표값(마우스)을 보냄)
             }
@@ -131,6 +131,6 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     /// </summary>
     protected virtual void ItemUse()
     {
-        
+       
     }
 }

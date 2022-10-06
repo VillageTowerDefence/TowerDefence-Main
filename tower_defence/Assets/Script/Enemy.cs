@@ -45,8 +45,6 @@ public class Enemy : MonoBehaviour
                 NextMoveTo();   // 다음 이동 방향 설정
             }
 
-            
-
             yield return null;
         }
 
