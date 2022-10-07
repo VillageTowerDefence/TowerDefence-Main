@@ -7,6 +7,7 @@ TagManager:
   - RoadTile
   - WallTile
   - ObstacleTile
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 3429238371
+    locked: 0
+  - name: Tower
+    uniqueID: 1874138565
     locked: 0
