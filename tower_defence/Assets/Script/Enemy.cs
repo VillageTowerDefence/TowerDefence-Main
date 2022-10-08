@@ -10,11 +10,27 @@ public class Enemy : MonoBehaviour
     int currentIndex = 0;           // 현재 목표지점 인덱스
     Movement movement;              // 오브젝트 이동 제어
 
+    public int hp = 100;
 
+    int Hp
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+
+            if( hp < 0)
+            {
+                hp = 0;
+                Die();
+            }
+        }
+    }
     private void Awake()
     {
         movement = GetComponent<Movement>();
     }
+
 
     public void Setup(Transform[] wayPoints)
     {
@@ -27,8 +43,6 @@ public class Enemy : MonoBehaviour
 
         StartCoroutine(OnMove());
     }
-
-
 
 
     IEnumerator OnMove()
@@ -65,4 +79,11 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);   // 다음 목적지가 없다면 삭제
         }
     }
+
+    private void Die()
+    {
+        
+    }
+
+
 }
