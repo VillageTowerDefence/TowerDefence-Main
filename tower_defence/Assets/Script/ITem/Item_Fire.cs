@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,11 @@ public class Item_Fire : MonoBehaviour
     Transform fire;
     SpriteRenderer sprite;
 
-    float alpha = 1;
-    float itemDestroyTime = 5.0f;
-    bool onePlay = true;
-    bool spriteAlpha = false;
+    float alpha = 1;                    // sprite 알파 값
+    float itemDestroyTime = 5.0f;       // 아이템 디스폰 시간 (아이템 발동 후)
+    bool onePlay = true;                // 한 번만 실행 (false면 실행함)
+    bool spriteAlpha = false;           // 알파 값조절 (true면 알파값 조절 시작)
+    int fireDamge = 25;
 
     private void Awake()
     {
@@ -37,6 +39,8 @@ public class Item_Fire : MonoBehaviour
                 StartCoroutine(SetAlphaDlray());        // 코루틴 시작(알파 값 딜레이)
                 Destroy(this.gameObject, itemDestroyTime);      // 오브젝트 지우기
             }
+            var enemy = collision.GetComponent<Enemy>();
+            enemy.FireUse(fireDamge);
         }
     }
 

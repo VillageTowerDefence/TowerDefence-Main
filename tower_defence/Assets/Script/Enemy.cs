@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     public int hp = 100;
 
+    IEnumerator fireItemDamage;
+
     int Hp
     {
         get => hp;
@@ -19,13 +21,14 @@ public class Enemy : MonoBehaviour
         {
             hp = value;
 
-            if( hp < 0)
+            if( hp <= 0)
             {
                 hp = 0;
                 Die();
             }
         }
     }
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -43,7 +46,6 @@ public class Enemy : MonoBehaviour
 
         StartCoroutine(OnMove());
     }
-
 
     IEnumerator OnMove()
     {
@@ -76,14 +78,36 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);   // 다음 목적지가 없다면 삭제
+            Die();   // 다음 목적지가 없다면 삭제
         }
     }
 
     private void Die()
     {
-        
+        Destroy(this.gameObject);           // 죽으면 오브젝트 삭제
+        StopAllCoroutines();
     }
 
+    public void FireUse(int damage)
+    {
+        fireItemDamage = FireDamage(damage);
+        StartCoroutine(fireItemDamage);
+        StartCoroutine(FireItemStop());
+    }
 
+    IEnumerator FireDamage(int damage)
+    {
+        while (true)
+        {
+            Hp -= damage;              // damage만큼 hp 감소
+
+            yield return new WaitForSeconds(1.0f);          // 1초마다 damage의 데미지를 줌 (나중에 변수로 만들어야함)
+        }
+    }
+
+    IEnumerator FireItemStop()
+    {
+        yield return new WaitForSeconds(5.0f);
+        StopCoroutine(fireItemDamage);                      // 5초후에 fireItemDamage 코루틴 끄기 (fireItem 효과 삭제)
+    }
 }

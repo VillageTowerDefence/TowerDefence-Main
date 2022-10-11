@@ -9,6 +9,7 @@ TagManager:
   - ObstacleTile
   - Item_Bomb
   - Enemy
+  - Item_Fire
   layers:
   - Default
   - TransparentFX
