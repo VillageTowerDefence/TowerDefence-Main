@@ -11,7 +11,7 @@ public class Item_Bomb_Use : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ObstacleTile"))
+        if (other.CompareTag("ObstacleTile"))   // 장애물과 만나면
         {
             StartCoroutine(Distroy());          // 코루틴 시작
         }
@@ -19,7 +19,7 @@ public class Item_Bomb_Use : MonoBehaviour
 
     IEnumerator Distroy()
     {
-        yield return new WaitForSeconds(2.0f);      // 2초 후에
+        yield return new WaitForSeconds(2.0f);      // 2초 후에 (라운드 시스템 들어가면 라운드마다 터지게 바꾸기)
 
         onItemUse?.Invoke();                // Tile_Obstacle로 델리게이트 보냄
         Destroy(this.gameObject);           // 자기 자신 삭제하기

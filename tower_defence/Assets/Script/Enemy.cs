@@ -85,9 +85,13 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(this.gameObject);           // 죽으면 오브젝트 삭제
-        StopAllCoroutines();
+        StopAllCoroutines();                // 모든 코루틴 끄기
     }
 
+    /// <summary>
+    /// Fire아이템의 사용 함수
+    /// </summary>
+    /// <param name="damage">초당 데미지</param>
     public void FireUse(int damage)
     {
         fireItemDamage = FireDamage(damage);
@@ -95,6 +99,11 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FireItemStop());
     }
 
+    /// <summary>
+    /// FireItem으로 몬스터에게 초당 데미지를 주는 코루틴
+    /// </summary>
+    /// <param name="damage">초당 데미지</param>
+    /// <returns></returns>
     IEnumerator FireDamage(int damage)
     {
         while (true)
@@ -105,6 +114,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// n초 후에 FireItem 효과를 끄는 코루틴
+    /// </summary>
+    /// <returns></returns>
     IEnumerator FireItemStop()
     {
         yield return new WaitForSeconds(5.0f);

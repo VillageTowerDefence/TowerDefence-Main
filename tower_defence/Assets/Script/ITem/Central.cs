@@ -8,7 +8,7 @@ public class Central : MonoBehaviour
 
     void BeginDarg(Transform Item)      // 드래그 시작
     {
-        Debug.Log("BeginDarg : " + Item.name);
+        //Debug.Log("BeginDarg : " + Item.name);
 
         //SwapItemHierarchy(invisibleItem, Item);
     }
@@ -18,7 +18,7 @@ public class Central : MonoBehaviour
     }
     void EndDarg(Transform Item)        // 드래그 끝
     {
-        Debug.Log("EndDarg : " + Item.name);
+        //Debug.Log("EndDarg : " + Item.name);
 
         //SwapItemHierarchy(invisibleItem, Item);
     }

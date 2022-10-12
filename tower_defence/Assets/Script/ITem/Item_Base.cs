@@ -18,17 +18,16 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     TextMeshProUGUI itemText;           // 아이템 수량 표시용
     new Camera camera;                  // 마우스 좌표을 신 좌표 값으로 변환하기 용
     UnityEngine.UI.Image image;         // 아이템 이미지 알파값 바꾸기용
-    int alpha = 0;                      // 알파값
 
     Vector3 MousDir;                    // 아이템 최종 생성 좌표
     RaycastHit hit;                     // 레이캐스트 용 레이저
-    int layerMask;                      // 레이캐스트 검출할 레이어
+    int layerMask;                      // 레이캐스트 검출할 레이어 (layerName를 검출)
     float distance = 11.0f;             // 레이캐스트 거리  
 
     bool itemUse = false;               // 아이템을 사용할 수 있는지 표시(flase면 불가능, true면 가능)
 
     [Space(10f)]
-    [SerializeField]  // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
+    [SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
     [Header("아이템 수량")]
     int itemEA = 0;                     // 아이템 총 갯수
     int ItemEA                          // itemEA 프로퍼티
@@ -48,14 +47,12 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             if (itemEA <= 0)        // 아이템 갯수가 0보다 작거나 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
             {
-                alpha = 0;          // 0이면 투명
+                image.color = Color.clear;          // 0이면 투명
             }
             else
             {
-                alpha = 1;          // 1이면 정상으로 바꾸기
+                image.color = Color.white;          // 1이면 정상으로 바꾸기
             }
-
-            image.color = new Color(1, 1, 1, alpha);    // image의 컬러를 변경(이 경우에는 알파값만 변경)
         }
     }
 
@@ -114,7 +111,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
                 Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
 
-                ItemUse();  // 그 아이템 효과 사용 (게임스크린 좌표값(마우스)을 보냄)
+                ItemUse();  // 그 아이템 효과 사용
             }
             else
             {
