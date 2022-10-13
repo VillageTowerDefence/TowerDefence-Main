@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1591851421, guid: 78acdd4fadcfcad46b5fdb05957f2268, type: 3}
+    - target: {fileID: 8113224784895532209, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113224784895532209, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113224784895532209, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5294118
+      objectReference: {fileID: 0}
     - target: {fileID: 8113224784895532210, guid: 85ced660dfab5a546a4319b0bc26fba6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

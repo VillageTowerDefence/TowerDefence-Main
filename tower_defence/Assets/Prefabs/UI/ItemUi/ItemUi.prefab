@@ -213,6 +213,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 5800289631377764239, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800289631377764239, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800289631377764239, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800289632300633940, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: itemEA
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
 --- !u!224 &7856914270781038220 stripped
@@ -229,7 +245,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1975008191713921961, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: itemEA
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1975008191713921961, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: layerName
@@ -239,6 +255,18 @@ PrefabInstance:
       propertyPath: prePrefab
       value: 
       objectReference: {fileID: 1872276375245095028, guid: f5259a82cabb70b478ac1ecc5ec4e446, type: 3}
+    - target: {fileID: 4303844246521918317, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303844246521918317, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303844246521918317, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5283019
+      objectReference: {fileID: 0}
     - target: {fileID: 4303844246521918318, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -327,10 +355,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 4303844246800038513, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a6ff5df3f509c74ab20dc6a38605d42, type: 3}
     - target: {fileID: 4303844246840021832, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4303844247471585131, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a6ff5df3f509c74ab20dc6a38605d42, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
 --- !u!224 &7856914270661095647 stripped

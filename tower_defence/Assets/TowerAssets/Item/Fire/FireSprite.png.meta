@@ -1458,11 +1458,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireSprite_54: 1113430370
       FireSprite_56: 752235949
+      FireSprite_59: 1428736450
       FireSprite_5: -650027543
       FireSprite_9: -2022339250
-      FireSprite_59: 1428736450
       FireSprite_33: -2134954441
       FireSprite_45: 453953737
       FireSprite_51: 2019165387
@@ -1488,8 +1487,9 @@ TextureImporter:
       FireSprite_34: -84524112
       FireSprite_4: 1312768820
       FireSprite_30: 1318499646
-      FireSprite_49: 1181714751
       FireSprite_57: -1517721876
+      FireSprite_49: 1181714751
+      FireSprite_63: 524626151
       FireSprite_60: -1782525822
       FireSprite_22: 1894546337
       FireSprite_1: -51431504
@@ -1500,7 +1500,6 @@ TextureImporter:
       FireSprite_38: 1249596487
       FireSprite_40: -1050760390
       FireSprite_7: 2057664207
-      FireSprite_63: 524626151
       FireSprite_39: 1047299898
       FireSprite_26: 1392520985
       FireSprite_18: 1607873155
@@ -1511,8 +1510,9 @@ TextureImporter:
       FireSprite_11: -1632652607
       FireSprite_29: -407187806
       FireSprite_8: -318779804
-      FireSprite_23: 1901625866
+      FireSprite_54: 1113430370
       FireSprite_27: -199062268
+      FireSprite_23: 1901625866
       FireSprite_17: -1014773252
       FireSprite_10: -1222072738
       FireSprite_43: -1924366984
