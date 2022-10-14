@@ -10,8 +10,12 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 {
     [Header("아이템 프리펩")]
     public GameObject prePrefab;        // 아이템 프리펩
-    [Header("설치 가능한 레이어 이름")]
+    [Header("설치 가능한 레이어 이름 / 아무것도 안쓰면 모두 설치가능")]
     public string layerName;            // 레이어 이름
+    [Space(10f)]
+    //[SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
+    [Header("아이템 수량")]
+    public int itemEA = 0;                     // 아이템 총 갯수
 
     Transform root;                     // 최상단 부모
     Transform parent;                   // 자기 부모를 찾음
@@ -26,10 +30,6 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     bool itemUse = false;               // 아이템을 사용할 수 있는지 표시(flase면 불가능, true면 가능)
 
-    [Space(10f)]
-    [SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
-    [Header("아이템 수량")]
-    int itemEA = 0;                     // 아이템 총 갯수
     int ItemEA                          // itemEA 프로퍼티
     {
         get => itemEA;
@@ -104,23 +104,52 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             Vector3 laydir = MousDir;
             MousDir.z = 0.0f;           // 카메라 기준의 값이기때문에 -10이 들어가 있다(-10이 있으면 게임 카메라에 안그려진다.)
 
-            if (Physics.Raycast(laydir, Vector3.forward, out hit, distance, layerMask))       // 그 해당 좌표에 해당 태그가 있으면 동작
+            if(layerName == "")         // 검출할 레이어가 필요없으면 (모든 구역 설치 가능)
             {
-                root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
-                ItemEA--;           // 아이템 갯수 1 감소
-
-                Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
-
-                ItemUse();  // 그 아이템 효과 사용
+                if (Physics.Raycast(laydir, Vector3.forward, out hit, distance))                // 그 해당 좌표에 동작 (레이어 검출x)
+                {
+                    ItemSawpn();
+                }
+                else
+                {
+                    Debug.Log("그 위치에는 사용할 수 없습니다.");
+                }
             }
-            else
+            else                        // 검출할 레이어가 있다면 (해당 구역만 설치 가능)
             {
-                Debug.Log("그 위치에는 사용할 수 없습니다.");
+                if (Physics.Raycast(laydir, Vector3.forward, out hit, distance, layerMask))       // 그 해당 좌표에 해당 레이어가 있으면 동작
+                {
+                    ItemSawpn();
+                }
+                else
+                {
+                    Debug.Log("그 위치에는 사용할 수 없습니다.");
+                }
             }
 
             itemUse = false;        // 아이템을 사용할 수 없다.
             transform.position = parent.position;   // 원래 자리로 돌아가기
         }
+    }
+
+    void ItemSawpn()
+    {
+        Tile_Obstacle tile = hit.transform.GetComponent<Tile_Obstacle>();
+        if(tile != null)
+        {
+            if (tile.IsBuildItem == true)
+            {
+                Debug.Log("이미 설치 되어있습니다.");
+                return;
+            }
+            tile.IsBuildItem = true;
+        }
+        root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
+        ItemEA--;           // 아이템 갯수 1 감소
+
+        Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
+
+        ItemUse();          // 그 아이템 효과 사용
     }
 
     /// <summary>

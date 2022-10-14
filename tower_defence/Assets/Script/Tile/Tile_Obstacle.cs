@@ -9,11 +9,14 @@ public class Tile_Obstacle : MonoBehaviour
     Item_Bomb_Use item_Bomb;            // Item_Bomb_Use 아이템
     Transform tree;                     // 장애물
 
+    public bool IsBuildItem { get; set; }       // 설치 여부 판단
+
     int layerindex;                     // 레이어 인덱스
 
     private void Awake()
     {
         tree = transform.GetChild(0);   // 자식 찾기
+        IsBuildItem = false;
     }
 
     private void Start()
@@ -30,12 +33,13 @@ public class Tile_Obstacle : MonoBehaviour
         }
     }
 
-
     private void OnDistroy()
     {
         this.gameObject.layer = layerindex;             // 오브젝트 레이어를 layerindex으로 변경
         this.gameObject.tag = "WallTile";               // 오브젝트 태그를 "WallTile"로 변경
+        gameObject.name = "WallTile";
         Destroy(tree.gameObject);                       // 자식(장애물)를 삭제
+        Destroy(this.gameObject.GetComponent<Tile_Obstacle>());
     }
 
 }

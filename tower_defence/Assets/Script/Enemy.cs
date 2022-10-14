@@ -63,7 +63,6 @@ public class Enemy : MonoBehaviour
 
             yield return null;
         }
-
     }
 
     private void NextMoveTo()
