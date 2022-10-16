@@ -132,7 +132,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-    void ItemSawpn()
+    void ItemSawpn()        // 해당 아이템을 소환하는 함수
     {
         Tile_Obstacle tile = hit.transform.GetComponent<Tile_Obstacle>();
         if(tile != null)
