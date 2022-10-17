@@ -43,7 +43,6 @@ public class Item_Fire : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         if (spriteAlpha)            // 알파값 줄이기 (천천히 사라지는 애니메이션)

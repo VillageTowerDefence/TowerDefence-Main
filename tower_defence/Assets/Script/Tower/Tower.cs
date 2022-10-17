@@ -8,8 +8,11 @@ public class Tower : MonoBehaviour
     public GameObject bullet; // 공격 투사체
 
     public float attackSpeed = 1.0f; // 타워 공격 주기
-    float attackDamage; // 타워 공격력
+    public float attackDamage; // 타워 공격력
+
+    float originalAttackDamage;     // 타워 원래 데미지
     bool isphysics = false; // 물리/마법 타워 구별
+    bool isOnBuffPower = false;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
 
     private List<GameObject> Enemys; // 적 List로 받기
     Transform target = null; // 공격 대상
@@ -23,6 +26,7 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
+        originalAttackDamage = attackDamage;
     }
 
 
@@ -56,6 +60,24 @@ public class Tower : MonoBehaviour
         float angle = Vector2.SignedAngle(Vector2.right, targetDir); // 각도 구하기
 
         Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
+    }
+
+    public void BuffPowerUp(float power, bool onbuff)
+    {
+        if (onbuff)                     // 버프 받은 상태면
+        {
+            if (!isOnBuffPower)         // 현재 버프효과를 받고 있지 않으면
+            {
+                attackDamage *= power;  // 공격력 증가량 만큼 증가
+                isOnBuffPower = true;   // powerUp 버프 받은 상태
+            }
+        }
+        else                            // 버프 받은 상태 해제면
+        {
+            attackDamage = originalAttackDamage;        // 원래 데미지로 
+            isOnBuffPower = false;      // powerUp 버프 해제 상태 
+        }
+       
     }
 
     IEnumerator PeriodAttack()
