@@ -1,28 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item_Tower_PowerUp_Use : MonoBehaviour
+public class Item_Tower_PowerUp_Use : Item_Buff
 {
-    [Header("타워 공격력 증가량")]
-    [Range(1.0f, 10.0f)]
-    public float powerUPdagage = 1.5f;         // 타워 공격력 증가량
-    [Header("버프 지속시간")]
-    public float buffTime = 5.0f;
-    
-    private void Start()
-    {
-        Destroy(this.gameObject, buffTime+1.0f);
-        StartCoroutine(BuffStop());
-    }
+    public float time = 0.0f;
+    public float damage = 0.0f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower"))
         {
-            var tower = collision.GetComponent<Tower>();
-            tower.BuffPowerUp(powerUPdagage, true);         // 공격력 증가량 만큼 증가
+            buff("Power");
+            buffOn(collision, time, damage);
         }
     }
 
@@ -30,14 +22,7 @@ public class Item_Tower_PowerUp_Use : MonoBehaviour
     {
         if (collision.CompareTag("Tower"))
         {
-            var tower = collision.GetComponent<Tower>();
-            tower.BuffPowerUp(1.0f, false);                 // 원상태 복귀
+            buffOff(collision);
         }
-    }
-
-    IEnumerator BuffStop()
-    {
-        yield return new WaitForSeconds(buffTime);
-        gameObject.SetActive(false);
     }
 }
