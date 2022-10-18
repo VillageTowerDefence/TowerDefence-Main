@@ -76,12 +76,10 @@ public class Tower : MonoBehaviour
                 isOnBuffPower = true;   // powerUp 버프 받은 상태
             }
             buffEA++;                   // 중첩된 갯수 증가
-            Debug.Log(buffEA);
         }
         else                            // 버프 받은 상태 해제면
         {
             buffEA--;                   // 중첩된 갯수 감소
-            Debug.Log(buffEA);
             if (buffEA == 0)            
             {
                 attackDamage = originalAttackDamage;        // 원래 데미지로 

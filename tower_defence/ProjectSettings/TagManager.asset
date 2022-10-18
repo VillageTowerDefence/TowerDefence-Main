@@ -54,3 +54,6 @@ TagManager:
   - name: Item
     uniqueID: 1249507065
     locked: 0
+  - name: Tower
+    uniqueID: 1771974503
+    locked: 0

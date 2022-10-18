@@ -203,6 +203,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1771974503
+      objectReference: {fileID: 0}
     - target: {fileID: 9034060581423525229, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
       propertyPath: m_Name
       value: Tower (1)
@@ -554,6 +562,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1771974503
+      objectReference: {fileID: 0}
     - target: {fileID: 9034060581423525229, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
       propertyPath: m_Name
       value: Tower (2)
@@ -710,6 +726,14 @@ PrefabInstance:
     - target: {fileID: 9034060581423525227, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034060581423525228, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1771974503
       objectReference: {fileID: 0}
     - target: {fileID: 9034060581423525229, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
       propertyPath: m_Name
