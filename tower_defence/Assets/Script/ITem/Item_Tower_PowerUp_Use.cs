@@ -10,15 +10,14 @@ public class Item_Tower_PowerUp_Use : MonoBehaviour
     public float powerUPdagage = 1.5f;         // 타워 공격력 증가량
     [Header("버프 지속시간")]
     public float buffTime = 5.0f;
-
-
+    
     private void Start()
     {
         Destroy(this.gameObject, buffTime+1.0f);
         StartCoroutine(BuffStop());
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower"))
         {

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
@@ -9,10 +8,14 @@ public class Tower : MonoBehaviour
 
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage; // 타워 공격력
-
     float originalAttackDamage;     // 타워 원래 데미지
+
     bool isphysics = false; // 물리/마법 타워 구별
+
+    // 아이템 ------------------------------------------------------------------------------
     bool isOnBuffPower = false;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
+    int buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
+    // ------------------------------------------------------------------------------------
 
     private List<GameObject> Enemys; // 적 List로 받기
     Transform target = null; // 공격 대상
@@ -27,6 +30,7 @@ public class Tower : MonoBehaviour
     {
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
+        buffEA = 0;
     }
 
 
@@ -64,20 +68,27 @@ public class Tower : MonoBehaviour
 
     public void BuffPowerUp(float power, bool onbuff)
     {
-        if (onbuff)                     // 버프 받은 상태면
+        if (onbuff)                     // 버프 받은 상태면 (공격력 증가 효과를 중첩으로 받지 않게 하기 위함)
         {
             if (!isOnBuffPower)         // 현재 버프효과를 받고 있지 않으면
             {
                 attackDamage *= power;  // 공격력 증가량 만큼 증가
                 isOnBuffPower = true;   // powerUp 버프 받은 상태
             }
+            buffEA++;                   // 중첩된 갯수 증가
+            Debug.Log(buffEA);
         }
         else                            // 버프 받은 상태 해제면
         {
-            attackDamage = originalAttackDamage;        // 원래 데미지로 
-            isOnBuffPower = false;      // powerUp 버프 해제 상태 
+            buffEA--;                   // 중첩된 갯수 감소
+            Debug.Log(buffEA);
+            if (buffEA == 0)            
+            {
+                attackDamage = originalAttackDamage;        // 원래 데미지로 
+                isOnBuffPower = false;      // powerUp 버프 해제 상태 
+                buffEA = 0;
+            }
         }
-       
     }
 
     IEnumerator PeriodAttack()
