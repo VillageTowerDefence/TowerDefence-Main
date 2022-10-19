@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            transform.Rotate(Vector3.forward * 10);     // 적 오브젝트 회전
+
 
             // 적의 현재위치와 목표위치의 거리가 0.02 * movement.moveSpeed보다 작을 때 if 조건문 실행
             if (Vector3.Distance(transform.position, wayPoints[currentIndex].position) < 0.02f * movement.moveSpeed)    // Vector3.Distance (가장 가까운 오브젝트 찾기)
