@@ -14,7 +14,7 @@ public class Item_Tower_PowerUp_Use : Item_Buff
         if (collision.CompareTag("Tower"))
         {
             buff("Power");
-            buffOn(collision, time, damage);
+            buffOn(this.gameObject, collision, time, damage);
         }
     }
 
