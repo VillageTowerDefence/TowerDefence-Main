@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem.Switch;
+using UnityEngine.UIElements;
 
 public class Tower : MonoBehaviour
 {
@@ -9,12 +13,14 @@ public class Tower : MonoBehaviour
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
+    float originalAttackSpeed;      // 타워 원래 공격 주기
 
     bool isphysics = false; // 물리/마법 타워 구별
 
     // 아이템 ------------------------------------------------------------------------------
-    bool isOnBuffPower = false;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
-    int buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
+    bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
+    int[] buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
+    string[] buffKind = { "Power", "ActtackSpeed" };        // 버프 종류
     // ------------------------------------------------------------------------------------
 
     private List<GameObject> Enemys; // 적 List로 받기
@@ -24,13 +30,27 @@ public class Tower : MonoBehaviour
     private void Awake()
     {
         Enemys = new List<GameObject>(); // 적 리스트 할당
+
+        // 아이템 관련 ----------------------------------------------------------
+        isOnBuffPower = new bool[buffKind.Length];
+        for (int i = 0; i < buffKind.Length; i++)
+        {
+            isOnBuffPower[i] = false;
+        }
+
+        buffEA = new int[buffKind.Length];
+        for (int i = 0; i < buffKind.Length; i++)
+        {
+            buffEA[i] = 0;
+        }
+        //-----------------------------------------------------------------------
     }
 
     private void Start()
     {
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
-        buffEA = 0;
+        originalAttackSpeed = attackSpeed;
     }
 
 
@@ -66,29 +86,6 @@ public class Tower : MonoBehaviour
         Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
     }
 
-    public void BuffPowerUp(float power, bool onbuff)
-    {
-        if (onbuff)                     // 버프 받은 상태면 (공격력 증가 효과를 중첩으로 받지 않게 하기 위함)
-        {
-            if (!isOnBuffPower)         // 현재 버프효과를 받고 있지 않으면
-            {
-                attackDamage *= power;  // 공격력 증가량 만큼 증가
-                isOnBuffPower = true;   // powerUp 버프 받은 상태
-            }
-            buffEA++;                   // 중첩된 갯수 증가
-        }
-        else                            // 버프 받은 상태 해제면
-        {
-            buffEA--;                   // 중첩된 갯수 감소
-            if (buffEA == 0)            
-            {
-                attackDamage = originalAttackDamage;        // 원래 데미지로 
-                isOnBuffPower = false;      // powerUp 버프 해제 상태 
-                buffEA = 0;
-            }
-        }
-    }
-
     IEnumerator PeriodAttack()
     {
         while (true)
@@ -100,4 +97,64 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(attackSpeed); // 공격주기
         }
     }
+
+    // 버프 관련 함수 ----------------------------------------------------------------------------------------------
+    public void BuffOn(float value, bool onbuff, string buffName)
+    {
+        int index = 0;                          // 버프 효과 인덱스
+
+        switch (buffName)
+        {
+            case "Power":
+                index = 0;
+                if (BuffOverlap(value, onbuff, index))
+                {
+                    attackDamage *= value;  // 공격력 증가량 만큼 증가
+                }
+                if (buffEA[index] == 0)
+                {
+                    attackDamage = originalAttackDamage;
+                }
+                break;
+            case "AttackSpeed":
+                index = 1;
+                if (BuffOverlap(value, onbuff, index))
+                {
+                    // 0.0f ~ 1.0f
+                    attackSpeed = attackSpeed - (attackSpeed * value);
+                }
+                if (buffEA[index] == 0)
+                {
+                    attackSpeed = originalAttackSpeed;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    bool BuffOverlap(float value, bool onbuff, int index)
+    {
+        bool result = false;
+        if (onbuff)                     // 버프 받은 상태면 (공격력 증가 효과를 중첩으로 받지 않게 하기 위함)
+        {
+            if (!isOnBuffPower[index])         // 현재 버프효과를 받고 있지 않으면
+            {
+                isOnBuffPower[index] = true;   // powerUp 버프 받은 상태
+                result = true;
+            }
+            buffEA[index]++;                   // 중첩된 갯수 증가
+        }
+        else                            // 버프 받은 상태 해제면
+        {
+            buffEA[index]--;                   // 중첩된 갯수 감소
+            if (buffEA[index] == 0)
+            {
+                isOnBuffPower[index] = false;      // powerUp 버프 해제 상태 
+                buffEA[index] = 0;
+            }
+        }
+        return result;
+    }
+    // --------------------------------------------------------------------------------------------------------------
 }
