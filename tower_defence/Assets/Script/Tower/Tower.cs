@@ -55,7 +55,8 @@ public class Tower : MonoBehaviour
         Vector3 targetDir = (target.position - transform.position).normalized; // 방향을 구한후
         float angle = Vector2.SignedAngle(Vector2.right, targetDir); // 각도 구하기
 
-        Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
+        GameObject temp = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
+        temp.transform.parent = this.transform;
     }
 
     IEnumerator PeriodAttack()
