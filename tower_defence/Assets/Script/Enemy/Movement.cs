@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     Vector3 moveDir = Vector3.zero;
 
     public float MoveSpeed => moveSpeed;        // moveSpeed 변수의 포로퍼티 (get만 가능)
+    
 
 
     private void Update()

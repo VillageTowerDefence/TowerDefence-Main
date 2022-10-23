@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
         movement = GetComponent<Movement>();
     }
 
-
     public void Setup(Transform[] wayPoints)
     {
         // 적 이동 경로 wayPoints 정보 설정
