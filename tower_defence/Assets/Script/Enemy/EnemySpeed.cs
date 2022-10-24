@@ -6,6 +6,6 @@ public class EnemySpeed : Movement
 {
     private void Awake()
     {
-        
+        MoveSpeed = moveSpeed * 2;
     }
 }

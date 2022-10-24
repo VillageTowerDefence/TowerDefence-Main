@@ -21,14 +21,14 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while(true)
-        { 
-        GameObject obj = Instantiate(enemyPrefab);  // obj에 enemyPrefab오브젝트 생성
-        Enemy enemy = obj.GetComponent<Enemy>();        // obj에 생성된 적의 enemy 컴포넌트
+        while (true)
+        {
+            GameObject obj = Instantiate(enemyPrefab);  // obj에 enemyPrefab오브젝트 생성
+            Enemy enemy = obj.GetComponent<Enemy>();        // obj에 생성된 적의 enemy 컴포넌트
 
-        enemy.Setup(wayPoints);         // wayPoints 정보를 매개변수로 Setup() 호출
+            enemy.Setup(wayPoints);         // wayPoints 정보를 매개변수로 Setup() 호출
 
-        yield return new WaitForSeconds(spawnTime);     // spawnTime 시간 동안 대기
+            yield return new WaitForSeconds(spawnTime);     // spawnTime 시간 동안 대기
         }
     }
 

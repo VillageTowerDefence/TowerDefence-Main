@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator fireItemDamage;
 
-    int Hp
+    public int Hp
     {
         get => hp;
         set
@@ -32,6 +32,17 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<Movement>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            // 적이랑 부딪치면 life가 1 감소한다.
+            Hp--;
+
+            Debug.Log($"플레이어의 Life는 {Hp}");
+        }
     }
 
     public void Setup(Transform[] wayPoints)

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 0.0f;
+    public float moveSpeed = 1.0f;
 
     Vector3 moveDir = Vector3.zero;
 
-    public float MoveSpeed => moveSpeed;        // moveSpeed 변수의 포로퍼티 (get만 가능)
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
     
 
 
