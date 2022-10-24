@@ -113,7 +113,7 @@ public class Tower : MonoBehaviour
                 }
                 if (buffEA[index] == 0)
                 {
-                    attackDamage = originalAttackDamage;
+                    attackDamage = originalAttackDamage;        // 원래 공격력으로 복귀
                 }
                 break;
             case "AttackSpeed":
@@ -121,11 +121,11 @@ public class Tower : MonoBehaviour
                 if (BuffOverlap(value, onbuff, index))
                 {
                     // 0.0f ~ 1.0f
-                    attackSpeed = attackSpeed - (attackSpeed * value);
+                    attackSpeed = attackSpeed - (attackSpeed * value);      // 일정 수치 만큼 공격속도 증가
                 }
                 if (buffEA[index] == 0)
                 {
-                    attackSpeed = originalAttackSpeed;
+                    attackSpeed = originalAttackSpeed;           // 원래 공격속도로 복귀
                 }
                 break;
             default:

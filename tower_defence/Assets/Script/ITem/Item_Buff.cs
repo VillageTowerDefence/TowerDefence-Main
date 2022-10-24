@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class Item_Buff : MonoBehaviour
 {
-    private float buffTime = 0f;
+    private float buffTime = 0f;        // 버프 지속 시간
+    WaitForSeconds buffRotate;          // 회전하는 시간 (시간이 길수록 이상하게 돌음)
+
+    private void Start()
+    {
+        buffRotate = new WaitForSeconds(0.02f);
+    }
 
     /// <summary>
     /// 버프 상태 적용
@@ -26,14 +32,14 @@ public class Item_Buff : MonoBehaviour
                 case "Power":
                     tower.BuffOn(value, true, buffName);         // 공격력 증가량 만큼 증가
                     buffTime = time;
-                    StartCoroutine(DestroyTimer(thisObj));
-                    StartCoroutine(Rotate(thisObj));
+                    StartCoroutine(DestroyTimer(thisObj));       // 오브젝트 삭제 코루틴 시작
+                    StartCoroutine(Rotate(thisObj));             // 오브젝트 회전 시작
                     break;
                 case "AttackSpeed":
                     tower.BuffOn(value, true, buffName);         // 공격력 증가량 만큼 증가
                     buffTime = time;
-                    StartCoroutine(DestroyTimer(thisObj));       // 
-                    StartCoroutine(Rotate(thisObj));
+                    StartCoroutine(DestroyTimer(thisObj));       // 오브젝트 삭제 코루틴 시작
+                    StartCoroutine(Rotate(thisObj));             // 오브젝트 회전 시작
                     break;
                 default:
                     break;
@@ -97,10 +103,10 @@ public class Item_Buff : MonoBehaviour
     /// <returns></returns>
     IEnumerator DestroyTimer(GameObject obj)
     {
-        Destroy(obj, buffTime + 1.0f);
+        Destroy(obj, buffTime + 1.0f);                      // 오브젝트 삭제 (버프 시간보다 1초 길게한 이유 : 오브젝트가 먼저 없어지면 컬리전Exit가 안됨)
         yield return new WaitForSeconds(buffTime);          // 버프 끝나는 시간
 
-        obj.SetActive(false);
+        obj.SetActive(false);                               // 오브젝트 끄기
     }
 
     /// <summary>
@@ -112,9 +118,9 @@ public class Item_Buff : MonoBehaviour
     {
         while (true)
         {
-            obj.transform.Rotate(-Vector3.forward * 0.15f);  // 
+            obj.transform.Rotate(-Vector3.forward);  // 시계방향으로 돌림
 
-            yield return null;
+            yield return buffRotate;
         }
     }
 }

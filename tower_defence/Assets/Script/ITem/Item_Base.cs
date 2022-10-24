@@ -135,7 +135,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void ItemSawpn()        // 해당 아이템을 소환하는 함수
     {
         Tile_Obstacle tile = hit.transform.GetComponent<Tile_Obstacle>();
-        if(tile != null)
+        if(tile != null && prePrefab.CompareTag("Item_Bomb"))      // 프리펩에 넣은 오브젝트가 Item_Bomb이고 tile이 null이 아니면 실행
         {
             if (tile.IsBuildItem == true)
             {
