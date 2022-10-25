@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpeed : Movement
+public class EnemySpeedPlus : Movement
 {
     private void Awake()
     {

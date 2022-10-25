@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
             // 적이랑 부딪치면 life가 1 감소한다.
             Hp--;
 
-            Debug.Log($"플레이어의 Life는 {Hp}");
+            Debug.Log($"플레이어의 HP는 {Hp}");
         }
     }
 
