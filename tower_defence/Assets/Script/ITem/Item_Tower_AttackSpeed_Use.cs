@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Tower_AttackSpeed_Use : Item_Buff
+public class Item_Tower_AttackSpeed_Use : Item_BuffBase
 {
     [Header("버프 지속 시간")]
     public float time = 0.0f;
@@ -10,13 +10,18 @@ public class Item_Tower_AttackSpeed_Use : Item_Buff
     [Range(0.0f, 1.0f)]
     public float attackSpeed = 0.0f;
 
-    const string buffName = "AttackSpeed";
+    void Start()
+    {
+        buffTime = time;            // 버프 지속시간 설정
+        BuffState = BuffType.Speed; // 버프 타입 변경
+        BuffStart(this.gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower"))
         {
-            buffOn(this.gameObject, collision, buffName, time, attackSpeed);
+            BuffOn(collision);
         }
     }
 
@@ -24,7 +29,25 @@ public class Item_Tower_AttackSpeed_Use : Item_Buff
     {
         if (collision.CompareTag("Tower"))
         {
-            buffOff(collision, buffName);
+            BuffOff(collision);
+        }
+    }
+
+    void BuffOn(Collider2D collision)
+    {
+        Tower tower = collision.GetComponent<Tower>();
+        if (tower != null)
+        {
+            tower.BuffOnOff(attackSpeed, true, buffIndex);
+        }
+    }
+
+    void BuffOff(Collider2D collision)
+    {
+        Tower tower = collision.GetComponent<Tower>();
+        if (tower != null)
+        {
+            tower.BuffOnOff(attackSpeed, false, buffIndex);
         }
     }
 }

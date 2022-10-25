@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    float power = 0.0f;
     float speed = 10.0f; // 총알 스피드
     Rigidbody2D rb;
+
+    private void Start()
+    {
+        Debug.Log(Power);
+    }
+
+    public float Power
+    {
+        get => power;
+        set
+        {
+            power = value;
+        }
+    }
 
     private void Awake()
     {

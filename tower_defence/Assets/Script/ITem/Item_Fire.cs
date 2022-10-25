@@ -8,16 +8,18 @@ public class Item_Fire : MonoBehaviour
     Transform fire;
     SpriteRenderer sprite;
 
+    [Header("초당 공격력")]
+    public int fireDamge = 25;                 // 초당 데미지
+    [Header("지속 시간")]
+    public float itemDestroyTime = 5.0f;       // 아이템 디스폰 시간 (아이템 발동 후)
     float alpha = 1;                    // sprite 알파 값
-    float itemDestroyTime = 5.0f;       // 아이템 디스폰 시간 (아이템 발동 후)
     bool onePlay = true;                // 한 번만 실행 (false면 실행함)
     bool spriteAlpha = false;           // 알파 값조절 (true면 알파값 조절 시작)
-    int fireDamge = 25;                 // 초당 데미지
 
     private void Awake()
     {
         fire = transform.GetChild(0);
-        sprite = fire.GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -35,8 +37,9 @@ public class Item_Fire : MonoBehaviour
             {
                 fire.gameObject.SetActive(true);        // 오브젝트 활성화
                 onePlay = false;                        // 한번만 실행
+                sprite.color = Color.clear;             // 함정 위치 sprite 끄기
+                Destroy(this.gameObject, itemDestroyTime);
                 StartCoroutine(SetAlphaDlray());        // 코루틴 시작(알파 값 딜레이)
-                Destroy(this.gameObject, itemDestroyTime);      // itemDestroyTime초 후에 오브젝트 지우기
             }
             var enemy = collision.GetComponent<Enemy>();
             enemy.FireUse(fireDamge);
@@ -58,7 +61,8 @@ public class Item_Fire : MonoBehaviour
 
     IEnumerator SetAlphaDlray()         // 알파 값 딜레이 코루틴
     {
-        yield return new WaitForSeconds(4.0f);
+        sprite = fire.GetComponent<SpriteRenderer>();
+        yield return new WaitForSeconds(itemDestroyTime - 1.0f);
         spriteAlpha = true;                 // 알파값 조절 실행
     }
 }
