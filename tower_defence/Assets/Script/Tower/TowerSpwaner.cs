@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TowerSpwaner : MonoBehaviour
 {
-    public GameObject tower;
+    public GameObject[] towers;
 
-    public void SpawnTower(Transform tileTransform)
+
+    public void SpawnTower(GameObject tileTransform,int index)
     {
-        Instantiate(tower, tileTransform.position, Quaternion.identity);
+        Instantiate(towers[index], tileTransform.transform.position, Quaternion.identity);
+
+        
     }
 }
