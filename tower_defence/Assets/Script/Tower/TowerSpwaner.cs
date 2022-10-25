@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerSpwaner : MonoBehaviour
 {
-    public GameObject[] towers;
+    public GameObject[] towers; // 타워를 배열로 받음
 
 
     public void SpawnTower(GameObject tileTransform,int index)

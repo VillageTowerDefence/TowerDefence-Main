@@ -15,12 +15,11 @@ public class ObjectDetector : MonoBehaviour
     private RaycastHit hit;
 
     private PlayerInputAction controller;
-    public int towerIndex = 0;
 
 
-    public GameObject tile;
+    public GameObject tile; 
 
-    public bool isTowerSelect = false;
+    public bool isTileSelect = false; // 타일이 골라진다면
 
     private void Awake()
     {
@@ -44,7 +43,7 @@ public class ObjectDetector : MonoBehaviour
 
     private void buildTower(InputAction.CallbackContext context)
     {
-        if (!isTowerSelect)
+        if (!isTileSelect) // 선택된 타일이 없다면
         {
             if (context.performed) // 마우스가 눌릴때
             {
@@ -56,8 +55,8 @@ public class ObjectDetector : MonoBehaviour
                     if (hit.transform.CompareTag("WallTile")) //WallTile이면
                     {
                         //towerSpwaner.SpawnTower(hit.transform); // 타워 설치
-                        tile = hit.collider.gameObject;
-                        isTowerSelect = true;
+                        tile = hit.collider.gameObject; // 타일에 저장
+                        isTileSelect = true; // 타일이 선택되었다고 알려둠
                     }
                 }
             }

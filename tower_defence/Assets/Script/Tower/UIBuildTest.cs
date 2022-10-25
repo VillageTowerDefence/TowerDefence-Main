@@ -47,10 +47,10 @@ public class UIBuildTest : MonoBehaviour
 
     void BuildTower(int index)
     {
-        if (detector.tile != null)
+        if (detector.tile != null && detector.isTileSelect)
         {
-            towerSpwaner.SpawnTower(detector.tile, index);
-            detector.isTowerSelect = false;
+            towerSpwaner.SpawnTower(detector.tile, index); // 버튼이 눌려지면 타워 스포너를 통해 설치
+            detector.isTileSelect = false; // 타일 해제
         }
     }
 }
