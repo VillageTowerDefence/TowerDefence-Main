@@ -38,7 +38,7 @@ public class Item_Tower_AttackSpeed_Use : Item_BuffBase
         Tower tower = collision.GetComponent<Tower>();
         if (tower != null)
         {
-            tower.BuffOnOff(attackSpeed, true, buffIndex);
+            tower.BuffOnOff(attackSpeed, true, buffIndex);          // 타워 공격력 증가 버프 실행
         }
     }
 
@@ -47,7 +47,7 @@ public class Item_Tower_AttackSpeed_Use : Item_BuffBase
         Tower tower = collision.GetComponent<Tower>();
         if (tower != null)
         {
-            tower.BuffOnOff(attackSpeed, false, buffIndex);
+            tower.BuffOnOff(attackSpeed, false, buffIndex);          // 타워 공격력 증가 버프 해제
         }
     }
 }

@@ -23,7 +23,7 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Tower"))
+        if (collision.CompareTag("Tower"))              // 태그가 타워면
         {
             BuffOn(collision);
         }
@@ -31,7 +31,7 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Tower"))
+        if (collision.CompareTag("Tower"))              // 태그가 타워면
         {
             BuffOff(collision);
         }
@@ -40,18 +40,18 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
     void BuffOn(Collider2D collision)
     {
         Tower tower = collision.GetComponent<Tower>();
-        if(tower != null)
+        if(tower != null)               // tower가 널 이아니면
         {
-            tower.BuffOnOff(damage, true, buffIndex);
+            tower.BuffOnOff(damage, true, buffIndex);       // 타워 공격속도 버프 함수 실행
         }
     }
 
     void BuffOff(Collider2D collision)
     {
         Tower tower = collision.GetComponent<Tower>();
-        if (tower != null)
+        if (tower != null)               // tower가 널 이아니면
         {
-            tower.BuffOnOff(damage, false, buffIndex);
+            tower.BuffOnOff(damage, false, buffIndex);      // 터워 공격속도 버프 함수 해제
         }
     }
 }

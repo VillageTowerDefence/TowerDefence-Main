@@ -38,11 +38,15 @@ public class Item_BuffBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 버프 시작 함수
+    /// </summary>
+    /// <param name="obj">이펙트 오브젝트</param>
     protected void BuffStart(GameObject obj)
     {
-        buffRotate = new WaitForSeconds(0.02f);
-        StartCoroutine(DestroyTimer(obj));
-        StartCoroutine(Rotate(obj));
+        buffRotate = new WaitForSeconds(0.02f);         // 회전 속도 설정
+        StartCoroutine(DestroyTimer(obj));              // 이펙트 오브젝트 삭제 코루틴
+        StartCoroutine(Rotate(obj));                    // 이펙트 오브젝트 회전 코루틴
     }
 
     /// <summary>
