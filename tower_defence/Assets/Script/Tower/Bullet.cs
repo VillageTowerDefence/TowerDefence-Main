@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private readonly int HP;
+    float BulletDamage = 1000.0f;
+
 
     float speed = 10.0f; // 총알 스피드
     Rigidbody2D rb;
@@ -22,6 +25,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            float EnemyDamage = (HP - BulletDamage);
+            Destroy(collision.gameObject);
             Destroy(this.gameObject); // 적을 만나면 총알을 제거
         }
     }

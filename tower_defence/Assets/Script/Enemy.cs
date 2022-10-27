@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator fireItemDamage;
 
-    int Hp
+    int HP
     {
         get => hp;
         set
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            Hp -= damage;              // damage만큼 hp 감소
+            HP -= damage;              // damage만큼 hp 감소
 
             yield return new WaitForSeconds(1.0f);          // 1초마다 damage의 데미지를 줌 (나중에 변수로 만들어야함)
         }
