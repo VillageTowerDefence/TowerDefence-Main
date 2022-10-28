@@ -20,7 +20,7 @@ public class Tower : MonoBehaviour
     // 아이템 ------------------------------------------------------------------------------
     bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
     int[] buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
-    string[] buffKind = { "Power", "ActtackSpeed" };        // 버프 종류
+    string[] buffKind = { "Power", "ActtackSpeed", "Slow" };        // 버프 종류
     // ------------------------------------------------------------------------------------
 
     private List<GameObject> Enemys; // 적 List로 받기

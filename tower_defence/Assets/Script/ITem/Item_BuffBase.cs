@@ -12,8 +12,9 @@ public class Item_BuffBase : MonoBehaviour
 
     protected enum BuffType             // 버프 타입
     {
-        Power,          // 공격력 증가
-        Speed           // 공격속도 증가
+        Power = 0,          // 공격력 증가
+        Speed,              // 공격속도 증가
+        Slow                // 이동속도 감소
     }
 
     BuffType buffState = BuffType.Power;    // 버프 상태
@@ -27,10 +28,13 @@ public class Item_BuffBase : MonoBehaviour
             switch (buffState)
             {
                 case BuffType.Power:
-                    buffIndex = 0;
+                    buffIndex = ((int)BuffType.Power);
                     break;
                 case BuffType.Speed:
                     buffIndex = 1;
+                    break;
+                case BuffType.Slow:
+                    buffIndex = 2;
                     break;
                 default:
                     break;

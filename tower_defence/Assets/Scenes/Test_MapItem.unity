@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 1951182557}
   - component: {fileID: 1951182556}
   - component: {fileID: 1951182558}
+  - component: {fileID: 1951182559}
   m_Layer: 0
   m_Name: Item_Enemy_Slow_Use
   m_TagString: Untagged
@@ -691,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951182555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.66, y: -0.61, z: 0}
+  m_LocalPosition: {x: -1.59, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -708,12 +709,26 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &1951182559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951182555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81445db168ab5cd45a1e7ae70c526036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 30
+  speedSlow: 0.5
 --- !u!4 &2063198753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5905354555994785727, guid: 0bf9ea34e1dd9d44bb801cb1e32c0f8b, type: 3}
