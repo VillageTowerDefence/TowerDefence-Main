@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class TowerSpwaner : MonoBehaviour
@@ -9,8 +10,13 @@ public class TowerSpwaner : MonoBehaviour
 
     public void SpawnTower(GameObject tileTransform,int index)
     {
-        Instantiate(towers[index], tileTransform.transform.position, Quaternion.identity);
-
+        
+        Tile tile = tileTransform.GetComponent<Tile>();
+        if (!tile.isBulidTower)
+        {
+            Instantiate(towers[index], tileTransform.transform.position, Quaternion.identity);
+            tile.isBulidTower = true;
+        }
         
     }
 }
