@@ -51,9 +51,9 @@ TagManager:
   - name: Map_Background
     uniqueID: 2737902493
     locked: 0
-  - name: Item
-    uniqueID: 1249507065
-    locked: 0
   - name: Tower
     uniqueID: 325616369
+    locked: 0
+  - name: Item
+    uniqueID: 1249507065
     locked: 0
