@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,7 +10,7 @@ public class UIBuildTest : MonoBehaviour
     Button buildButton1;
     Button buildButton2;
     Button buildButton3;
-
+    Button cancel;
 
     public ObjectDetector detector;
     public TowerSpwaner towerSpwaner;
@@ -20,12 +21,19 @@ public class UIBuildTest : MonoBehaviour
         buildButton1 = transform.GetChild(0).GetComponent<Button>();
         buildButton2 = transform.GetChild(1).GetComponent<Button>();
         buildButton3 = transform.GetChild(2).GetComponent<Button>();
+        cancel = transform.GetChild(3).GetComponent<Button>();
 
         buildButton1.onClick.AddListener(OnClick_BuildButton1);
         buildButton2.onClick.AddListener(OnClick_BuildButton2);
         buildButton3.onClick.AddListener(OnClick_BuildButton3);
+        cancel.onClick.AddListener(OnClick_Cancel);
 
         towerIndex = 0;
+    }
+
+    private void OnClick_Cancel()
+    {
+        detector.isTileSelect = false;
     }
 
     void OnClick_BuildButton1()
@@ -44,6 +52,7 @@ public class UIBuildTest : MonoBehaviour
         towerIndex = 2;
         BuildTower(towerIndex);
     }
+
 
     void BuildTower(int index)
     {
