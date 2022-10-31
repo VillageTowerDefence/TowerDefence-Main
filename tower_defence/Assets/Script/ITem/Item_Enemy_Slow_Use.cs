@@ -15,6 +15,7 @@ public class Item_Enemy_Slow_Use : Item_BuffBase
     {
         buffTime = time;            // 버프 지속시간 설정
         BuffState = BuffType.Slow; // 버프 타입 변경
+        Destroy(this.gameObject, time);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
