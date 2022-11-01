@@ -15,7 +15,7 @@ public class Item_Enemy_Slow_Use : Item_BuffBase
     {
         buffTime = time;            // 버프 지속시간 설정
         BuffState = BuffType.Slow; // 버프 타입 변경
-        Destroy(this.gameObject, time);
+        StartCoroutine(Ondestroy());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,5 +50,14 @@ public class Item_Enemy_Slow_Use : Item_BuffBase
         {
             enemy.BuffOnOff(speedSlow, false, buffIndex);      // 터워 공격속도 버프 함수 해제
         }
+    }
+
+    IEnumerator Ondestroy()
+    {
+        Destroy(this.gameObject, time + 1);
+
+        yield return new WaitForSeconds(time);
+
+        gameObject.SetActive(false);
     }
 }
