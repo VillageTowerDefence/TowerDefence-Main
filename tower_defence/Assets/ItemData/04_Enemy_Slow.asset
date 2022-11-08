@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd9b2dc83898e747bc8ba5ce01f004b, type: 3}
   m_Name: 04_Enemy_Slow
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: "\uD3ED\uD0C4"
-  modelprefab: {fileID: 1872276375245095028, guid: f5259a82cabb70b478ac1ecc5ec4e446, type: 3}
+  id: 4
+  itemName: "\uC801 \uC2AC\uB85C\uC6B0"
+  modelprefab: {fileID: 943373364154646681, guid: dcbb9c6fe80fd2643a931c959c89372c, type: 3}
   value: 0
   Count: 0
