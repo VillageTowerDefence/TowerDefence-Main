@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     float originalAttackSpeed;      // 타워 원래 공격 주기
 
     bool isphysics = false; // 물리/마법 타워 구별
+    bool isAttackFly = false;
 
     // 아이템 ------------------------------------------------------------------------------
     bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)

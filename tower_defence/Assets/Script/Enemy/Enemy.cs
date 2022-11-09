@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         movement = GetComponent<Movement>();
 

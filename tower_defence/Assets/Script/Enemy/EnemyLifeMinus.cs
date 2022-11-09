@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyLifeMinus : Enemy
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Hp = hp / 2;
     }
 }
