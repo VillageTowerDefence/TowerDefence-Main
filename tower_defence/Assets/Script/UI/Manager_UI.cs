@@ -17,6 +17,18 @@ public class Manager_UI : Singleton<Manager_UI>
         }
     }
 
+    //게임 배속
+    bool game_speedUp_flag = false;
+
+    public bool Game_SpeedUP_Flag
+    {
+        get => game_speedUp_flag;
+        private set
+        {
+            game_speedUp_flag = value;
+        }
+    }
+
     //체력 관련
     float player_HP = 10.0f;
     float player_HP_Max = 10.0f;
@@ -93,6 +105,7 @@ public class Manager_UI : Singleton<Manager_UI>
     protected override void Initialize()
     {
         Game_Pause_Flag = false;
+        Game_SpeedUP_Flag = false;
         player_HP = player_HP_Max;
         Game_Progress_Current = 0;
         Energy_Count = 0;
@@ -108,6 +121,17 @@ public class Manager_UI : Singleton<Manager_UI>
     {
         Game_Pause_Flag = false;
         Time.timeScale = 1;
+    }
+
+    public void SpeedUpGame()
+    {
+        Game_SpeedUP_Flag = true;
+        Time.timeScale = 2.0f;
+    }
+    public void SpeedDownGame()
+    {
+        Game_SpeedUP_Flag = false;
+        Time.timeScale = 1.0f;
     }
 
     public void Test_Damage_HP()
