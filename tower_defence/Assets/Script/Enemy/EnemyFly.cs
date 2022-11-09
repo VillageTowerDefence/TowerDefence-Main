@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLifePlus : Enemy
+public class EnemyFly : Enemy
 {
-    protected override void Awake()
+    private void Awake()
     {
-        Hp = hp * 2;
+        //isAttackFly = true;
     }
 }

@@ -19,7 +19,7 @@ public class Tower : MonoBehaviour
     float originalAttackSpeed;      // 타워 원래 공격 주기
 
     bool isphysics = false; // 물리/마법 타워 구별
-    bool isattackFly = false; // 공중 공격 가능 true 가능 false 불가
+    bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
 
     protected int costenergy; // 타워 건설 골드
     // ------------------------------------------------------------------------------------
