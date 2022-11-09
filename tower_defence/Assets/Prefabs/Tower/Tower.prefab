@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9034060581423525227}
   - component: {fileID: 9034060581423525228}
-  - component: {fileID: 9034060581423525226}
   - component: {fileID: 2125233595667217823}
   - component: {fileID: 2571690629236366040}
+  - component: {fileID: 7151557119046715890}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 325616369
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b670c6526b93f53408b63896115c1a10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9034060581423525226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9034060581423525229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c14249b1fa862f743afd3131a9fc7722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
-  attackSpeed: 1
-  attackDamage: 0
 --- !u!58 &2125233595667217823
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,3 +124,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7151557119046715890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9034060581423525229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2325e8f4fda9ec04a8ca6ea9b7d979fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
+  attackSpeed: 1
+  attackDamage: 0

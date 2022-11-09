@@ -20,6 +20,8 @@ public class Tower : MonoBehaviour
 
     bool isphysics = false; // 물리/마법 타워 구별
     bool isattackFly = false; // 공중 공격 가능 true 가능 false 불가
+
+    protected int costenergy; // 타워 건설 골드
     // ------------------------------------------------------------------------------------
 
 
@@ -32,8 +34,12 @@ public class Tower : MonoBehaviour
     private List<GameObject> Enemys; // 적 List로 받기
     Transform target = null; // 공격 대상
 
+    // 프로퍼티 -------------------------------------------------------------------------
 
-    private void Awake()
+    public int CostEnergy => costenergy;
+
+
+    protected virtual void Awake()
     {
         Enemys = new List<GameObject>(); // 적 리스트 할당
 
