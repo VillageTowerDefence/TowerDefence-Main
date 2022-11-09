@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6706569560287201715}
   - component: {fileID: 6706569560287201714}
-  - component: {fileID: 6706569560287201716}
+  - component: {fileID: 6169791698870472442}
   m_Layer: 0
   m_Name: Tower3
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 325616369
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bce467e332e761547afba29263d06bfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6706569560287201716
+--- !u!114 &6169791698870472442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6706569560287201713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c14249b1fa862f743afd3131a9fc7722, type: 3}
+  m_Script: {fileID: 11500000, guid: 853175fd699d7b240a22faf6b8b98a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
   attackSpeed: 1
+  attackDamage: 0

@@ -8,7 +8,10 @@ using UnityEngine.UIElements;
 
 public class Tower : MonoBehaviour
 {
+    
     public GameObject bullet; // 공격 투사체
+
+    // 타워 상태 ---------------------------------------------------------------------------
 
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage; // 타워 공격력
@@ -16,7 +19,11 @@ public class Tower : MonoBehaviour
     float originalAttackSpeed;      // 타워 원래 공격 주기
 
     bool isphysics = false; // 물리/마법 타워 구별
-    bool isAttackFly = false;
+    bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
+
+    protected int costenergy; // 타워 건설 골드
+    // ------------------------------------------------------------------------------------
+
 
     // 아이템 ------------------------------------------------------------------------------
     bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
@@ -27,8 +34,12 @@ public class Tower : MonoBehaviour
     private List<GameObject> Enemys; // 적 List로 받기
     Transform target = null; // 공격 대상
 
+    // 프로퍼티 -------------------------------------------------------------------------
 
-    private void Awake()
+    public int CostEnergy => costenergy;
+
+
+    protected virtual void Awake()
     {
         Enemys = new List<GameObject>(); // 적 리스트 할당
 
@@ -78,7 +89,11 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void Attack()
+
+    /// <summary>
+    /// 타워 공격 함수
+    /// </summary>
+    protected virtual void Attack()
     {
         target = Enemys[0].transform; //리스트의 첫번째 적에게 공격
         Vector3 targetDir = (target.position - transform.position).normalized; // 방향을 구한후
@@ -86,9 +101,10 @@ public class Tower : MonoBehaviour
 
         GameObject obj = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
         Bullet bull = obj.GetComponent<Bullet>();
-        bull.Power = attackDamage;
-        
-        obj.transform.parent = this.transform;
+        bull.Power = attackDamage; // 총알에 데메지 전달
+        bull.IsPhysics = isphysics; // 총알에 물리/마법 속성 전달
+
+        obj.transform.parent = this.transform; // 총알을 타워의 자식으로 설정
     }
 
     IEnumerator PeriodAttack()

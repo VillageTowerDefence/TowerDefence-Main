@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     float power = 0.0f;
     float speed = 10.0f; // 총알 스피드
+    bool isphysics; // true 물리 false 마법
     Rigidbody2D rb;
 
     private void Start()
@@ -21,6 +22,17 @@ public class Bullet : MonoBehaviour
             power = value;
         }
     }
+    
+    public bool IsPhysics
+    {
+        get => isphysics;
+        set
+        {
+            isphysics = value;
+        }
+    }
+
+
 
     private void Awake()
     {
