@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -78,7 +79,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)  // 드래그 시작
     {
-        if (itemDataManager.itemData[itemIndex].count != 0)        // 아이템 갯수가 0이 아니면
+        if (itemDataManager[itemIndex].count != 0)        // 아이템 갯수가 0이 아니면
         {
             itemUse = true;     // 아이템을 사용할 수 있다.
             root.BroadcastMessage("BeginDarg", transform, SendMessageOptions.DontRequireReceiver);  // 해당함수가 없어도 오류가 나지 않도록 함
@@ -150,8 +151,8 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             tile.IsBuildItem = true;
         }
         root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
-        itemDataManager.itemData[itemIndex].count--;           // 아이템 갯수 1 감소
-
+        itemDataManager[itemIndex].count--;           // 아이템 갯수 1 감소
+        Refresh();                                    // 아이템 현재 수량 갱신
         Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
 
         ItemUse();          // 그 아이템 효과 사용
@@ -162,7 +163,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     /// </summary>
     protected virtual void ItemUse()
     {
-       
+        
     }
 
     /// <summary>
@@ -179,6 +180,14 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     /// </summary>
     public void Refresh()
     {
-        itemText.text = $"{itemDataManager.itemData[itemIndex].count}";        // 현재 아이템 소유량
+        itemText.text = $"{itemDataManager[itemIndex].count}";   // 현재 아이템 소유량
+        if (itemDataManager[itemIndex].count == 0)               // 아이템 갯수가 0이랑 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
+        {
+            image.color = Color.clear;          // 0이면 투명
+        }
+        else
+        {
+            image.color = Color.white;          // 1이면 정상으로 바꾸기
+        }
     }
 }
