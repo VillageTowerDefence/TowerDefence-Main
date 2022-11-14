@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2134331369119872529}
     m_Modifications:
+    - target: {fileID: 1589630187987415546, guid: 818aaecee8a77994c9aec7d212daa911, type: 3}
+      propertyPath: prePrefab
+      value: 
+      objectReference: {fileID: 9185974409512870713, guid: f98b58ac4dbc99f4da78921d5f100c6b, type: 3}
     - target: {fileID: 2840320892457986130, guid: 818aaecee8a77994c9aec7d212daa911, type: 3}
       propertyPath: m_Name
       value: Item_Tower_AttackSpeedUp
@@ -334,6 +338,14 @@ PrefabInstance:
       propertyPath: itemEA
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6997358270587942437, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: layerName
+      value: RoadTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997358270587942437, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
+      propertyPath: prePrefab
+      value: 
+      objectReference: {fileID: 3929324134794315985, guid: b45c27752fc47a94da1b289e2ec2a176, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa53dc20c5b5764386e293f30a196d9, type: 3}
 --- !u!224 &7856914270781038220 stripped
@@ -348,6 +360,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2134331369119872529}
     m_Modifications:
+    - target: {fileID: 783357488977291975, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: layerName
+      value: ObstacleTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 783357488977291975, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
+      propertyPath: prePrefab
+      value: 
+      objectReference: {fileID: 1872276375245095028, guid: f5259a82cabb70b478ac1ecc5ec4e446, type: 3}
     - target: {fileID: 1975008191713921961, guid: b65fe0570bcb8b44f8db795a06ea511c, type: 3}
       propertyPath: itemEA
       value: 3
@@ -486,6 +506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2134331369119872529}
     m_Modifications:
+    - target: {fileID: 375285902769714501, guid: 46fcee0ba72dcba42980ea7cc7278bb0, type: 3}
+      propertyPath: prePrefab
+      value: 
+      objectReference: {fileID: 943373364154646681, guid: dcbb9c6fe80fd2643a931c959c89372c, type: 3}
     - target: {fileID: 3769531013137624300, guid: 46fcee0ba72dcba42980ea7cc7278bb0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -588,6 +612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2134331369119872529}
     m_Modifications:
+    - target: {fileID: 482013396199349606, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
+      propertyPath: prePrefab
+      value: 
+      objectReference: {fileID: 4023170594523514062, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
     - target: {fileID: 4023170594523514062, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
       propertyPath: m_Name
       value: Item_Tower_PowerUp
