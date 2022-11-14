@@ -6,6 +6,6 @@ public class EnemySpeedMinus : Movement
 {
     private void Awake()
     {
-        MoveSpeed = moveSpeed / 2;
+        MoveSpeed = moveSpeed / 2;  // 이동속도 절반
     }
 }
