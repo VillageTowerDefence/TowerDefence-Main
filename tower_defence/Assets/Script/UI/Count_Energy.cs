@@ -18,12 +18,12 @@ public class Count_Energy : MonoBehaviour
     {
         manager_UI = Manager_UI.Instance;
 
-        manager_UI.refresh_Energy = Refresh_Progress_Energy;
+        GameManager.Instance.refresh_Energy = Refresh_Progress_Energy;
     }
 
     void Refresh_Progress_Energy()
     {
         //Debug.Log("갱신");
-        energy_text.text = manager_UI.Energy_Count.ToString("D3");
+        energy_text.text = manager_UI.UI_Energy_Count.ToString("D3");
     }
 }

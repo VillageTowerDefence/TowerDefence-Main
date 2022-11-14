@@ -17,12 +17,12 @@ public class Count_Money : MonoBehaviour
     {
         manager_UI = Manager_UI.Instance;
 
-        manager_UI.refresh_Money = Refresh_Progress_Money;
+        GameManager.Instance.refresh_Money = Refresh_Progress_Money;
     }
 
     void Refresh_Progress_Money()
     {
         //Debug.Log("갱신");
-        money_text.text = manager_UI.Money_Count.ToString("D3");
+        money_text.text = manager_UI.UI_Money_Count.ToString("D3");
     }
 }
