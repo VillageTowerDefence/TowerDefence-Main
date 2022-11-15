@@ -21,7 +21,10 @@ public class Tower : MonoBehaviour
     bool isphysics = false; // 물리/마법 타워 구별
     bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
 
-    protected int costenergy; // 타워 건설 골드
+    protected int costenergy; // 타워 건설 에너지
+    protected int level; //타워 레벨
+    protected int maxTowerLevel = 3;
+    protected int[] towerUpgradeCost;
     // ------------------------------------------------------------------------------------
 
 
@@ -42,6 +45,7 @@ public class Tower : MonoBehaviour
     protected virtual void Awake()
     {
         Enemys = new List<GameObject>(); // 적 리스트 할당
+        level = 1;
 
         // 아이템 관련 ----------------------------------------------------------
         isOnBuffPower = new bool[buffKind.Length];
@@ -117,6 +121,11 @@ public class Tower : MonoBehaviour
             }
             yield return new WaitForSeconds(attackSpeed); // 공격주기
         }
+    }
+
+    public virtual void towerUpgrade()
+    {
+        
     }
 
     // 버프 관련 함수 ----------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TowerSpwaner : MonoBehaviour
 {
     public GameObject[] towers; // 타워를 배열로 받음
-    public int[] towerCost;
+    public int[] towerCost = new int[] {100,200,300};
 
 
 
