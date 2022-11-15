@@ -53,14 +53,14 @@ public class Enemy : MonoBehaviour
         //-----------------------------------------------------------------------
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            // 적이랑 부딪치면 life가 1 감소한다.
-            //Hp--;
-            
-            //Debug.Log($"플레이어의 HP는 {Hp}");
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            Hp -= (int)bullet.Power;
+
+            Debug.Log($"플레이어의 HP는 {Hp}");
         }
     }
 

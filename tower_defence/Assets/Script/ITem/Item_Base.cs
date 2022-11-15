@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -14,8 +16,8 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public string layerName;            // 레이어 이름
     [Space(10f)]
     //[SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
-    [Header("아이템 수량")]
-    public int itemEA = 0;                     // 아이템 총 갯수
+    //[Header("아이템 수량")]
+    //public int itemEA = 0;                     // 아이템 총 갯수
 
     Transform root;                     // 최상단 부모
     Transform parent;                   // 자기 부모를 찾음
@@ -30,31 +32,34 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     bool itemUse = false;               // 아이템을 사용할 수 있는지 표시(flase면 불가능, true면 가능)
 
-    int ItemEA                          // itemEA 프로퍼티
-    {
-        get => itemEA;
+    ItemDataManager itemDataManager;    // 아이템 데이터 메니저
+    uint itemIndex;                     // 아이템 인덱스
 
-        set
-        {
-            itemEA = value;
+    //int ItemEA                          // itemEA 프로퍼티
+    //{
+    //    get => itemEA;
 
-            if (itemEA < 0)         // 0보다 작으면
-            {
-                itemEA = 0;         // 갯수 0으로 고정
-            }
+    //    set
+    //    {
+    //        itemEA = value;
 
-            itemText.text = $"{itemEA}";        // itemEA수량의 맞게 UI의 표시
+    //        if (itemEA < 0)         // 0보다 작으면
+    //        {
+    //            itemEA = 0;         // 갯수 0으로 고정
+    //        }
 
-            if (itemEA <= 0)        // 아이템 갯수가 0보다 작거나 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
-            {
-                image.color = Color.clear;          // 0이면 투명
-            }
-            else
-            {
-                image.color = Color.white;          // 1이면 정상으로 바꾸기
-            }
-        }
-    }
+    //        itemText.text = $"{itemEA}";        // itemEA수량의 맞게 UI의 표시
+
+    //        if (itemEA <= 0)        // 아이템 갯수가 0보다 작거나 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
+    //        {
+    //            image.color = Color.clear;          // 0이면 투명
+    //        }
+    //        else
+    //        {
+    //            image.color = Color.white;          // 1이면 정상으로 바꾸기
+    //        }
+    //    }
+    //}
 
     protected virtual void Awake()
     {
@@ -67,13 +72,14 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         root = transform.root;  // 최상위 오브젝트를 불러온다.
         parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
         transform.position = parent.position;   // 자신의 위치를 parent의 위치로 가게한다.
-        itemText.text = $"{itemEA}";        // 현재 아이템 소유량
+        //itemText.text = $"{itemDataManager.itemData[itemIndex].count}";        // 현재 아이템 소유량
         camera = GameObject.Find("MainCamera").GetComponent<Camera>();      // 하이라키창에 있는 게임오브젝트 중에 "MainCamera"이름이 들어간 오브젝트 찾기
+        itemDataManager = GameManager.Instance.ItemDta;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)  // 드래그 시작
     {
-        if (ItemEA != 0)        // 아이템 갯수가 0이 아니면
+        if (itemDataManager[itemIndex].count != 0)        // 아이템 갯수가 0이 아니면
         {
             itemUse = true;     // 아이템을 사용할 수 있다.
             root.BroadcastMessage("BeginDarg", transform, SendMessageOptions.DontRequireReceiver);  // 해당함수가 없어도 오류가 나지 않도록 함
@@ -145,8 +151,8 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             tile.IsBuildItem = true;
         }
         root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
-        ItemEA--;           // 아이템 갯수 1 감소
-
+        itemDataManager[itemIndex].count--;           // 아이템 갯수 1 감소
+        Refresh();                                    // 아이템 현재 수량 갱신
         Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
 
         ItemUse();          // 그 아이템 효과 사용
@@ -157,6 +163,31 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     /// </summary>
     protected virtual void ItemUse()
     {
-       
+        
+    }
+
+    /// <summary>
+    /// 각 슬롯에 인덱스 할당
+    /// </summary>
+    /// <param name="id">인데스</param>
+    public void ItemInitialize(uint id)
+    {
+        itemIndex = id;
+    }
+
+    /// <summary>
+    /// 아이템 수량 갱신
+    /// </summary>
+    public void Refresh()
+    {
+        itemText.text = $"{itemDataManager[itemIndex].count}";   // 현재 아이템 소유량
+        if (itemDataManager[itemIndex].count == 0)               // 아이템 갯수가 0이랑 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
+        {
+            image.color = Color.clear;          // 0이면 투명
+        }
+        else
+        {
+            image.color = Color.white;          // 1이면 정상으로 바꾸기
+        }
     }
 }
