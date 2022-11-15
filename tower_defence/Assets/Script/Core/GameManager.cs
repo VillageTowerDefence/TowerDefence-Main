@@ -60,10 +60,17 @@ public class GameManager : Singleton<GameManager>
 
     public int energy = 1000;
 
+    ItemDataManager itemData;
+
+    /// <summary>
+    /// 아이템 데이터 메니저 (읽기 전용) 프로퍼티
+    /// </summary>
+    public ItemDataManager ItemDta => itemData;
     protected override void Initialize()
     {
         player_HP = player_HP_Max;
         Energy_Count = 0;
         Money_Count = 0;
+        itemData = GetComponent<ItemDataManager>();
     }
 }
