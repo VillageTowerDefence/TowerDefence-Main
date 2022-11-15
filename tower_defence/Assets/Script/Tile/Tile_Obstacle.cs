@@ -24,11 +24,11 @@ public class Tile_Obstacle : MonoBehaviour
         layerindex = LayerMask.NameToLayer("WallTile");             // 레이어 WallTile의 인덱스 값을 찾아 layerindex에 넣기
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Item_Bomb"))
+        if (collision.CompareTag("Item_Bomb"))
         {
-            item_Bomb = other.GetComponent<Item_Bomb_Use>();        // 컴포넌트 찾기
+            item_Bomb = collision.GetComponent<Item_Bomb_Use>();        // 컴포넌트 찾기
             item_Bomb.onItemUse += OnDistroy;                       // Item_Bomb_Use에 있는 델리게이트랑 연결
         }
     }

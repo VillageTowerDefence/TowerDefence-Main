@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2243897855491076791}
   - component: {fileID: 4087857230078906301}
   - component: {fileID: -5658898221885134942}
-  - component: {fileID: -1282557145569987614}
-  - component: {fileID: 2132922384571242358}
+  - component: {fileID: 2057558010445322447}
+  - component: {fileID: 2376518899839855426}
   m_Layer: 0
   m_Name: Item_Bomb_Use
   m_TagString: Item_Bomb
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1249507065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8a6ff5df3f509c74ab20dc6a38605d42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,36 +100,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2246b467bd7341b4b1e08a103969b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &-1282557145569987614
-Rigidbody:
+--- !u!50 &2057558010445322447
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872276375245095028}
-  serializedVersion: 2
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!136 &2132922384571242358
-CapsuleCollider:
+  m_Constraints: 0
+--- !u!70 &2376518899839855426
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872276375245095028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.28
-  m_Height: 0.99
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.7, y: 0.8}
+  m_Direction: 0
 --- !u!1001 &3336785730233868667
 PrefabInstance:
   m_ObjectHideFlags: 0

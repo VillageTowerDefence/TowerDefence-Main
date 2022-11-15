@@ -615,7 +615,7 @@ PrefabInstance:
     - target: {fileID: 482013396199349606, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
       propertyPath: prePrefab
       value: 
-      objectReference: {fileID: 4023170594523514062, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
+      objectReference: {fileID: 5653585178111728082, guid: babad9ce1930dba4db419219b9ddc24f, type: 3}
     - target: {fileID: 4023170594523514062, guid: fec378a1c13e9db4bb3fbb602d44947f, type: 3}
       propertyPath: m_Name
       value: Item_Tower_PowerUp

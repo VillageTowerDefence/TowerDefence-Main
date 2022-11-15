@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.Progress;
@@ -26,7 +27,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     UnityEngine.UI.Image image;         // 아이템 이미지 알파값 바꾸기용
 
     Vector3 MousDir;                    // 아이템 최종 생성 좌표
-    RaycastHit hit;                     // 레이캐스트 용 레이저
+    RaycastHit2D hit;                     // 레이캐스트 용 레이저
     int layerMask;                      // 레이캐스트 검출할 레이어 (layerName를 검출)
     float distance = 11.0f;             // 레이캐스트 거리  
 
@@ -107,13 +108,15 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             layerMask = 1 << LayerMask.NameToLayer(layerName);               // 해당 레이어를 layerName로 설정
             MousDir = camera.ScreenToWorldPoint(eventData.position);         // 스크린 좌표를 월드좌표로 변환
-            Vector3 laydir = MousDir;
+            Vector2 laydir = MousDir;
+            Ray2D ray = new Ray2D(laydir, Vector2.zero);
             MousDir.z = 0.0f;           // 카메라 기준의 값이기때문에 -10이 들어가 있다(-10이 있으면 게임 카메라에 안그려진다.)
 
             if(layerName == "")         // 검출할 레이어가 필요없으면 (모든 구역 설치 가능)
             {
-                if (Physics.Raycast(laydir, Vector3.forward, out hit, distance))                // 그 해당 좌표에 동작 (레이어 검출x)
+                if (Physics2D.Raycast(ray.origin, ray.direction, distance))                // 그 해당 좌표에 동작 (레이어 검출x)
                 {
+                    hit = Physics2D.Raycast(ray.origin, ray.direction, distance);
                     ItemSawpn();
                 }
                 else
@@ -123,8 +126,9 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             }
             else                        // 검출할 레이어가 있다면 (해당 구역만 설치 가능)
             {
-                if (Physics.Raycast(laydir, Vector3.forward, out hit, distance, layerMask))       // 그 해당 좌표에 해당 레이어가 있으면 동작
+                if (Physics2D.Raycast(ray.origin, ray.direction, distance, layerMask))       // 그 해당 좌표에 해당 레이어가 있으면 동작
                 {
+                    hit = Physics2D.Raycast(ray.origin, ray.direction, distance, layerMask);
                     ItemSawpn();
                 }
                 else

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item_Bomb_Use : MonoBehaviour
@@ -16,9 +17,10 @@ public class Item_Bomb_Use : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("ObstacleTile"))   // 장애물과 만나면
+        if (collision.CompareTag("ObstacleTile"))   // 장애물과 만나면
         {
             StartCoroutine(ExplosionStart());          // 코루틴 시작
         }
