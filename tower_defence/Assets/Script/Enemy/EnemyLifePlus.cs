@@ -6,6 +6,7 @@ public class EnemyLifePlus : Enemy
 {
     protected override void Awake()
     {
-        Hp = hp * 2;
+        base.Awake();
+        Hp = hp * 2;    // hp 2배
     }
 }

@@ -6,6 +6,6 @@ public class EnemySpeedPlus : Movement
 {
     private void Awake()
     {
-        MoveSpeed = moveSpeed * 2;
+        MoveSpeed = moveSpeed * 2;  // 이동속도 2배
     }
 }
