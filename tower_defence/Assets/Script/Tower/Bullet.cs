@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Power);
+        //Debug.Log(Power);
     }
 
     public float Power

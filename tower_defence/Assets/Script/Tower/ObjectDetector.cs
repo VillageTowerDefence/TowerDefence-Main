@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngineInternal;
 
 public class ObjectDetector : MonoBehaviour
 {
@@ -17,9 +16,11 @@ public class ObjectDetector : MonoBehaviour
     private PlayerInputAction controller;
 
 
-    public GameObject tile; 
+    public GameObject selectTile;
+    public GameObject selectTower;
 
-    public bool isTileSelect = false; // 타일이 골라진다면
+    public bool isSelect = false; // 타일이 골라진다면
+
 
     private void Awake()
     {
@@ -30,33 +31,46 @@ public class ObjectDetector : MonoBehaviour
     private void OnEnable()
     {
         controller.Enable();
-        controller.Player.Build.performed += buildTower;
-        controller.Player.Build.canceled += buildTower;
+        controller.Player.Build.performed += DetectTile;
+        controller.Player.Build.canceled += DetectTile;
     }
 
     private void OnDisable()
     {
-        controller.Player.Build.canceled -= buildTower;
-        controller.Player.Build.performed -= buildTower;
+        controller.Player.Build.canceled -= DetectTile;
+        controller.Player.Build.performed -= DetectTile;
         controller.Disable();
     }
 
-    private void buildTower(InputAction.CallbackContext context)
+
+    /// <summary>
+    /// 타일 확인
+    /// </summary>
+    /// <param name="context"></param>
+    private void DetectTile(InputAction.CallbackContext context)
     {
-        if (!isTileSelect) // 선택된 타일이 없다면
+        if (!isSelect) // 선택된 타일이 없다면
         {
             if (context.performed) // 마우스가 눌릴때
             {
                 ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()); //카메라 위치에서 마우스 클릭지점으로 향하는 광선
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
 
-
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity)) //광선에 부딪히는 오브젝트 검출
+                if (hit2D.collider != null) //광선에 부딪히는 오브젝트 검출
                 {
-                    if (hit.transform.CompareTag("WallTile")) //WallTile이면
+                    if (hit2D.transform.CompareTag("WallTile")) //WallTile이면
                     {
                         //towerSpwaner.SpawnTower(hit.transform); // 타워 설치
-                        tile = hit.collider.gameObject; // 타일에 저장
-                        isTileSelect = true; // 타일이 선택되었다고 알려둠
+                        selectTile = hit2D.collider.gameObject; // 타일에 저장
+                        
+                        isSelect = true; // 타일이 선택되었다고 알려둠
+                    }
+
+                    if (hit2D.transform.CompareTag("Tower"))
+                    {
+                        selectTower = hit2D.collider.gameObject;
+                        isSelect = true; // 타일이 선택되었다고 알려둠
+                        
                     }
                 }
             }
