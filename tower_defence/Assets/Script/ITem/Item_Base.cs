@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,6 @@ using static UnityEditor.Progress;
 
 public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("아이템 프리펩")]
-    public GameObject prePrefab;        // 아이템 프리펩
     [Header("설치 가능한 레이어 이름 / 아무것도 안쓰면 모두 설치가능")]
     public string layerName;            // 레이어 이름
     [Space(10f)]
@@ -28,7 +27,6 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     Vector3 MousDir;                    // 아이템 최종 생성 좌표
     RaycastHit2D hit;                     // 레이캐스트 용 레이저
-    int layerMask;                      // 레이캐스트 검출할 레이어 (layerName를 검출)
     float distance = 11.0f;             // 레이캐스트 거리  
 
     bool itemUse = false;               // 아이템을 사용할 수 있는지 표시(flase면 불가능, true면 가능)
@@ -106,29 +104,20 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         // 아이템 사용
         if (itemUse)        // 아이템을 사용할 수 있으면
         {
-            layerMask = 1 << LayerMask.NameToLayer(layerName);               // 해당 레이어를 layerName로 설정
             MousDir = camera.ScreenToWorldPoint(eventData.position);         // 스크린 좌표를 월드좌표로 변환
             Vector2 laydir = MousDir;
             Ray2D ray = new Ray2D(laydir, Vector2.zero);
             MousDir.z = 0.0f;           // 카메라 기준의 값이기때문에 -10이 들어가 있다(-10이 있으면 게임 카메라에 안그려진다.)
 
-            if(layerName == "")         // 검출할 레이어가 필요없으면 (모든 구역 설치 가능)
+            if(itemDataManager[itemIndex].layerNames.Length == 0)         // 검출할 레이어가 필요없으면 (설치 불가)
             {
-                if (Physics2D.Raycast(ray.origin, ray.direction, distance))                // 그 해당 좌표에 동작 (레이어 검출x)
-                {
-                    hit = Physics2D.Raycast(ray.origin, ray.direction, distance);
-                    ItemSawpn();
-                }
-                else
-                {
-                    Debug.Log("그 위치에는 사용할 수 없습니다.");
-                }
+                Debug.Log("Itemdata에 LayerName 설정을 안했습니다.");
             }
             else                        // 검출할 레이어가 있다면 (해당 구역만 설치 가능)
             {
-                if (Physics2D.Raycast(ray.origin, ray.direction, distance, layerMask))       // 그 해당 좌표에 해당 레이어가 있으면 동작
+                if (Physics2D.Raycast(ray.origin, ray.direction, distance, LayerMask.GetMask(itemDataManager[itemIndex].layerNames)))       // 그 해당 좌표에 해당 레이어가 있으면 동작
                 {
-                    hit = Physics2D.Raycast(ray.origin, ray.direction, distance, layerMask);
+                    hit = Physics2D.Raycast(ray.origin, ray.direction, distance, LayerMask.GetMask(itemDataManager[itemIndex].layerNames));
                     ItemSawpn();
                 }
                 else
@@ -145,7 +134,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void ItemSawpn()        // 해당 아이템을 소환하는 함수
     {
         Tile_Obstacle tile = hit.transform.GetComponent<Tile_Obstacle>();
-        if(tile != null && prePrefab.CompareTag("Item_Bomb"))      // 프리펩에 넣은 오브젝트가 Item_Bomb이고 tile이 null이 아니면 실행
+        if(tile != null && itemDataManager[itemIndex].modelprefab.CompareTag("Item_Bomb"))      // 프리펩에 넣은 오브젝트가 Item_Bomb이고 tile이 null이 아니면 실행
         {
             if (tile.IsBuildItem == true)
             {
@@ -157,7 +146,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         root.BroadcastMessage("EndDarg", transform, SendMessageOptions.DontRequireReceiver);
         itemDataManager[itemIndex].count--;           // 아이템 갯수 1 감소
         Refresh();                                    // 아이템 현재 수량 갱신
-        Instantiate(prePrefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
+        Instantiate(itemDataManager[itemIndex].modelprefab, hit.transform.position, Quaternion.identity);       // 아이템 프리펩 생성 (MousDir 위치에 생성한다.) MousDir : 최종 좌표
 
         ItemUse();          // 그 아이템 효과 사용
     }

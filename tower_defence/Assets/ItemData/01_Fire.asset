@@ -17,3 +17,5 @@ MonoBehaviour:
   modelprefab: {fileID: 3929324134794315985, guid: b45c27752fc47a94da1b289e2ec2a176, type: 3}
   itemCost: 0
   count: 4
+  layerNames:
+  - RoadTile

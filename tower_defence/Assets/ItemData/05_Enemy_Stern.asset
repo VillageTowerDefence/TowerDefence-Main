@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cd9b2dc83898e747bc8ba5ce01f004b, type: 3}
-  m_Name: 00_Bomb
+  m_Name: 05_Enemy_Stern
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: "\uD3ED\uD0C4"
-  modelprefab: {fileID: 1872276375245095028, guid: f5259a82cabb70b478ac1ecc5ec4e446, type: 3}
+  id: 5
+  itemName: "\uC801 \uC2A4\uD134"
+  modelprefab: {fileID: 0}
   itemCost: 0
   count: 4
   layerNames:
-  - ObstacleTile
+  - RoadTile
