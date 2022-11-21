@@ -12,9 +12,6 @@ using static UnityEditor.Progress;
 
 public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("설치 가능한 레이어 이름 / 아무것도 안쓰면 모두 설치가능")]
-    public string layerName;            // 레이어 이름
-    [Space(10f)]
     //[SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
     //[Header("아이템 수량")]
     //public int itemEA = 0;                     // 아이템 총 갯수
