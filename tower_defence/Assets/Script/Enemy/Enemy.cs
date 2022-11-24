@@ -156,28 +156,17 @@ public class Enemy : MonoBehaviour
     {
         switch (buffIdax)
         {
-            case 2:                                       // 파워 업
+            case 2:                                       // 이동속도 둔화
                 if (BuffOverlap(onbuff, buffIdax))
                 {
                     // 1.0f ~ 이상 (공격력 증가량)
-                    movement.MoveSpeed = movement.MoveSpeed - (movement.MoveSpeed * value);                // 공격력 증가량 만큼 증가
+                    movement.MoveSpeed = movement.MoveSpeed - (movement.MoveSpeed * value);                // 이동속도 둔화량 만큼 둔화
                 }
                 if (buffEA[buffIdax] == 0)
                 {
-                    movement.MoveSpeed = movement.OriginalMoveSpeed; // 원래 공격력으로 복귀
+                    movement.MoveSpeed = movement.OriginalMoveSpeed; // 원래 이동속도로 복귀
                 }
                 break;
-            //case 1:                                      // 공격속도 업
-            //    if (BuffOverlap(onbuff, buffIdax))
-            //    {
-            //        // 0.0f ~ 1.0f (공격속도 증가량)
-            //        attackSpeed = attackSpeed - (attackSpeed * value);      // 일정 수치 만큼 공격속도 증가
-            //    }
-            //    if (buffEA[buffIdax] == 0)
-            //    {
-            //        attackSpeed = originalAttackSpeed;   // 원래 공격속도로 복귀
-            //    }
-                //break;
             default:
                 break;
         }
