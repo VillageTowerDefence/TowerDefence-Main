@@ -9,54 +9,22 @@ public class Item_Enemy_Stun_Use : MonoBehaviour
     public int enemies = 1;
     [Header("스턴 지속 시간")]
     public float stunTime = 5.0f;
-    List<Movement> enemyList;
-    int count = 0;
-    public Action onStun;
-    bool stunUse = false;
+    [Header("스턴 범위")]
+    public float stunRange = 1.0f;
 
     private void Awake()
     {
-        enemyList = new List<Movement>();
-    }
-
-    private void Start()
-    {
-        count = 0;
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        collider.radius = stunRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (count < enemies)
+        if (collision.CompareTag("Enemy"))
         {
-            if (collision.CompareTag("Enemy"))
-            {
-                enemyList.Add(collision.GetComponent<Movement>());
-                count++;
-            }
-        }
-        else
-        {
-            if (!stunUse)
-            {
-                stunUse = true;
-                StartCoroutine(EnemyStun());
-            }
-        }
-    }
-
-    IEnumerator EnemyStun()
-    {
-        float enemyoriginalMoveSpeed = 0.0f;
-        foreach (var enemy in enemyList)
-        {
-            enemyoriginalMoveSpeed = enemy.moveSpeed;
-            enemy.moveSpeed = 0.0f;
-        }
-
-        yield return new WaitForSeconds(stunTime);
-        foreach (var enemy in enemyList)
-        {
-            enemy.moveSpeed = enemyoriginalMoveSpeed;
+            Movement enemy = collision.GetComponent<Movement>();
+            enemy.OnStun(stunTime);
+            Destroy(this.gameObject);
         }
     }
 }
