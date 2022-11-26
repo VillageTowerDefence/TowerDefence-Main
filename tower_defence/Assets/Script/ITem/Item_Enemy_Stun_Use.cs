@@ -11,20 +11,23 @@ public class Item_Enemy_Stun_Use : MonoBehaviour
     public float stunTime = 5.0f;
     [Header("스턴 범위")]
     public float stunRange = 1.0f;
+    Animator anim;
 
     private void Awake()
     {
         CircleCollider2D collider = GetComponent<CircleCollider2D>();
         collider.radius = stunRange;
+        anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            Movement enemy = collision.GetComponent<Movement>();
-            enemy.OnStun(stunTime);
-            Destroy(this.gameObject);
+            //Movement enemy = collision.GetComponent<Movement>();
+            //enemy.OnStun(stunTime);
+            //Destroy(this.gameObject);
+            anim.SetBool("TimerStart", true);
         }
     }
 }
