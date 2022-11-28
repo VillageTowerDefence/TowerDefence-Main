@@ -17,3 +17,7 @@ MonoBehaviour:
   modelprefab: {fileID: 9185974409512870713, guid: f98b58ac4dbc99f4da78921d5f100c6b, type: 3}
   itemCost: 0
   count: 5
+  layerNames:
+  - RoadTile
+  - ObstacleTile
+  - WallTile

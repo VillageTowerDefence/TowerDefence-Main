@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cd9b2dc83898e747bc8ba5ce01f004b, type: 3}
-  m_Name: 01_Fire
+  m_Name: 05_Enemy_Stun
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: "\uBD88 \uD568\uC815"
-  modelprefab: {fileID: 3929324134794315985, guid: b45c27752fc47a94da1b289e2ec2a176, type: 3}
+  id: 5
+  itemName: "\uC801 \uC2A4\uD134"
+  modelprefab: {fileID: 4636269313403295599, guid: 6003bd03336d31846aae31e4e442fc2e, type: 3}
   itemCost: 0
   count: 5
   layerNames:
