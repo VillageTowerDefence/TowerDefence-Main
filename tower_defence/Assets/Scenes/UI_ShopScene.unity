@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad08e764ca539c49afa725a54865ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buy_item: {fileID: 0}
 --- !u!1001 &93340392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,6 +482,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: b547e08e33c394e4ea221c00a3cc57f4, type: 2}
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
       objectReference: {fileID: 90401065}
@@ -583,6 +586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 61295a22468c3b341bc5bf67e1a64aba, type: 2}
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
@@ -929,6 +936,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 48e69effe3de72444952244472591f0d, type: 2}
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
       objectReference: {fileID: 90401065}
@@ -1039,6 +1050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: cc23bffe583229a4eb8f25b64c5f7588, type: 2}
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
@@ -1620,8 +1635,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: abcdefg
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d3aa5ff1aef40c4fa8fe941c98d0723, type: 2}
+  m_sharedMaterial: {fileID: 5045739022359700811, guid: 8d3aa5ff1aef40c4fa8fe941c98d0723, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1802,8 +1817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -81}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.0043717, y: -81}
+  m_SizeDelta: {x: 657.93, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1735072360
 MonoBehaviour:
@@ -1827,8 +1842,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d3aa5ff1aef40c4fa8fe941c98d0723, type: 2}
+  m_sharedMaterial: {fileID: 5045739022359700811, guid: 8d3aa5ff1aef40c4fa8fe941c98d0723, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2569,6 +2584,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: bbdf779ae5682994ea7c71917ac38802, type: 2}
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
