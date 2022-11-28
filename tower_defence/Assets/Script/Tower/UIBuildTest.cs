@@ -13,6 +13,7 @@ public class UIBuildTest : MonoBehaviour
     Button buildButton3;
     Button towerUpgrade;
     Button cancel;
+    Button toweradvance;
 
     public ObjectDetector detector;
     public TowerSpwaner towerSpwaner;
@@ -25,17 +26,19 @@ public class UIBuildTest : MonoBehaviour
         buildButton3 = transform.GetChild(2).GetComponent<Button>();
         towerUpgrade = transform.GetChild(4).GetComponent<Button>();
         cancel = transform.GetChild(3).GetComponent<Button>();
+        toweradvance = transform.GetChild(5).GetComponent<Button>();
 
         buildButton1.onClick.AddListener(OnClick_BuildButton1);
         buildButton2.onClick.AddListener(OnClick_BuildButton2);
         buildButton3.onClick.AddListener(OnClick_BuildButton3);
         towerUpgrade.onClick.AddListener(OnClick_TowerUpgrade);
         cancel.onClick.AddListener(OnClick_Cancel);
+        toweradvance.onClick.AddListener(OnClick_TowerAdvance);
 
         towerIndex = 0;
     }
 
-   
+ 
 
     private void OnClick_Cancel()
     {
@@ -72,11 +75,23 @@ public class UIBuildTest : MonoBehaviour
 
     private void OnClick_TowerUpgrade()
     {
-        if (detector.selectTile != null && detector.isSelect)
+        if (detector.selectTower != null && detector.isSelect)
         {
             Tower tower = detector.selectTower.GetComponent<Tower>();
             tower.towerUpgrade();
             detector.isSelect = false; // 타일 해제
+        }
+    }
+
+    private void OnClick_TowerAdvance()
+    {
+        if(detector.selectTower != null && detector.isSelect)
+        {
+            Tower tower = detector.selectTower.GetComponent<Tower>();
+            if(tower.Level == tower.MaxTowerLevel)
+            {
+                tower.towerAdvance();
+            }
         }
     }
 }

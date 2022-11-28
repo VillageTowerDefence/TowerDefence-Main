@@ -25,7 +25,11 @@ public class Tower : MonoBehaviour
     protected int level; //타워 레벨
     protected int maxTowerLevel = 3;
     protected int[] towerUpgradeCost;
-    // ------------------------------------------------------------------------------------
+
+
+    // 타워 승급 ------------------------------------------------------------------------------------
+
+    public GameObject advanceTower = null;
 
 
     // 아이템 ------------------------------------------------------------------------------
@@ -40,6 +44,10 @@ public class Tower : MonoBehaviour
     // 프로퍼티 -------------------------------------------------------------------------
 
     public int CostEnergy => costenergy;
+
+    public int Level => level;
+
+    public int MaxTowerLevel => maxTowerLevel;
 
 
     protected virtual void Awake()
@@ -190,4 +198,15 @@ public class Tower : MonoBehaviour
         return result;
     }
     // --------------------------------------------------------------------------------------------------------------
+
+    // 타워 승급 -----------------------------------------------------------------------------------
+
+    public void towerAdvance()
+    {
+        if(advanceTower != null)
+        {
+            Instantiate(advanceTower,transform.position,Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
 }
