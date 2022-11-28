@@ -35,4 +35,26 @@ public class Movement : MonoBehaviour
         moveDir = newPosition;      // newPosition으로 방향 설정
     }
 
+    /// <summary>
+    /// 적 스턴
+    /// </summary>
+    /// <param name="time">스턴 시간</param>
+    public void OnStun(float time)
+    {
+        IEnumerator stun = StunTimer(time);
+        StopCoroutine(stun);
+        moveSpeed = 0.0f;
+        StartCoroutine(stun);
+    }
+
+    /// <summary>
+    /// 스턴 타이머 코루틴
+    /// </summary>
+    /// <param name="time">스턴 시간</param>
+    /// <returns></returns>
+    IEnumerator StunTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        moveSpeed = originalMoveSpeed;
+    }
 }

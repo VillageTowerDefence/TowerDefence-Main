@@ -12,4 +12,6 @@ public class ItemData : ScriptableObject
     public uint itemCost;                  // 아이템의 가격
     [Header("아이템 수량")]
     public uint count = 0;                 // 소유중인 아이템 갯수
+    [Header("설치가능한 타일")]
+    public string[] layerNames = null;
 }
