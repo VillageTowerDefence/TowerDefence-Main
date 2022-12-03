@@ -12,7 +12,13 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
     [Header("타워 공격력 증가량")]
     [Range(1.0f, 3.0f)]
     public float damage = 0.0f;
-    // const string buffName = "Power";
+    
+    List<Tower> towers;
+
+    private void Awake()
+    {
+        towers = new List<Tower>();
+    }
 
     void Start()
     {
@@ -25,7 +31,8 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
     {
         if (collision.CompareTag("Tower"))              // 태그가 타워면
         {
-            BuffOn(collision);
+            BuffOn();
+            towers.Add(collision.GetComponent<Tower>());
         }
     }
 
@@ -33,22 +40,29 @@ public class Item_Tower_PowerUp_Use : Item_BuffBase
     {
         if (collision.CompareTag("Tower"))              // 태그가 타워면
         {
-            BuffOff(collision);
+
+            foreach (var tower in towers)
+            {
+                if(tower == collision.GetComponent<Tower>())
+                {
+                    BuffOff(tower);
+                    towers.Remove(tower);
+                    break;
+                }
+            }
         }
     }
 
-    void BuffOn(Collider2D collision)
+    void BuffOn()
     {
-        Tower tower = collision.GetComponent<Tower>();
-        if(tower != null)               // tower가 널 이아니면
+        foreach (var tower in towers)
         {
             tower.BuffOnOff(damage, true, buffIndex);       // 타워 공격속도 버프 함수 실행
         }
     }
 
-    void BuffOff(Collider2D collision)
+    void BuffOff(Tower tower)
     {
-        Tower tower = collision.GetComponent<Tower>();
         if (tower != null)               // tower가 널 이아니면
         {
             tower.BuffOnOff(damage, false, buffIndex);      // 터워 공격속도 버프 함수 해제

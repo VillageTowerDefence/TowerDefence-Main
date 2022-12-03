@@ -42,9 +42,8 @@ public class Movement : MonoBehaviour
     public void OnStun(float time)
     {
         IEnumerator stun = StunTimer(time);
-        StopCoroutine(stun);
-        moveSpeed = 0.0f;
-        StartCoroutine(stun);
+        StopCoroutine(stun);                    // 이전에 걸린 코루틴 해제
+        StartCoroutine(stun);                   // 스턴 코루틴 시작
     }
 
     /// <summary>
@@ -54,7 +53,8 @@ public class Movement : MonoBehaviour
     /// <returns></returns>
     IEnumerator StunTimer(float time)
     {
+        moveSpeed = 0.0f;                       // 속도 0으로 바꾸기
         yield return new WaitForSeconds(time);
-        moveSpeed = originalMoveSpeed;
+        moveSpeed = OriginalMoveSpeed;          // 원래 속도로 변경
     }
 }

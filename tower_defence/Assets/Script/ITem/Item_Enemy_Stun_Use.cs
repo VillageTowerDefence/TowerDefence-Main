@@ -50,19 +50,19 @@ public class Item_Enemy_Stun_Use : MonoBehaviour
 
     public IEnumerator StartTimer()
     {
-        anim.SetBool("TimerEnd", true);
-        yield return new WaitForSeconds(1.0f);
-        col.enabled = false;
-        anim.SetBool("TimerEnd", false);
+        anim.SetBool("TimerEnd", true);             // 애니메이션 작동
+        yield return new WaitForSeconds(1.0f);      // 1초 뒤에
+        anim.SetBool("TimerEnd", false);            // 애니메이션 중지
+        col.enabled = false;                        // 콜라이더 끄기
         foreach (var enemy in enemies)
         {
-            enemy.OnStun(stunTime);
+            enemy.OnStun(stunTime);                 // 적한테 스턴 적용
         }
 
-        explosion.gameObject.SetActive(true);
-        Destroy(explosion.gameObject, 1.0f);
-        Destroy(this.gameObject, 1.0f);
-        explosion.parent = null;
-        gameObject.SetActive(false);
+        explosion.gameObject.SetActive(true);       // 폭발 오브젝트 켜기
+        Destroy(explosion.gameObject, 1.0f);        // 폭발 오브젝트 삭제
+        Destroy(this.gameObject, 1.0f);             // 자신 삭제
+        explosion.parent = null;                    // 자식 해제
+        gameObject.SetActive(false);                // 오브젝트 끄기
     }
 }
