@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7637169531954950718}
   - component: {fileID: 7637169531954950713}
   - component: {fileID: 1963412278996487374}
-  - component: {fileID: 2667228092460415385}
+  - component: {fileID: 5249340521283646092}
   - component: {fileID: 6774666371171404200}
   - component: {fileID: 3484627753286271741}
   m_Layer: 0
-  m_Name: EnemyLifePlus
+  m_Name: Enemy_Fly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1557064803
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 8800081985865436245, guid: 419f1f3d5fcf8204389dd119348a56e1, type: 3}
+  m_Sprite: {fileID: 4740742658319907719, guid: d4f2f936f814df24fb7559370c465cdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
---- !u!114 &2667228092460415385
+--- !u!114 &5249340521283646092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,10 +110,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637169531954950712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6588fb263cb651949b8967b1773f3a59, type: 3}
+  m_Script: {fileID: 11500000, guid: 46f857dff16f14047947019adda4bf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
 --- !u!50 &6774666371171404200
 Rigidbody2D:
   serializedVersion: 4
