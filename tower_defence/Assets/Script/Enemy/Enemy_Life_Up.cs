@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLifePlus : Enemy
+public class Enemy_Life_Up : Enemy
 {
     protected override void Awake()
     {

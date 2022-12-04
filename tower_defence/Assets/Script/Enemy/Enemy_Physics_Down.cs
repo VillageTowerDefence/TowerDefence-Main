@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPhysicsUp : Enemy
+public class Enemy_Physics_Down : Enemy
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +12,7 @@ public class EnemyPhysicsUp : Enemy
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();// 불렛찾고
             if (bullet.IsPhysics)   // 물리공격이면
             {
-                Hp -= (int)bullet.Power / 2;    // 절반데미지 받기
+                Hp -= (int)bullet.Power * 2;    // 2배 데미지 받기
             }
             else                    // 마법 공격이면
             {

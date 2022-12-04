@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMagicUp : Enemy
+public class Enemy_Magic_Up : Enemy
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFly : Enemy
+public class Enemy_Fly : Enemy
 {
     bool isFly = false; // 공중 유닛인지 아닌지
 
