@@ -36,6 +36,7 @@ public class Tower : MonoBehaviour
     bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
     int[] buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
     string[] buffKind = { "Power", "ActtackSpeed", "Slow" };        // 버프 종류
+    public List<BuffBase> onBuff;
     // ------------------------------------------------------------------------------------
 
     private List<GameObject> Enemys; // 적 List로 받기
@@ -67,6 +68,7 @@ public class Tower : MonoBehaviour
         {
             buffEA[i] = 0;
         }
+        onBuff = new List<BuffBase>();
         //-----------------------------------------------------------------------
     }
 
@@ -174,6 +176,20 @@ public class Tower : MonoBehaviour
         }
     }
 
+    public void BuffOnOff(BuffType buff, float value, float time)
+    {
+        switch (buff)
+        {
+            case BuffType.Power:
+                attackSpeed *= value;
+                break;
+            case BuffType.AttactSpeed:
+                break;
+            default:
+                break;
+        }
+    }
+
     bool BuffOverlap(bool onbuff, int index)        // 버프 중복 적용 확인 
     {
         bool result = false;
@@ -197,6 +213,46 @@ public class Tower : MonoBehaviour
         }
         return result;
     }
+
+    float BuffChange(BuffType Type, float origin)
+    {
+        if(onBuff.Count > 0)
+        {
+            float temp = 0;
+            for (int i = 0; i < onBuff.Count; i++)
+            {
+                if (onBuff[i].buffType.Equals(Type))
+                {
+                    temp += origin * onBuff[i].percentage;
+                    break;
+                }
+            }
+            return temp;
+        }
+        else
+        {
+            return origin;
+        }
+    }
+
+    public void ChooseBuff(BuffType type)
+    {
+        switch (type)
+        {
+            case BuffType.Power:
+                attackDamage = BuffChange(type, originalAttackDamage);
+                break;
+            case BuffType.AttactSpeed:
+                attackSpeed = BuffChange(type, originalAttackSpeed);
+                break;
+            case BuffType.Slow:
+                break;
+            case BuffType.Stun:
+                break;
+            default:
+                break;
+        }
+    }
     // --------------------------------------------------------------------------------------------------------------
 
     // 타워 승급 -----------------------------------------------------------------------------------
@@ -208,5 +264,13 @@ public class Tower : MonoBehaviour
             Instantiate(advanceTower,transform.position,Quaternion.identity);
             Destroy(this.gameObject);
         }
+    }
+
+
+    // 타워 시너지 ---------------------------------------------------------------------------------------
+    protected void TowerSynergy()
+    {
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 3.0f, LayerMask.GetMask(""));      // 범위 정하기, 레이어로 분류할 것인지...
+        // 시너지 변수 = collider.Length;
     }
 }
