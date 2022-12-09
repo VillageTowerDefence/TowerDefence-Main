@@ -12,6 +12,7 @@ TagManager:
   - Item_Fire
   - Tower
   - Bullet
+  - Tower_Range
   layers:
   - Default
   - TransparentFX
