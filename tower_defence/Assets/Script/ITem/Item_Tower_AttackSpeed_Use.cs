@@ -36,7 +36,6 @@ public class Item_Tower_AttackSpeed_Use : MonoBehaviour
             buffMananger.CreateBuff(tpye, attackSpeed, time, tower);      // 타워에게 해당 버프 적용
             //Debug.Log(tower.gameObject.name);
         }
-        Debug.Log(collision.name);
     }
 
     IEnumerator Rotate()
