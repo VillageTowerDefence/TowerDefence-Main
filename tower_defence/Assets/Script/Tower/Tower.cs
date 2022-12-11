@@ -33,9 +33,6 @@ public class Tower : MonoBehaviour
 
 
     // 아이템 ------------------------------------------------------------------------------
-    bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
-    int[] buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
-    string[] buffKind = { "Power", "ActtackSpeed", "Slow" };        // 버프 종류
     public List<BuffBase> onBuff;
     // ------------------------------------------------------------------------------------
 
@@ -57,17 +54,6 @@ public class Tower : MonoBehaviour
         level = 1;
 
         // 아이템 관련 ----------------------------------------------------------
-        isOnBuffPower = new bool[buffKind.Length];
-        for (int i = 0; i < buffKind.Length; i++)
-        {
-            isOnBuffPower[i] = false;
-        }
-
-        buffEA = new int[buffKind.Length];
-        for (int i = 0; i < buffKind.Length; i++)
-        {
-            buffEA[i] = 0;
-        }
         onBuff = new List<BuffBase>();
         //-----------------------------------------------------------------------
     }
@@ -139,102 +125,51 @@ public class Tower : MonoBehaviour
     }
 
     // 버프 관련 함수 ----------------------------------------------------------------------------------------------
+
     /// <summary>
-    /// 버프 상태 On / Off
+    /// 버프 on / off하는 함수
     /// </summary>
-    /// <param name="value">버프 효과 수치</param>
-    /// <param name="onbuff">버프 상태 On이면 true Off면 false</param>
-    /// <param name="buffIdax">버프 인덱스</param>
-    public void BuffOnOff(float value, bool onbuff, int buffIdax)
-    {
-        switch (buffIdax)
-        {
-            case 0:                                       // 파워 업
-                if (BuffOverlap(onbuff, buffIdax))
-                {
-                    // 1.0f ~ 이상 (공격력 증가량)
-                    attackDamage *= value;                // 공격력 증가량 만큼 증가
-                }
-                if (buffEA[buffIdax] == 0)
-                {
-                    attackDamage = originalAttackDamage; // 원래 공격력으로 복귀
-                }
-                break;
-            case 1:                                      // 공격속도 업
-                if (BuffOverlap(onbuff, buffIdax))
-                {
-                    // 0.0f ~ 1.0f (공격속도 증가량)
-                    attackSpeed = attackSpeed - (attackSpeed * value);      // 일정 수치 만큼 공격속도 증가
-                }
-                if (buffEA[buffIdax] == 0)
-                {
-                    attackSpeed = originalAttackSpeed;   // 원래 공격속도로 복귀
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void BuffOnOff(BuffType buff, float value, float time)
-    {
-        switch (buff)
-        {
-            case BuffType.Power:
-                attackSpeed *= value;
-                break;
-            case BuffType.AttactSpeed:
-                break;
-            default:
-                break;
-        }
-    }
-
-    bool BuffOverlap(bool onbuff, int index)        // 버프 중복 적용 확인 
-    {
-        bool result = false;
-        if (onbuff)                     // 버프 받은 상태면 (공격력 증가 효과를 중첩으로 받지 않게 하기 위함)
-        {
-            if (!isOnBuffPower[index])         // 현재 버프효과를 받고 있지 않으면
-            {
-                isOnBuffPower[index] = true;   // 버프 받은 상태
-                result = true;
-            }
-            buffEA[index]++;                   // 중첩된 갯수 증가
-        }
-        else                            // 버프 받은 상태 해제면
-        {
-            buffEA[index]--;                   // 중첩된 갯수 감소
-            if (buffEA[index] == 0)
-            {
-                isOnBuffPower[index] = false;      // 버프 해제 상태 
-                buffEA[index] = 0;
-            }
-        }
-        return result;
-    }
-
+    /// <param name="Type">버프의 타입</param>
+    /// <param name="origin">오리지날 상태 수치</param>
+    /// <returns></returns>
     float BuffChange(BuffType Type, float origin)
     {
         if(onBuff.Count > 0)
         {
+            bool buffCheck = false;             // 자기 자신을 찾았는지 확인하는 변수
             float temp = 0;
             for (int i = 0; i < onBuff.Count; i++)
             {
                 if (onBuff[i].buffType.Equals(Type))
                 {
-                    temp += origin * onBuff[i].percentage;
+                    buffCheck = true;
+                    temp += origin * onBuff[i].percentage;      // 해당 버프의 퍼센트(%) 수치만큼 적용
                     break;
                 }
             }
-            return temp;
+
+            if (!buffCheck)         // 자기 자신을 찾지 못 했을 겅우
+            {
+                // 버프 해제
+                return origin;      // 원래 상태로 돌아가기
+            }
+            else
+            {
+                // 버프 적용
+                return temp;        // 자기 자신을 찾았을 경우, 그 효과로 적용
+            }
         }
         else
         {
+            // 적용 받은 버프가 없으면 원래 상태로
             return origin;
         }
     }
 
+    /// <summary>
+    /// 버프를 선택하는 함수
+    /// </summary>
+    /// <param name="type">버프의 타입</param>
     public void ChooseBuff(BuffType type)
     {
         switch (type)

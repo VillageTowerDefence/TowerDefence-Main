@@ -9,12 +9,25 @@ public class Movement : MonoBehaviour
 
     Vector3 moveDir = Vector3.zero;
 
+    bool isStun = false;
+
     public float MoveSpeed
     {
         get => moveSpeed;
         set
         {
             moveSpeed = value;
+        }
+    }
+
+    /// <summary>
+    /// 스턴 확인상태 프러퍼티
+    /// </summary>
+    public bool IsStun
+    {
+        set
+        {
+            isStun = value;
         }
     }
 
@@ -27,34 +40,14 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += moveSpeed * Time.deltaTime * moveDir;
+        if (!isStun)            // 스턴 상태가 아니면
+        {
+            transform.position += moveSpeed * Time.deltaTime * moveDir; 
+        }
     }
 
     public void MoveTo(Vector3 newPosition)
     {
         moveDir = newPosition;      // newPosition으로 방향 설정
-    }
-
-    /// <summary>
-    /// 적 스턴
-    /// </summary>
-    /// <param name="time">스턴 시간</param>
-    public void OnStun(float time)
-    {
-        IEnumerator stun = StunTimer(time);
-        StopCoroutine(stun);                    // 이전에 걸린 코루틴 해제
-        StartCoroutine(stun);                   // 스턴 코루틴 시작
-    }
-
-    /// <summary>
-    /// 스턴 타이머 코루틴
-    /// </summary>
-    /// <param name="time">스턴 시간</param>
-    /// <returns></returns>
-    IEnumerator StunTimer(float time)
-    {
-        moveSpeed = 0.0f;                       // 속도 0으로 바꾸기
-        yield return new WaitForSeconds(time);
-        moveSpeed = OriginalMoveSpeed;          // 원래 속도로 변경
     }
 }

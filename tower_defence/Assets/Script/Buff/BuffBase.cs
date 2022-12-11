@@ -52,8 +52,8 @@ public class BuffBase : MonoBehaviour
         if (enemy != null)
         {
             this.enemy = enemy;
-            //enemy.onBuff.Add(this);
-            //enemy.ChooseBuff(type);
+            enemy.onBuff.Add(this);
+            enemy.ChooseBuff(type);
         }
         Execute();
     }
@@ -99,7 +99,8 @@ public class BuffBase : MonoBehaviour
             // 적 일때
             if(enemy != null)
             {
-
+                enemy.onBuff.Remove(this);
+                enemy.ChooseBuff(buffType);
             }
         }
         // 타워 리스트 지우고
