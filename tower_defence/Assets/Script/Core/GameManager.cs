@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     public int Energy_Count
     {
         get => energy_count;
-        private set
+        set
         {
             energy_count = value;
             refresh_Energy?.Invoke();
