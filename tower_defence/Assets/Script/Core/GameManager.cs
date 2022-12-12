@@ -62,15 +62,23 @@ public class GameManager : Singleton<GameManager>
 
     ItemDataManager itemData;
 
+    BuffManager buff;
+
     /// <summary>
     /// 아이템 데이터 메니저 (읽기 전용) 프로퍼티
     /// </summary>
     public ItemDataManager ItemDta => itemData;
+
+    /// <summary>
+    /// 버프 메니저 (읽기 전용) 프로퍼티
+    /// </summary>
+    public BuffManager Buff => buff;
     protected override void Initialize()
     {
         player_HP = player_HP_Max;
         Energy_Count = 0;
         Money_Count = 0;
         itemData = GetComponent<ItemDataManager>();
+        buff = GetComponent<BuffManager>();
     }
 }

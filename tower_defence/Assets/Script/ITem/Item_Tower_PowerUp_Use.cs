@@ -5,53 +5,48 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item_Tower_PowerUp_Use : Item_BuffBase
+public class Item_Tower_PowerUp_Use : MonoBehaviour
 {
-    [Header("버프 지속 시간")]
-    public float time = 0.0f;
-    [Header("타워 공격력 증가량")]
+    [Header("지속 시간")]
+    public float time = 5.0f;
+    [Header("공격력 증가량")]
     [Range(1.0f, 3.0f)]
-    public float damage = 0.0f;
-    // const string buffName = "Power";
+    public float power = 1.0f;
+    public BuffType tpye;
+    BuffManager buffMananger;
 
-    void Start()
+    WaitForSeconds seconds;
+    Transform spriteTransform;           // 자식 이미지
+
+    private void Awake()
     {
-        buffTime = time;            // 버프 지속시간 설정
-        BuffState = BuffType.Power; // 버프 타입 변경
-        BuffStart(this.gameObject);
+        spriteTransform = transform.GetChild(0);
+    }
+
+    private void Start()
+    {
+        buffMananger = GameManager.Instance.Buff;
+        seconds = new WaitForSeconds(0.02f);
+        StartCoroutine(Rotate());                                   // 회전 코루틴 시작
+        Destroy(this.gameObject, time);                             // time초 후에 오브젝트 제거
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Tower"))              // 태그가 타워면
+        if (collision.CompareTag("Tower"))
         {
-            BuffOn(collision);
+            Tower tower = collision.GetComponent<Tower>();            
+            buffMananger.CreateBuff(tpye, power, time, tower);      // 타워에게 해당 버프 적용
+            //Debug.Log(tower.gameObject.name);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    IEnumerator Rotate()
     {
-        if (collision.CompareTag("Tower"))              // 태그가 타워면
+        while (true)
         {
-            BuffOff(collision);
-        }
-    }
-
-    void BuffOn(Collider2D collision)
-    {
-        Tower tower = collision.GetComponent<Tower>();
-        if(tower != null)               // tower가 널 이아니면
-        {
-            tower.BuffOnOff(damage, true, buffIndex);       // 타워 공격속도 버프 함수 실행
-        }
-    }
-
-    void BuffOff(Collider2D collision)
-    {
-        Tower tower = collision.GetComponent<Tower>();
-        if (tower != null)               // tower가 널 이아니면
-        {
-            tower.BuffOnOff(damage, false, buffIndex);      // 터워 공격속도 버프 함수 해제
+            spriteTransform.Rotate(-Vector3.forward);
+            yield return seconds;
         }
     }
 }
