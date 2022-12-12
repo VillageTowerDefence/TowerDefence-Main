@@ -1,63 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item_Enemy_Slow_Use : Item_BuffBase
+public class Item_Enemy_Slow_Use : MonoBehaviour
 {
     [Header("버프 지속 시간")]
     public float time = 0.0f;
     [Header("이동속도 감소량")]
     [Range(0.0f, 1.0f)]
     public float speedSlow = 0.0f;
-    // const string buffName = "Power";
+
+    public BuffType type;
 
     void Start()
     {
-        buffTime = time;            // 버프 지속시간 설정
-        BuffState = BuffType.Slow; // 버프 타입 변경
-        StartCoroutine(Ondestroy());
+        Destroy(this.gameObject, time+1.0f);
+        StartCoroutine(ItemDestory());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))              // 태그가 적이면
+        if (collision.CompareTag("Enemy"))
         {
-            BuffOn(collision);
+            // 슬로우 효과 적용
+            Movement enemy = collision.GetComponent<Movement>();
+            enemy.MoveSpeed = enemy.OriginalMoveSpeed * speedSlow;
+            
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))              // 태그가 적이면
+        if (collision.CompareTag("Enemy"))
         {
-            BuffOff(collision);
+            // 슬로우 효과 해제
+            Movement enemy = collision.GetComponent<Movement>();
+            enemy.MoveSpeed = enemy.OriginalMoveSpeed;
         }
     }
 
-    void BuffOn(Collider2D collision)
+    /// <summary>
+    /// 지속시간이 끝나면 없애는 코루틴
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ItemDestory()
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy != null)               // tower가 널 이아니면
-        {
-            enemy.BuffOnOff(speedSlow, true, buffIndex);       // 타워 공격속도 버프 함수 실행
-        }
-    }
-
-    void BuffOff(Collider2D collision)
-    {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy != null)               // tower가 널 이아니면
-        {
-            enemy.BuffOnOff(speedSlow, false, buffIndex);      // 터워 공격속도 버프 함수 해제
-        }
-    }
-
-    IEnumerator Ondestroy()
-    {
-        Destroy(this.gameObject, time + 1);
-
         yield return new WaitForSeconds(time);
-
         gameObject.SetActive(false);
     }
 }

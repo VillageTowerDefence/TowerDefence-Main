@@ -32,8 +32,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +39,8 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.right * speed; // 총알에게 velocity값을 준다.(일정하게 움직이기 위해)
+        //rb.velocity = transform.right * speed; // 총알에게 velocity값을 준다.(일정하게 움직이기 위해)
+        rb.MovePosition(rb.position + Time.fixedDeltaTime * speed * (Vector2)transform.right);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

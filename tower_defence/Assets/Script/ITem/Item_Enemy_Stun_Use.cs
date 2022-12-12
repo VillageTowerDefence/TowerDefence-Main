@@ -9,60 +9,42 @@ public class Item_Enemy_Stun_Use : MonoBehaviour
     public float stunTime = 5.0f;
     [Header("스턴 범위")]
     public float stunRange = 1.0f;
+    public BuffType type;
+    List<Enemy> enemies;
 
-    List<Movement> enemies;
+    BuffManager buffManager;
 
     Animator anim;
     CircleCollider2D col;
-    Transform explosion;
 
     private void Awake()
     {
+        buffManager = GameManager.Instance.Buff;
         col = GetComponent<CircleCollider2D>();
         col.radius = stunRange;
         anim = GetComponent<Animator>();
-        explosion = transform.GetChild(2);
-        enemies = new List<Movement>();
+        enemies = new List<Enemy>(64);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemies.Add(collision.GetComponent<Movement>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))          //적이 나갈때
-        {
-            foreach (var enemy in enemies)
-            {
-                if (enemy == collision.gameObject)  // 나간 적이 리스트에 있다면
-                {
-                    enemies.Remove(enemy);          //그 적을 리스트에 제거
-                    break;
-                }
-            }
+            enemies.Add(collision.GetComponent<Enemy>());
         }
     }
 
     public IEnumerator StartTimer()
     {
-        anim.SetBool("TimerEnd", true);
-        yield return new WaitForSeconds(1.0f);
-        col.enabled = false;
-        anim.SetBool("TimerEnd", false);
+        anim.SetBool("TimerEnd", true);             // 애니메이션 작동
+        yield return new WaitForSeconds(1.0f);      // 1초 뒤에
+        anim.SetBool("TimerEnd", false);            // 애니메이션 중지
+        col.enabled = false;                        // 콜라이더 끄기
         foreach (var enemy in enemies)
         {
-            enemy.OnStun(stunTime);
+            buffManager.CreateBuff(type, 0, stunTime, enemy);                 // 적한테 스턴 적용
         }
 
-        explosion.gameObject.SetActive(true);
-        Destroy(explosion.gameObject, 1.0f);
-        Destroy(this.gameObject, 1.0f);
-        explosion.parent = null;
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);             // 자신 삭제
     }
 }
