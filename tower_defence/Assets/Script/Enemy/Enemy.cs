@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,7 +11,9 @@ public class Enemy : MonoBehaviour
     int currentIndex = 0;           // 현재 목표지점 인덱스
     Movement movement;              // 오브젝트 이동 제어
 
-    public int hp = 100;
+    public int maxHP = 100;         // 최대 HP
+    int hp;                         // 현재 HP
+
     // 아이템 관련 ----------------------------------------------------------
     bool[] isOnBuffPower;      // 현재 파워아템 효과를 받고 있는지 (중첩 x)
     int[] buffEA;                  // 현재 버프가 몇개 겹쳤는지 확인
@@ -19,6 +22,15 @@ public class Enemy : MonoBehaviour
 
     IEnumerator fireItemDamage;
 
+    public int MaxHP
+    {
+        get => maxHP;
+        set
+        {
+            maxHP = value;
+        }
+    }
+
     public int Hp
     {
         get => hp;
@@ -26,7 +38,7 @@ public class Enemy : MonoBehaviour
         {
             hp = value;
 
-            if( hp <= 0)
+            if (hp <= 0)
             {
                 hp = 0;
                 Die();
@@ -53,14 +65,19 @@ public class Enemy : MonoBehaviour
         //-----------------------------------------------------------------------
     }
 
+    private void Start()
+    {
+        hp = maxHP;
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            Hp -= (int)bullet.Power;
+            MaxHP -= (int)bullet.Power;
 
-            Debug.Log($"플레이어의 HP는 {Hp}");
+            //Debug.Log($"플레이어의 현재HP는 {Hp}");
         }
     }
 
@@ -136,7 +153,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            Hp -= damage;              // damage만큼 hp 감소
+            hp -= damage;              // damage만큼 hp 감소
 
             yield return new WaitForSeconds(1.0f);          // 1초마다 damage의 데미지를 줌 (나중에 변수로 만들어야함)
         }

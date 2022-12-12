@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3484627753286271741}
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
-  - component: {fileID: 5205113358286308559}
+  - component: {fileID: 2857632334665287933}
   m_Layer: 0
-  m_Name: Boss1
+  m_Name: Boss2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
---- !u!114 &5205113358286308559
+--- !u!114 &2857632334665287933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637169531954950712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b83655e3a339d541a9b7bb937a0d725, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac95d8aa17a4f746b9a9fe192c90d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameobjForHP: {fileID: 7637169531954950712, guid: 8484a13cfb4fdf34bb31b0ebcfff7535, type: 3}
+  spawnPrefab_BossSkill: {fileID: 7637169531954950712, guid: 8484a13cfb4fdf34bb31b0ebcfff7535, type: 3}
+  interval: 0.5

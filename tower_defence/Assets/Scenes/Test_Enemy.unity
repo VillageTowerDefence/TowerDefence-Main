@@ -876,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7637169531954950712, guid: a95db75740b229c408021e56efa33d36, type: 3}
+      objectReference: {fileID: 7637169531954950712, guid: bf792f236efad704c8efe477bdfeaf6d, type: 3}
     - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: wayPoints.Array.size
       value: 14
