@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2571690629236366040}
   - component: {fileID: -6909051225883857543}
   - component: {fileID: 4980710793573650389}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Warrior
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -173,6 +173,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 3600404446205465882, guid: 3e89235f82e66a642b3223aac38d0577, type: 3}
+  onBuff: []
 --- !u!61 &4980710793573650389
 BoxCollider2D:
   m_ObjectHideFlags: 0

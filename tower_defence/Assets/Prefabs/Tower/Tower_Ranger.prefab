@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2376694984611518327}
   - component: {fileID: 1995632109853810410}
   - component: {fileID: 2066955807057970313}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Ranger
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -199,3 +199,4 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 0}
+  onBuff: []

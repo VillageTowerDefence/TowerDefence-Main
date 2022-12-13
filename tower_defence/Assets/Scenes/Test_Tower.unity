@@ -1477,7 +1477,6 @@ MonoBehaviour:
   towerSpwaner: {fileID: 1261638928}
   selectTile: {fileID: 0}
   selectTower: {fileID: 0}
-  isSelect: 0
 --- !u!4 &1304396688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5905354556711874064, guid: 0bf9ea34e1dd9d44bb801cb1e32c0f8b, type: 3}
@@ -1631,7 +1630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1579269154
 MonoBehaviour:
   m_ObjectHideFlags: 0
