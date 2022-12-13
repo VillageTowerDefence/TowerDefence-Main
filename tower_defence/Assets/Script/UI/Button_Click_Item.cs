@@ -32,7 +32,7 @@ public class Button_Click_Item : MonoBehaviour
         else
         {
             transform.name = ItemData.name;
-            itemImage.sprite = ItemData.modelprefab.GetComponent<SpriteRenderer>().sprite;
+            itemImage.sprite = ItemData.itemIcon;
             itemPrice.text = ItemData.itemCost.ToString();
         }
     }

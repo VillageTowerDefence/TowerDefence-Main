@@ -37,7 +37,7 @@ public class Button_Buy_Item : MonoBehaviour
         buy_item = data;
         text_item_name.text = buy_item.itemName;
         text_item_price.text = buy_item.itemCost.ToString();
-        //text_item_script.text=
+        text_item_script.text = buy_item.description;
     }
 
     void Buy_Item()
