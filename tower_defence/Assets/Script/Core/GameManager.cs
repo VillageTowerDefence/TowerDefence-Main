@@ -61,6 +61,7 @@ public class GameManager : Singleton<GameManager>
     public int energy = 1000;
 
     ItemDataManager itemData;
+    TowerDataManager towerData;
 
     BuffManager buff;
 
@@ -68,6 +69,11 @@ public class GameManager : Singleton<GameManager>
     /// 아이템 데이터 메니저 (읽기 전용) 프로퍼티
     /// </summary>
     public ItemDataManager ItemDta => itemData;
+
+    /// <summary>
+    /// 타워 데이터 메니저 (일기 전용) 프로퍼티
+    /// </summary>
+    public TowerDataManager TowerData => towerData;
 
     /// <summary>
     /// 버프 메니저 (읽기 전용) 프로퍼티
@@ -79,6 +85,7 @@ public class GameManager : Singleton<GameManager>
         Energy_Count = 0;
         Money_Count = 0;
         itemData = GetComponent<ItemDataManager>();
+        towerData = GetComponent<TowerDataManager>();
         buff = GetComponent<BuffManager>();
     }
 }

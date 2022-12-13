@@ -33,7 +33,7 @@ public class Create_Tower : MonoBehaviour
 
     private void Update()
     {
-        if (detector.isSelect && !create_panel.activeSelf)
+        if (detector.IsSelect && !create_panel.activeSelf)
         {
             if (detector.selectTile)
             {
@@ -44,7 +44,7 @@ public class Create_Tower : MonoBehaviour
                 }
                 else
                 {
-                    detector.isSelect = false;
+                    detector.IsSelect = false;
                     detector.selectTile = null;
                 }
             }
@@ -66,7 +66,7 @@ public class Create_Tower : MonoBehaviour
     private void OnClick_Cancel()
     {
         create_panel.SetActive(false);
-        detector.isSelect = false;
+        detector.IsSelect = false;
         detector.selectTile = null;
     }
 
@@ -79,10 +79,10 @@ public class Create_Tower : MonoBehaviour
 
     void BuildTower(int index)
     {
-        if (detector.selectTile != null && detector.isSelect)
+        if (detector.selectTile != null && detector.IsSelect)
         {
             towerSpwaner.SpawnTower(detector.selectTile, index); // 버튼이 눌려지면 타워 스포너를 통해 설치
-            detector.isSelect = false; // 타일 해제
+            detector.IsSelect = false; // 타일 해제
             detector.selectTile = null;
         }
     }

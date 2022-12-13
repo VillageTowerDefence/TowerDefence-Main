@@ -42,7 +42,7 @@ public class UIBuildTest : MonoBehaviour
 
     private void OnClick_Cancel()
     {
-        detector.isSelect = false;
+        detector.IsSelect = false;
     }
 
     void OnClick_BuildButton1()
@@ -66,26 +66,26 @@ public class UIBuildTest : MonoBehaviour
 
     void BuildTower(int index)
     {
-        if (detector.selectTile != null && detector.isSelect)
+        if (detector.selectTile != null && detector.IsSelect)
         {
             towerSpwaner.SpawnTower(detector.selectTile, index); // 버튼이 눌려지면 타워 스포너를 통해 설치
-            detector.isSelect = false; // 타일 해제
+            detector.IsSelect = false; // 타일 선택 해제
         }
     }
 
     private void OnClick_TowerUpgrade()
     {
-        if (detector.selectTower != null && detector.isSelect)
+        if (detector.selectTower != null && detector.IsSelect)
         {
             Tower tower = detector.selectTower.GetComponent<Tower>();
             tower.towerUpgrade();
-            detector.isSelect = false; // 타일 해제
+            detector.IsSelect = false; // 타워 선택 해제
         }
     }
 
     private void OnClick_TowerAdvance()
     {
-        if(detector.selectTower != null && detector.isSelect)
+        if(detector.selectTower != null && detector.IsSelect)
         {
             Tower tower = detector.selectTower.GetComponent<Tower>();
             if(tower.Level == tower.MaxTowerLevel)

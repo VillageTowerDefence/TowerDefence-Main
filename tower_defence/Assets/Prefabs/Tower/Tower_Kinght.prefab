@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8005185717273518767}
   - component: {fileID: 6076057749539892018}
   - component: {fileID: 9184767055774990625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Kinght
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -199,3 +199,4 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 0}
+  onBuff: []
