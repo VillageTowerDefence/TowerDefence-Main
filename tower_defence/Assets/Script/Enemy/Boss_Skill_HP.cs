@@ -14,8 +14,11 @@ public class Boss_Skill_HP : MonoBehaviour
     IEnumerator HpHeal()
     {
         Enemy enemy = gameobjForHP.GetComponent<Enemy>();
-        yield return new WaitForSeconds(10.0f);                       // 10초마다
-        gameobjForHP.GetComponent<Enemy>().Hp += (enemy.MaxHP/4);    // 최대 hp의 4분의1 회복
-        Debug.Log("HP가 MaxHP/4만큼 회복");
+        while (true)
+        {
+            yield return new WaitForSeconds(10.0f);                       // 10초마다
+            gameobjForHP.GetComponent<Enemy>().Hp += (enemy.MaxHP / 4);    // 최대 hp의 4분의1 회복
+            Debug.Log("HP가 MaxHP/4만큼 회복");
+        }
     }
 }

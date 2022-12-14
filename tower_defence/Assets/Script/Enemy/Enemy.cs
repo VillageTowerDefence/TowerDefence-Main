@@ -20,6 +20,17 @@ public class Enemy : MonoBehaviour
 
     IEnumerator fireItemDamage;
 
+    public Transform[] WayPoints
+    {
+        get => wayPoints;
+    }
+
+    public int CurrentIndex
+    {
+        get => currentIndex;
+    }
+
+
     public int MaxHP
     {
         get => maxHP;
@@ -69,14 +80,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Setup(Transform[] wayPoints)
+    public void Setup(Transform[] wayPoints,int index = 0)
     {
         // 적 이동 경로 wayPoints 정보 설정
         wayPointCount = wayPoints.Length;
-        this.wayPoints = new Transform[wayPointCount];
         this.wayPoints = wayPoints;
+        currentIndex = index;
 
+        
         transform.position = wayPoints[currentIndex].position;      // 적의 위치를 첫번째 wayPoints 위치로 설정(즉 시작 지점으로 이동)
+        
+        
+
+        StartCoroutine(OnMove());
+    }
+
+    public void Setup(Transform[] wayPoints, Transform parant, int index = 0)
+    {
+        // 적 이동 경로 wayPoints 정보 설정
+        wayPointCount = wayPoints.Length;
+        this.wayPoints = wayPoints;
+        currentIndex = index;
+
+
+        transform.position = parant.position;
+
+
 
         StartCoroutine(OnMove());
     }
@@ -103,7 +132,7 @@ public class Enemy : MonoBehaviour
     {
         if(currentIndex < wayPointCount - 1)        // 아직 이동할 wayPointCount가 남아 있다면
         {
-            transform.position = wayPoints[currentIndex].position;  // 다음 이동 경로로 바꿈
+            //transform.position = wayPoints[currentIndex].position;  // 다음 이동 경로로 바꿈
             currentIndex++;
 
             Vector3 dir = (wayPoints[currentIndex].position - transform.position).normalized;   // 다음 목적지의 방향(dir)를 구함

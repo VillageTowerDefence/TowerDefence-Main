@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7637169531954950718}
   - component: {fileID: 7637169531954950713}
-  - component: {fileID: 1963412278996487374}
   - component: {fileID: 6774666371171404200}
   - component: {fileID: 3484627753286271741}
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
   - component: {fileID: 2857632334665287933}
+  - component: {fileID: 3539442944168652754}
   m_Layer: 0
   m_Name: Boss2
   m_TagString: Enemy
@@ -90,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1963412278996487374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637169531954950712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347407e385044fc4cbd5997f2659c4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0.5
 --- !u!50 &6774666371171404200
 Rigidbody2D:
   serializedVersion: 4
@@ -166,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
+  onBuff: []
 --- !u!114 &2857632334665287933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,5 +166,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac95d8aa17a4f746b9a9fe192c90d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPrefab_BossSkill: {fileID: 7637169531954950712, guid: 8484a13cfb4fdf34bb31b0ebcfff7535, type: 3}
-  interval: 0.5
+  spawnPrefab_BossSkill: {fileID: 7637169531954950712, guid: a75445407c01809479a3d009ad9057d6, type: 3}
+  interval: 2
+--- !u!114 &3539442944168652754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfe108a53bf2464489fd036b9fa9788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
