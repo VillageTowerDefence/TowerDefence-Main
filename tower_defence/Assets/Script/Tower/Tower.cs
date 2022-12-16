@@ -5,10 +5,14 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class Tower : MonoBehaviour
 {
-    
     public GameObject bullet; // 공격 투사체
 
     // 타워 상태 ---------------------------------------------------------------------------
@@ -65,6 +69,13 @@ public class Tower : MonoBehaviour
         originalAttackSpeed = attackSpeed;
     }
 
+    private void Update()
+    {
+        if(Keyboard.current.digit1Key.ReadValue() > 0)
+        {
+            TowerSynergy();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -121,7 +132,7 @@ public class Tower : MonoBehaviour
 
     public virtual void towerUpgrade()
     {
-        
+
     }
 
     // 버프 관련 함수 ----------------------------------------------------------------------------------------------
@@ -134,7 +145,7 @@ public class Tower : MonoBehaviour
     /// <returns></returns>
     float BuffChange(BuffType Type, float origin)
     {
-        if(onBuff.Count > 0)
+        if (onBuff.Count > 0)
         {
             bool buffCheck = false;             // 자기 자신을 찾았는지 확인하는 변수
             float temp = 0;
@@ -194,9 +205,9 @@ public class Tower : MonoBehaviour
 
     public void towerAdvance()
     {
-        if(advanceTower != null)
+        if (advanceTower != null)
         {
-            Instantiate(advanceTower,transform.position,Quaternion.identity);
+            Instantiate(advanceTower, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
@@ -205,7 +216,22 @@ public class Tower : MonoBehaviour
     // 타워 시너지 ---------------------------------------------------------------------------------------
     protected void TowerSynergy()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 3.0f, LayerMask.GetMask(""));      // 범위 정하기, 레이어로 분류할 것인지...
-        // 시너지 변수 = collider.Length;
+        List<Collider2D> widhtCollider = new List<Collider2D> (Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")));
+        List<Collider2D> heightCollider = new List<Collider2D> (Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")));
+        widhtCollider.Remove(this.GetComponent<Collider2D>());
+        heightCollider.Remove(this.GetComponent<Collider2D>());
+        if (widhtCollider != null || heightCollider != null)
+        {
+            Debug.Log($"{this.name}주변 십자의 타워 : {widhtCollider.Count + heightCollider.Count}개");
+        }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(this.transform.position, new Vector3(3.0f, 1.0f));
+        Gizmos.DrawWireCube(this.transform.position, new Vector3(1.0f, 3.0f));
+    }
+#endif
 }
