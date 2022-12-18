@@ -52,7 +52,7 @@ public class Panel_TowerInformation : MonoBehaviour
 
         GameObject info_tower = detector.selectTower;
         tower_name.text = info_tower.name;
-        //tower_info.text
+        tower_info.text = $"타워 공격력 : {info_tower.GetComponent<Tower>().attackDamage}";
     }
 
     public void Close_Panel()
@@ -65,11 +65,18 @@ public class Panel_TowerInformation : MonoBehaviour
 
     public void Upgrade_Tower()
     {
-
+        Tower tower = detector.selectTower.GetComponent<Tower>();
+        tower.towerUpgrade();
+        Close_Panel();
     }
 
     public void Advance_Tower()
     {
-
+        Tower tower = detector.selectTower.GetComponent<Tower>();
+        if (tower.Level == tower.MaxTowerLevel)
+        {
+            tower.towerAdvance();
+        }
+        Close_Panel();
     }
 }
