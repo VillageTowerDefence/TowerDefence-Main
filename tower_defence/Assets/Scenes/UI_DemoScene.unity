@@ -4970,7 +4970,6 @@ MonoBehaviour:
   towerSpwaner: {fileID: 1562505558}
   selectTile: {fileID: 0}
   selectTower: {fileID: 0}
-  isSelect: 0
 --- !u!4 &1129127071
 Transform:
   m_ObjectHideFlags: 0
@@ -8016,17 +8015,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 922799439648378686, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
   m_PrefabInstance: {fileID: 922799438211870843}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1453834054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 922799438211870845, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-  m_PrefabInstance: {fileID: 922799438211870843}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ad78a52c4878a4ebfe56782f01a628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1470527002
 GameObject:
   m_ObjectHideFlags: 0
@@ -8161,6 +8149,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1474905143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7850905976949607971, guid: 6506c3ec8e4652f4ca8bdf34dbf772c0, type: 3}
+  m_PrefabInstance: {fileID: 765187638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4879c149a69d15468c6c7ef10e04abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1480681402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11888,34 +11887,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1253807069}
     m_Modifications:
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1453834054}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Close_Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Panel_TowerInformation, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993047190, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 922799438211870845, guid: 2966529dd46461140a7d08b90a45e8f8, type: 3}
       propertyPath: detector
       value: 
@@ -12517,6 +12488,10 @@ PrefabInstance:
       propertyPath: towerSpwaner
       value: 
       objectReference: {fileID: 1562505558}
+    - target: {fileID: 7250570192654874273, guid: 3b28d14ac25e8fd449ba68bccc081615, type: 3}
+      propertyPath: towerDataManager
+      value: 
+      objectReference: {fileID: 1474905143}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b28d14ac25e8fd449ba68bccc081615, type: 3}
 --- !u!1001 &5499111627800610508
