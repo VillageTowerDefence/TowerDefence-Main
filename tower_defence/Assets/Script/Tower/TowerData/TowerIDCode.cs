@@ -7,3 +7,10 @@ public enum TowerIDCode
     Warrior,
     Kinght
 }
+
+public enum TowerType
+{
+    Archer = 0,
+    Maaictan,
+    Warrior
+}

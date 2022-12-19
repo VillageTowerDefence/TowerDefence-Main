@@ -17,10 +17,13 @@ public class Tower : MonoBehaviour
 
     // 타워 상태 ---------------------------------------------------------------------------
 
+    public TowerType tpye = TowerType.Archer;
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
+    float synergyDamage;
     float originalAttackSpeed;      // 타워 원래 공격 주기
+    float buffDamage;
 
     bool isphysics = false; // 물리/마법 타워 구별
     bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
@@ -67,11 +70,13 @@ public class Tower : MonoBehaviour
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
         originalAttackSpeed = attackSpeed;
+        synergyDamage = 1.0f;
+        buffDamage = 1.0f;
     }
 
     private void Update()
     {
-        if(Keyboard.current.digit1Key.ReadValue() > 0)
+        if (Keyboard.current.digit1Key.IsPressed())
         {
             TowerSynergy();
         }
@@ -186,7 +191,8 @@ public class Tower : MonoBehaviour
         switch (type)
         {
             case BuffType.Power:
-                attackDamage = BuffChange(type, originalAttackDamage);
+                buffDamage = BuffChange(type, originalAttackDamage) * 0.01f;
+                TowerStateUpdate();
                 break;
             case BuffType.AttactSpeed:
                 attackSpeed = BuffChange(type, originalAttackSpeed);
@@ -214,16 +220,50 @@ public class Tower : MonoBehaviour
 
 
     // 타워 시너지 ---------------------------------------------------------------------------------------
-    protected void TowerSynergy()
+    public void TowerSynergy()
     {
-        List<Collider2D> widhtCollider = new List<Collider2D> (Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")));
-        List<Collider2D> heightCollider = new List<Collider2D> (Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")));
+        int count = 0;
+        List<Collider2D> widhtCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")));
+        List<Collider2D> heightCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")));
         widhtCollider.Remove(this.GetComponent<Collider2D>());
         heightCollider.Remove(this.GetComponent<Collider2D>());
         if (widhtCollider != null || heightCollider != null)
         {
-            Debug.Log($"{this.name}주변 십자의 타워 : {widhtCollider.Count + heightCollider.Count}개");
+            Tower nearTower;
+            if (widhtCollider.Count > 0)
+            {
+                foreach (var tower in widhtCollider)
+                {
+                    nearTower = tower.GetComponent<Tower>();
+                    if (tpye == nearTower.tpye)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            if (heightCollider.Count > 0)
+            {
+                foreach (var tower in heightCollider)
+                {
+                    nearTower = tower.GetComponent<Tower>();
+                    if (tpye == nearTower.tpye)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+
         }
+        synergyDamage = ((float)count * 0.5f) + 1.0f;
+        TowerStateUpdate();
+        Debug.Log($"{this.name}주변 십자의 타워 : {count}개");
+    }
+
+    void TowerStateUpdate()
+    {
+        attackDamage = originalAttackDamage * synergyDamage * buffDamage;
     }
 
 #if UNITY_EDITOR
