@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 02_Magician
   m_EditorClassIdentifier: 
   id: 2
-  towerName: "\uB9C8\uBC95\uC0AC \uD0C0\uC6CC"
+  towerName: "\uC218\uC2B5\uB9C8\uBC95\uC0AC \uD0C0\uC6CC"
   modelprefab: {fileID: 9034060581423525229, guid: 3d07670aa0eb405449b5260c12fd101a, type: 3}
   towerCost: 0
   towerIcon: {fileID: 21300000, guid: 59c623e27a87d854c865fbab1f264419, type: 3}

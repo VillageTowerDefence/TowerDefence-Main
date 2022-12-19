@@ -101,8 +101,9 @@ public class Tower : MonoBehaviour
 
         GameObject obj = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
         Bullet bull = obj.GetComponent<Bullet>();
-        bull.Power = attackDamage; // 총알에 데메지 전달
+        bull.Damage = attackDamage; // 총알에 데메지 전달
         bull.IsPhysics = isphysics; // 총알에 물리/마법 속성 전달
+        bull.Target = Enemys[0];
 
         obj.transform.parent = this.transform; // 총알을 타워의 자식으로 설정
     }
