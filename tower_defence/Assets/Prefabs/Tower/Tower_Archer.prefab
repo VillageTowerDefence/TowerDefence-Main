@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1740392554
+--- !u!1 &2062922259424274480
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1740392555}
-  - component: {fileID: 1740392556}
+  - component: {fileID: 2048350258406209773}
+  - component: {fileID: 908826472826330647}
   m_Layer: 0
   m_Name: TowerRange
   m_TagString: Tower_Range
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1740392555
+--- !u!4 &2048350258406209773
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740392554}
+  m_GameObject: {fileID: 2062922259424274480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 9034060581423525227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1740392556
+--- !u!58 &908826472826330647
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740392554}
+  m_GameObject: {fileID: 2062922259424274480}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2571690629236366040}
   - component: {fileID: 7151557119046715890}
   - component: {fileID: 1799791321450173253}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Archer
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1740392555}
+  - {fileID: 2048350258406209773}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,8 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
   attackSpeed: 1
-  attackDamage: 0
+  attackDamage: 50
   advanceTower: {fileID: 9085064763569266882, guid: 16fd35cd87ff9324c9abfde97cbe9f7a, type: 3}
+  onBuff: []
 --- !u!61 &1799791321450173253
 BoxCollider2D:
   m_ObjectHideFlags: 0

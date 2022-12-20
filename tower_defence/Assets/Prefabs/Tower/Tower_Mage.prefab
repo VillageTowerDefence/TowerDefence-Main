@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8933947051393663060}
   - component: {fileID: 4661680992321014217}
   - component: {fileID: 4522079216153852640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Mage
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -199,3 +199,4 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 0}
+  onBuff: []

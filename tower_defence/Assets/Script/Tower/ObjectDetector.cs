@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ObjectDetector : MonoBehaviour
 {
     public TowerSpwaner towerSpwaner;
 
     private Camera mainCamera;
-    private Ray ray;
+    private Ray2D ray;
     private RaycastHit hit;
 
     private PlayerInputAction controller;
@@ -19,7 +20,16 @@ public class ObjectDetector : MonoBehaviour
     public GameObject selectTile;
     public GameObject selectTower;
 
-    public bool isSelect = false; // 타일이 골라진다면
+    bool isSelect = false; // 타일이 골라진다면
+
+    public bool IsSelect
+    {
+        get { return isSelect; }
+        set 
+        {
+            isSelect = value; 
+        }
+    }
 
 
     private void Awake()
@@ -53,25 +63,29 @@ public class ObjectDetector : MonoBehaviour
         {
             if (context.performed) // 마우스가 눌릴때
             {
-                ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()); //카메라 위치에서 마우스 클릭지점으로 향하는 광선
-                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Debug.Log(pos);
+                ray = new Ray2D(pos, Vector2.zero);
+                RaycastHit2D[] hit2Ds = Physics2D.RaycastAll(ray.origin, ray.direction, Mathf.Infinity);
 
+                foreach(RaycastHit2D hit2D in hit2Ds)
                 if (hit2D.collider != null) //광선에 부딪히는 오브젝트 검출
                 {
-                    if (hit2D.transform.CompareTag("WallTile")) //WallTile이면
+                    if (hit2D.transform.CompareTag("Tower") && hit2D.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
+                    {
+                        selectTower = hit2D.collider.gameObject;
+                        isSelect = true; // 타일이 선택되었다고 알려둠
+                        Debug.Log("타워 선택");
+                    }
+                    if (hit2D.transform.CompareTag("WallTile") && !isSelect) //WallTile이면
                     {
                         //towerSpwaner.SpawnTower(hit.transform); // 타워 설치
                         selectTile = hit2D.collider.gameObject; // 타일에 저장
                         
                         isSelect = true; // 타일이 선택되었다고 알려둠
+                        Debug.Log("타일 선택");
                     }
 
-                    if (hit2D.transform.CompareTag("Tower"))
-                    {
-                        selectTower = hit2D.collider.gameObject;
-                        isSelect = true; // 타일이 선택되었다고 알려둠
-                        
-                    }
                 }
             }
         }

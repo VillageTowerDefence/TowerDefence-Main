@@ -69,15 +69,21 @@ public class Enemy : MonoBehaviour
         hp = maxHP;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            Hp -= (int)bullet.Power;
+    //protected virtual void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Bullet"))
+    //    {
+    //        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+    //        Hp -= (int)bullet.Damage;
 
-            //Debug.Log($"플레이어의 현재HP는 {Hp}");
-        }
+    //        Debug.Log($"플레이어의 HP는 {Hp}");
+    //    }
+    //}
+
+    public virtual void onHit(float damage,bool IsPhysics)
+    {
+        Hp -= (int)damage;
+        Debug.Log($"플레이어의 HP는 {Hp}");
     }
 
     public void Setup(Transform[] wayPoints,int index = 0)

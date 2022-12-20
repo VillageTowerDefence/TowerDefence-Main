@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2376694984611518327}
   - component: {fileID: 1995632109853810410}
   - component: {fileID: 2066955807057970313}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_Ranger
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b122f64f4d066643ad106b15d43aaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 0}
+  onBuff: []
