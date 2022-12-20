@@ -19,14 +19,14 @@ public class Tower : MonoBehaviour
 
     public TowerType tpye = TowerType.Archer;
     public float attackSpeed = 1.0f; // 타워 공격 주기
-    public float attackDamage; // 타워 공격력
+    public float attackDamage = 50.0f; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
     float synergyDamage;
     float originalAttackSpeed;      // 타워 원래 공격 주기
     float buffDamage;
 
-    bool isphysics = false; // 물리/마법 타워 구별
-    bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
+    protected bool isphysics = false; // 물리/마법 타워 구별
+    protected bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
 
     protected int costenergy; // 타워 건설 에너지
     protected int level; //타워 레벨
@@ -43,8 +43,8 @@ public class Tower : MonoBehaviour
     public List<BuffBase> onBuff;
     // ------------------------------------------------------------------------------------
 
-    private List<GameObject> Enemys; // 적 List로 받기
-    Transform target = null; // 공격 대상
+    protected List<GameObject> Enemys; // 적 List로 받기
+    protected Transform target = null; // 공격 대상
 
     // 프로퍼티 -------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ public class Tower : MonoBehaviour
         //-----------------------------------------------------------------------
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
@@ -117,8 +117,9 @@ public class Tower : MonoBehaviour
 
         GameObject obj = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, angle))); // 총알을 적의 방향으로 생성
         Bullet bull = obj.GetComponent<Bullet>();
-        bull.Power = attackDamage; // 총알에 데메지 전달
+        bull.Damage = attackDamage; // 총알에 데메지 전달
         bull.IsPhysics = isphysics; // 총알에 물리/마법 속성 전달
+        bull.Target = Enemys[0];
 
         obj.transform.parent = this.transform; // 총알을 타워의 자식으로 설정
     }
