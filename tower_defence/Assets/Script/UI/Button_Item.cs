@@ -1,26 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using static UnityEditor.Progress;
+using TMPro;
 
-public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    //[SerializeField]    // private이지만 인스팩터창에서만 public 처럼 사용할 수 있다. (본질은 private임)
-    //[Header("아이템 수량")]
-    //public int itemEA = 0;                     // 아이템 총 갯수
-
     Transform root;                     // 최상단 부모
     Transform parent;                   // 자기 부모를 찾음
     TextMeshProUGUI itemText;           // 아이템 수량 표시용
     new Camera camera;                  // 마우스 좌표을 신 좌표 값으로 변환하기 용
-    UnityEngine.UI.Image image;         // 아이템 이미지 알파값 바꾸기용
+    Image image;         // 아이템 이미지 알파값 바꾸기용
+    Image item_out_image;
 
     Vector3 MousDir;                    // 아이템 최종 생성 좌표
     RaycastHit2D hit;                     // 레이캐스트 용 레이저
@@ -31,36 +23,11 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     ItemDataManager itemDataManager;    // 아이템 데이터 메니저
     uint itemIndex;                     // 아이템 인덱스
 
-    //int ItemEA                          // itemEA 프로퍼티
-    //{
-    //    get => itemEA;
-
-    //    set
-    //    {
-    //        itemEA = value;
-
-    //        if (itemEA < 0)         // 0보다 작으면
-    //        {
-    //            itemEA = 0;         // 갯수 0으로 고정
-    //        }
-
-    //        itemText.text = $"{itemEA}";        // itemEA수량의 맞게 UI의 표시
-
-    //        if (itemEA <= 0)        // 아이템 갯수가 0보다 작거나 같으면 alpha값 변경 (아이템이 0개면 회색으로 보이게 하기 위한 기능)
-    //        {
-    //            image.color = Color.clear;          // 0이면 투명
-    //        }
-    //        else
-    //        {
-    //            image.color = Color.white;          // 1이면 정상으로 바꾸기
-    //        }
-    //    }
-    //}
-
     protected virtual void Awake()
     {
-        image = transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
+        image = transform.GetChild(0).GetComponent<Image>();
         itemText = transform.parent.GetComponentInChildren<TextMeshProUGUI>();      // 부모에 있는 자식들 중에 TextMeshProUGUI를 찾아라
+        item_out_image = transform.parent.transform.GetChild(0).GetComponent<Image>();
     }
 
     protected virtual void Start()
@@ -68,9 +35,10 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         root = transform.root;  // 최상위 오브젝트를 불러온다.
         parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
         transform.position = parent.position;   // 자신의 위치를 parent의 위치로 가게한다.
-        //itemText.text = $"{itemDataManager.itemData[itemIndex].count}";        // 현재 아이템 소유량
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();      // 하이라키창에 있는 게임오브젝트 중에 "MainCamera"이름이 들어간 오브젝트 찾기
         itemDataManager = GameManager.Instance.ItemDta;
+        item_out_image.sprite = itemDataManager[itemIndex].itemIcon;
+        image.sprite = itemDataManager[itemIndex].itemIcon;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)  // 드래그 시작
@@ -106,7 +74,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             Ray2D ray = new Ray2D(laydir, Vector2.zero);
             MousDir.z = 0.0f;           // 카메라 기준의 값이기때문에 -10이 들어가 있다(-10이 있으면 게임 카메라에 안그려진다.)
 
-            if(itemDataManager[itemIndex].layerNames.Length == 0)         // 검출할 레이어가 필요없으면 (설치 불가)
+            if (itemDataManager[itemIndex].layerNames.Length == 0)         // 검출할 레이어가 필요없으면 (설치 불가)
             {
                 Debug.Log("Itemdata에 LayerName 설정을 안했습니다.");
             }
@@ -131,7 +99,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void ItemSawpn()        // 해당 아이템을 소환하는 함수
     {
         Tile_Obstacle tile = hit.transform.GetComponent<Tile_Obstacle>();
-        if(tile != null && itemDataManager[itemIndex].modelprefab.CompareTag("Item_Bomb"))      // 프리펩에 넣은 오브젝트가 Item_Bomb이고 tile이 null이 아니면 실행
+        if (tile != null && itemDataManager[itemIndex].modelprefab.CompareTag("Item_Bomb"))      // 프리펩에 넣은 오브젝트가 Item_Bomb이고 tile이 null이 아니면 실행
         {
             if (tile.IsBuildItem == true)
             {
@@ -153,7 +121,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     /// </summary>
     protected virtual void ItemUse()
     {
-        
+
     }
 
     /// <summary>
