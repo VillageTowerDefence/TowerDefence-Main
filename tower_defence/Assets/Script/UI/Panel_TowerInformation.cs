@@ -10,6 +10,8 @@ public class Panel_TowerInformation : MonoBehaviour
 
     GameObject panel_towerInfo;
     GameObject panel_closeButton;
+    Button button_tower_upgrade;
+    Button button_tower_advance;
 
     TextMeshProUGUI tower_name;
     TextMeshProUGUI tower_info;
@@ -21,6 +23,9 @@ public class Panel_TowerInformation : MonoBehaviour
 
         tower_name = panel_towerInfo.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         tower_info = panel_towerInfo.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        button_tower_upgrade = panel_towerInfo.transform.GetChild(3).GetComponent<Button>();
+        button_tower_advance = panel_towerInfo.transform.GetChild(4).GetComponent<Button>();
+
     }
 
     private void Start()
@@ -47,7 +52,7 @@ public class Panel_TowerInformation : MonoBehaviour
 
         GameObject info_tower = detector.selectTower;
         tower_name.text = info_tower.name;
-        //tower_info.text
+        tower_info.text = $"타워 공격력 : {info_tower.GetComponent<Tower>().attackDamage}";
     }
 
     public void Close_Panel()
@@ -56,5 +61,22 @@ public class Panel_TowerInformation : MonoBehaviour
         detector.selectTower = null;
         panel_closeButton.SetActive(false);
         panel_towerInfo.SetActive(false);
+    }
+
+    public void Upgrade_Tower()
+    {
+        Tower tower = detector.selectTower.GetComponent<Tower>();
+        tower.towerUpgrade();
+        Close_Panel();
+    }
+
+    public void Advance_Tower()
+    {
+        Tower tower = detector.selectTower.GetComponent<Tower>();
+        if (tower.Level == tower.MaxTowerLevel)
+        {
+            tower.towerAdvance();
+        }
+        Close_Panel();
     }
 }

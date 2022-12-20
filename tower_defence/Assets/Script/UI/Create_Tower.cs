@@ -12,8 +12,10 @@ public class Create_Tower : MonoBehaviour
 
     public ObjectDetector detector;
     public TowerSpwaner towerSpwaner;
+    public TowerDataManager towerDataManager;
+    //public GameObject towerPrefab;
 
-    int current_tower;
+    int current_tower = 3;
     float tower_radius = 150.0f;
 
     private void Awake()
@@ -27,7 +29,23 @@ public class Create_Tower : MonoBehaviour
 
     private void Start()
     {
-        current_tower = create_panel.transform.childCount - 1;
+        //for (int i = 0; i < towerDataManager.towerData.Length; i += 2)
+        //{
+        //    GameObject tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        //    tower.transform.parent = create_panel.transform;
+        //    tower.name = towerDataManager.towerData[i].towerName;
+        //    tower.transform.GetComponent<Image>().sprite = towerDataManager.towerData[i].towerIcon;
+        //    tower.transform.GetComponent<Image>().SetNativeSize();
+        //    tower.transform.GetComponent<Button>().onClick.AddListener(() => OnClick_BuildButton(i / 2));
+        //}
+        for (int i = 0; i < towerDataManager.towerData.Length; i += 2)
+        {
+            GameObject tower = create_panel.transform.GetChild(i / 2 + 1).gameObject;
+            tower.name = towerDataManager.towerData[i].towerName;
+            tower.transform.GetComponent<Image>().sprite = towerDataManager.towerData[i].towerIcon;
+            tower.transform.GetComponent<Image>().SetNativeSize();
+        }
+
         create_panel.SetActive(false);
     }
 

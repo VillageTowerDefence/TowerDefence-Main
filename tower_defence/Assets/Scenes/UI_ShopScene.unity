@@ -229,6 +229,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1510701627}
     m_Modifications:
     - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49b1539925b113946b6f2a55a0214c82, type: 2}
+    - target: {fileID: 7648117031465903868, guid: 05ceab6923622c748bedee18971bd5f8, type: 3}
       propertyPath: buy_panel
       value: 
       objectReference: {fileID: 90401065}
