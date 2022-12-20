@@ -12,16 +12,16 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform[] wayPoints;       // 현재 스테이지 이동 경로
 
-
+    public int enemySpawnCount = 10;           // 적 스폰 갯수(개체 수)
 
     private void Awake()
     {
         StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
     }
-
+    
     IEnumerator SpawnEnemy()
     {
-        while (true)
+        for( int i=0; i<enemySpawnCount; i++)
         {
             GameObject obj = Instantiate(enemyPrefab);  // obj에 enemyPrefab오브젝트 생성
             Enemy enemy = obj.GetComponent<Enemy>();        // obj에 생성된 적의 enemy 컴포넌트
