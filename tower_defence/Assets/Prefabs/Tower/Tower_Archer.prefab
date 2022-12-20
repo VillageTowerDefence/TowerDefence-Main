@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
   attackSpeed: 1
-  attackDamage: 0
+  attackDamage: 50
   advanceTower: {fileID: 9085064763569266882, guid: 16fd35cd87ff9324c9abfde97cbe9f7a, type: 3}
   onBuff: []
 --- !u!61 &1799791321450173253

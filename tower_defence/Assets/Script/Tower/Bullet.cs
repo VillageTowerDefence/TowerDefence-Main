@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float power = 0.0f;
+    float damage = 0.0f;
     float speed = 10.0f; // 총알 스피드
     bool isphysics; // true 물리 false 마법
     Rigidbody2D rb;
+
+    GameObject target;
+    Vector2 direction;
+
+    public GameObject Target // 공격타겟
+    {
+        get { return target; }
+        set { target = value; }
+    }
 
     private void Start()
     {
         //Debug.Log(Power);
     }
 
-    public float Power
+    public float Damage
     {
-        get => power;
+        get => damage;
         set
         {
-            power = value;
+            damage = value;
         }
     }
     
@@ -40,14 +49,29 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         //rb.velocity = transform.right * speed; // 총알에게 velocity값을 준다.(일정하게 움직이기 위해)
-        rb.MovePosition(rb.position + Time.fixedDeltaTime * speed * (Vector2)transform.right);
+        if (target != null)
+        {
+            direction = (target.transform.position - transform.position).normalized; // 방향지정
+            rb.MovePosition(rb.position + Time.fixedDeltaTime * speed * direction); //방향으로 이동
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && isTarget(collision.gameObject))
         {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.onHit(Damage,isphysics);
             Destroy(this.gameObject); // 적을 만나면 총알을 제거
         }
+    }
+
+    bool isTarget(GameObject enemy)
+    {
+        return Target == enemy;
     }
 }
