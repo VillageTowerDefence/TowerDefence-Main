@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPhysicsUp : Enemy
+public class Enemy_Magic_Up : Enemy
 {
     //protected override void OnTriggerEnter2D(Collider2D collision)
     //{
@@ -10,11 +10,11 @@ public class EnemyPhysicsUp : Enemy
     //    if (collision.gameObject.CompareTag("Bullet"))
     //    {
     //        Bullet bullet = collision.gameObject.GetComponent<Bullet>();// 불렛찾고
-    //        if (bullet.IsPhysics)   // 물리공격이면
+    //        if (!bullet.IsPhysics)   // 물리공격이 아니면(마법공격이면)
     //        {
     //            Hp -= (int)bullet.Damage / 2;    // 절반데미지 받기
     //        }
-    //        else                    // 마법 공격이면
+    //        else                    // 물리 공격이면
     //        {
     //            Hp -= (int)bullet.Damage;        // 통상 데미지
     //        }
@@ -24,11 +24,11 @@ public class EnemyPhysicsUp : Enemy
 
     public override void onHit(float damage, bool IsPhysics)
     {
-        if (IsPhysics)   // 물리공격이면
+        if (!IsPhysics)   // 물리공격이 아니면(마법공격이면)
         {
-            Hp -= (int)damage / 2;    // 절반 데미지 받기
+            Hp -= (int)damage / 2;    // 절반 데미지
         }
-        else                    // 마법 공격이면
+        else                    // 물리 공격이면
         {
             Hp -= (int)damage;        // 통상 데미지
         }
