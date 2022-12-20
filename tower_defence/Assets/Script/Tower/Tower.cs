@@ -14,12 +14,12 @@ public class Tower : MonoBehaviour
     // 타워 상태 ---------------------------------------------------------------------------
 
     public float attackSpeed = 1.0f; // 타워 공격 주기
-    public float attackDamage; // 타워 공격력
+    public float attackDamage = 50.0f; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
     float originalAttackSpeed;      // 타워 원래 공격 주기
 
-    bool isphysics = false; // 물리/마법 타워 구별
-    bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
+    protected bool isphysics = false; // 물리/마법 타워 구별
+    protected bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
 
     protected int costenergy; // 타워 건설 에너지
     protected int level; //타워 레벨
@@ -36,8 +36,8 @@ public class Tower : MonoBehaviour
     public List<BuffBase> onBuff;
     // ------------------------------------------------------------------------------------
 
-    private List<GameObject> Enemys; // 적 List로 받기
-    Transform target = null; // 공격 대상
+    protected List<GameObject> Enemys; // 적 List로 받기
+    protected Transform target = null; // 공격 대상
 
     // 프로퍼티 -------------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ public class Tower : MonoBehaviour
         //-----------------------------------------------------------------------
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;

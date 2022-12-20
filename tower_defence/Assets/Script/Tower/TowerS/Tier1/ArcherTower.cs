@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ArcherTower : Tower
 {
@@ -11,6 +12,11 @@ public class ArcherTower : Tower
         base.Awake();
         towerUpgradeCost = new int[] { 50, 100, 150 };
 
+    }
+
+    protected override void Start()
+    {
+        base.Start();
     }
 
     public override void towerUpgrade()
@@ -28,4 +34,6 @@ public class ArcherTower : Tower
 
         Debug.Log($"{level}   {attackDamage}");
     }
+
+    
 }
