@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            MaxHP -= (int)bullet.Power;
+            Hp -= (int)bullet.Power;
 
             //Debug.Log($"플레이어의 현재HP는 {Hp}");
         }
