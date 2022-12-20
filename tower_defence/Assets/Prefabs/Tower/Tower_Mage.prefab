@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
+  tpye: 1
   attackSpeed: 1
   attackDamage: 0
   advanceTower: {fileID: 0}

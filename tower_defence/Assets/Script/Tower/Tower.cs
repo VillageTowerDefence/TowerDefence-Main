@@ -5,18 +5,25 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class Tower : MonoBehaviour
 {
-    
     public GameObject bullet; // 공격 투사체
 
     // 타워 상태 ---------------------------------------------------------------------------
 
+    public TowerType tpye = TowerType.Archer;
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage = 50.0f; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
+    float synergyDamage;
     float originalAttackSpeed;      // 타워 원래 공격 주기
+    float buffDamage;
 
     protected bool isphysics = false; // 물리/마법 타워 구별
     protected bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
@@ -63,8 +70,17 @@ public class Tower : MonoBehaviour
         StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
         originalAttackSpeed = attackSpeed;
+        synergyDamage = 1.0f;
+        buffDamage = 1.0f;
     }
 
+    private void Update()
+    {
+        if (Keyboard.current.digit1Key.IsPressed())
+        {
+            TowerSynergy();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,7 +138,7 @@ public class Tower : MonoBehaviour
 
     public virtual void towerUpgrade()
     {
-        
+
     }
 
     // 버프 관련 함수 ----------------------------------------------------------------------------------------------
@@ -135,7 +151,7 @@ public class Tower : MonoBehaviour
     /// <returns></returns>
     float BuffChange(BuffType Type, float origin)
     {
-        if(onBuff.Count > 0)
+        if (onBuff.Count > 0)
         {
             bool buffCheck = false;             // 자기 자신을 찾았는지 확인하는 변수
             float temp = 0;
@@ -176,7 +192,8 @@ public class Tower : MonoBehaviour
         switch (type)
         {
             case BuffType.Power:
-                attackDamage = BuffChange(type, originalAttackDamage);
+                buffDamage = BuffChange(type, originalAttackDamage) * 0.01f;
+                TowerStateUpdate();
                 break;
             case BuffType.AttactSpeed:
                 attackSpeed = BuffChange(type, originalAttackSpeed);
@@ -195,18 +212,67 @@ public class Tower : MonoBehaviour
 
     public void towerAdvance()
     {
-        if(advanceTower != null)
+        if (advanceTower != null)
         {
-            Instantiate(advanceTower,transform.position,Quaternion.identity);
+            Instantiate(advanceTower, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
 
 
     // 타워 시너지 ---------------------------------------------------------------------------------------
-    protected void TowerSynergy()
+    public void TowerSynergy()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 3.0f, LayerMask.GetMask(""));      // 범위 정하기, 레이어로 분류할 것인지...
-        // 시너지 변수 = collider.Length;
+        int count = 0;
+        List<Collider2D> widhtCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")));
+        List<Collider2D> heightCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")));
+        widhtCollider.Remove(this.GetComponent<Collider2D>());
+        heightCollider.Remove(this.GetComponent<Collider2D>());
+        if (widhtCollider != null || heightCollider != null)
+        {
+            Tower nearTower;
+            if (widhtCollider.Count > 0)
+            {
+                foreach (var tower in widhtCollider)
+                {
+                    nearTower = tower.GetComponent<Tower>();
+                    if (tpye == nearTower.tpye)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            if (heightCollider.Count > 0)
+            {
+                foreach (var tower in heightCollider)
+                {
+                    nearTower = tower.GetComponent<Tower>();
+                    if (tpye == nearTower.tpye)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+
+        }
+        synergyDamage = ((float)count * 0.5f) + 1.0f;
+        TowerStateUpdate();
+        Debug.Log($"{this.name}주변 십자의 타워 : {count}개");
     }
+
+    void TowerStateUpdate()
+    {
+        attackDamage = originalAttackDamage * synergyDamage * buffDamage;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(this.transform.position, new Vector3(3.0f, 1.0f));
+        Gizmos.DrawWireCube(this.transform.position, new Vector3(1.0f, 3.0f));
+    }
+#endif
 }
