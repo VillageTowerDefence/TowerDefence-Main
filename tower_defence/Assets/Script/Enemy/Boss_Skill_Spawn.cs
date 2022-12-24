@@ -27,7 +27,6 @@ public class Boss_Skill_Spawn : MonoBehaviour
             //obj.transform.localPosition = Vector3.zero;
             Enemy enemy = obj.GetComponent<Enemy>();
             enemy.Setup(Boss.WayPoints, Boss.transform, Boss.CurrentIndex - 1);
-            int j=0;
             yield return new WaitForSeconds(interval);          // interval만큼 대기
         }
     }
