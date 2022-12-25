@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5725209062732733460}
   - component: {fileID: 4956299182658227938}
-  - component: {fileID: 9098512447358860563}
+  - component: {fileID: 2149332567488024999}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -134,7 +134,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &9098512447358860563
+--- !u!114 &2149332567488024999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3387552354603919770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 277b41157ec79384c8c5c5201eb4b2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 08631eeb7df0aea4b836e9e908a80847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4636269313403295599

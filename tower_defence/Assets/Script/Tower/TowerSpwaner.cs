@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -7,7 +8,7 @@ public class TowerSpwaner : MonoBehaviour
 {
     public GameObject[] towers; // 타워를 배열로 받음
     public int[] towerCost = new int[] {100,200,300};
-
+    public Action onTowerSetUp;
 
 
     public void SpawnTower(GameObject tileTransform,int index)
@@ -21,6 +22,7 @@ public class TowerSpwaner : MonoBehaviour
             Instantiate(towers[index], tileTransform.transform.position, Quaternion.identity);
             GameManager.Instance.energy -= towerCost[index];
             tile.isBulidTower = true;
+            onTowerSetUp?.Invoke();
         }
 
     }
