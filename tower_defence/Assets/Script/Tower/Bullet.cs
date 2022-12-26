@@ -13,6 +13,9 @@ public class Bullet : MonoBehaviour
     Vector2 direction;
 
     public bool isSlowAttack = false; // true 슬로우공격 false 기본 공격
+    public bool isStunAttack = false; // true 스턴공격 false 기본공격
+
+    BuffManager buffManager;
 
     public GameObject Target // 공격타겟
     {
@@ -22,7 +25,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        //Debug.Log(Power);
+        buffManager = GameManager.Instance.Buff; 
     }
 
     public float Damage
@@ -68,6 +71,10 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.onHit(Damage,isphysics,isSlowAttack);
+            if (isStunAttack)
+            {
+                buffManager.CreateBuff(BuffType.Stun, 0, 1.0f, enemy); //1초동안 스턴
+            }
             Destroy(this.gameObject); // 적을 만나면 총알을 제거
         }
     }
