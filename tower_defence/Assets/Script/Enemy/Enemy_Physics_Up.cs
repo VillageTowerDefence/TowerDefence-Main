@@ -22,7 +22,7 @@ public class Enemy_Physics_Up : Enemy
     //    }
     //}
 
-    public override void onHit(float damage, bool IsPhysics)
+    public override void onHit(float damage, bool IsPhysics, bool isSlowAttack)
     {
         if (IsPhysics)   // 물리공격이면
         {

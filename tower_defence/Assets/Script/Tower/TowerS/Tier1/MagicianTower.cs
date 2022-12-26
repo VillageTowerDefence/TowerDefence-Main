@@ -9,7 +9,8 @@ public class MagicianTower : Tower
     {
         base.Awake();
         towerUpgradeCost = new int[] { 200, 400, 600 };
-
+        isphysics = false;
+        isAttackFly = true;
     }
 
     public override void towerUpgrade()

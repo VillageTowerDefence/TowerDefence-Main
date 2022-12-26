@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class KinghtTower : WarriorTower
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Awake();
+        towerUpgradeCost = new int[] { 50, 100, 150 };
+        isphysics = true;
+        isAttackFly = false;
     }
 }

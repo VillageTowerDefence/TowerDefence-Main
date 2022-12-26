@@ -8,6 +8,8 @@ public class WarriorTower : Tower
     {
         base.Awake();
         towerUpgradeCost = new int[] { 100, 200, 300 };
+        isphysics = true;
+        isAttackFly = false;
 
     }
 
