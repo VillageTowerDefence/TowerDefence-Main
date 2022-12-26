@@ -11,8 +11,8 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Transform parent;                   // 자기 부모를 찾음
     TextMeshProUGUI itemText;           // 아이템 수량 표시용
     new Camera camera;                  // 마우스 좌표을 신 좌표 값으로 변환하기 용
-    Image image;         // 아이템 이미지 알파값 바꾸기용
-    Image item_out_image;
+    public Image image;
+    public Image item_out_image;
 
     Vector3 MousDir;                    // 아이템 최종 생성 좌표
     RaycastHit2D hit;                     // 레이캐스트 용 레이저
@@ -25,12 +25,23 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     protected virtual void Awake()
     {
-        image = transform.GetChild(0).GetComponent<Image>();
+        //image = transform.GetChild(0).GetComponent<Image>();
         itemText = transform.parent.GetComponentInChildren<TextMeshProUGUI>();      // 부모에 있는 자식들 중에 TextMeshProUGUI를 찾아라
-        item_out_image = transform.parent.transform.GetChild(0).GetComponent<Image>();
+        //item_out_image = transform.parent.transform.GetChild(0).GetComponent<Image>();
     }
 
-    protected virtual void Start()
+    //protected virtual void Start()
+    //{
+    //    root = transform.root;  // 최상위 오브젝트를 불러온다.
+    //    parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
+    //    transform.position = parent.position;   // 자신의 위치를 parent의 위치로 가게한다.
+    //    camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();      // 하이라키창에 있는 게임오브젝트 중에 "MainCamera"이름이 들어간 오브젝트 찾기
+    //    itemDataManager = GameManager.Instance.ItemDta;
+    //    item_out_image.sprite = itemDataManager[itemIndex].itemIcon;
+    //    image.sprite = itemDataManager[itemIndex].itemIcon;
+    //}
+
+    public void StartButton()
     {
         root = transform.root;  // 최상위 오브젝트를 불러온다.
         parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
@@ -39,6 +50,7 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         itemDataManager = GameManager.Instance.ItemDta;
         item_out_image.sprite = itemDataManager[itemIndex].itemIcon;
         image.sprite = itemDataManager[itemIndex].itemIcon;
+        transform.parent.name = itemDataManager[itemIndex].itemName;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)  // 드래그 시작

@@ -79,6 +79,7 @@ public class Manager_UI : Singleton<Manager_UI>
         Game_Pause_Flag = false;
         Game_SpeedUP_Flag = false;
         Game_Progress_Current = 0;
+        Time.timeScale = 1;
     }
     public void PauseGame()
     {
@@ -91,6 +92,8 @@ public class Manager_UI : Singleton<Manager_UI>
         Game_Pause_Flag = false;
         Time.timeScale = 1;
     }
+
+
 
     public void SpeedUpGame()
     {

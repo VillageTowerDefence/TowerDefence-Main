@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Button_Pause : MonoBehaviour
 {
     Button pause_button;
     Button restart_button;
+    Button newGame_button;
+    Button exitGame_button;
     GameObject pause_panel;
     Manager_UI manager_UI;
 
@@ -15,9 +18,13 @@ public class Button_Pause : MonoBehaviour
         pause_button = transform.GetChild(0).GetComponent<Button>();
         pause_panel = transform.GetChild(1).gameObject;
         restart_button = pause_panel.transform.GetChild(1).GetComponent<Button>();
+        newGame_button = pause_panel.transform.GetChild(2).GetComponent<Button>();
+        exitGame_button = pause_panel.transform.GetChild(3).GetComponent<Button>();
 
         pause_button.onClick.AddListener(Click_Pause_Button);
         restart_button.onClick.AddListener(Click_Restart_Button);
+        newGame_button.onClick.AddListener(Click_NewGame_Button);
+        exitGame_button.onClick.AddListener(Click_ExitGame_Button);
     }
 
     private void Start()
@@ -38,5 +45,17 @@ public class Button_Pause : MonoBehaviour
         manager_UI.ContinueGame();
         pause_panel.SetActive(false);
         pause_button.gameObject.SetActive(true);
+    }
+    
+    void Click_NewGame_Button()
+    {
+        Manager_Scene manager_Scene = new Manager_Scene();
+        manager_Scene.moveScene(SceneManager.GetActiveScene().name);
+    }
+
+    void Click_ExitGame_Button()
+    {
+        Manager_Scene manager_Scene = new Manager_Scene();
+        manager_Scene.moveScene("UI_MainScene");
     }
 }

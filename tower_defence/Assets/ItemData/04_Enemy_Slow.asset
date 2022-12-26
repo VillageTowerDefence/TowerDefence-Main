@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "\uC801 \uC2AC\uB85C\uC6B0"
   modelprefab: {fileID: 943373364154646681, guid: dcbb9c6fe80fd2643a931c959c89372c, type: 3}
   itemCost: 0
-  count: 5
+  count: 4
   layerNames:
   - RoadTile
   itemIcon: {fileID: -702784360, guid: 5694a953260e77a41b17b38ef10234bd, type: 3}
