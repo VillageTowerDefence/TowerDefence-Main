@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour
     protected int level; //타워 레벨
     protected int maxTowerLevel = 3;
     protected int[] towerUpgradeCost;
-
+    IEnumerator attackStop;
 
     // 타워 승급 ------------------------------------------------------------------------------------
 
@@ -67,7 +67,8 @@ public class Tower : MonoBehaviour
 
     protected virtual void Start()
     {
-        StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
+        attackStop = PeriodAttack();
+        StartCoroutine(attackStop); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
         originalAttackSpeed = attackSpeed;
         synergyDamage = 1.0f;
@@ -195,7 +196,7 @@ public class Tower : MonoBehaviour
         switch (type)
         {
             case BuffType.Power:
-                buffDamage = BuffChange(type, originalAttackDamage) * 0.01f;
+                buffDamage = BuffChange(type, 1.0f);
                 TowerStateUpdate();
                 break;
             case BuffType.AttactSpeed:
