@@ -91,6 +91,11 @@ public class Enemy : MonoBehaviour
         {
             currentSlowCount += Time.deltaTime;
         }
+        if(currentSlowCount > SlowCount)
+        {
+            movement.MoveSpeed = movement.OriginalMoveSpeed;
+            isSlow = false;
+        }
     }
 
     /// <summary>
@@ -103,16 +108,11 @@ public class Enemy : MonoBehaviour
     {
         Hp -= (int)damage;
         Debug.Log($"플레이어의 HP는 {Hp}");
-        if (isSlowAttack && currentSlowCount<SlowCount)
+        if (isSlowAttack)
         {
             currentSlowCount = 0.0f;
             movement.MoveSpeed = movement.OriginalMoveSpeed * 0.5f;
             isSlow = true;
-        }
-        else
-        {
-            movement.MoveSpeed = movement.OriginalMoveSpeed;
-            isSlow = false;
         }
     }
 
