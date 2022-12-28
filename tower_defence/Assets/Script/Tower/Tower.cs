@@ -24,6 +24,7 @@ public class Tower : MonoBehaviour
     float synergyDamage;
     float originalAttackSpeed;      // 타워 원래 공격 주기
     float buffDamage;
+    float deBuffDamage;
 
     protected bool isphysics = false; // 물리/마법 타워 구별
     protected bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
@@ -76,14 +77,6 @@ public class Tower : MonoBehaviour
 
         TowerSpwaner setUpSynergy = FindObjectOfType<TowerSpwaner>();
         setUpSynergy.onTowerSetUp += TowerSynergy;
-    }
-
-    private void Update()
-    {
-        if (Keyboard.current.digit1Key.IsPressed())
-        {
-            TowerSynergy();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -202,7 +195,9 @@ public class Tower : MonoBehaviour
             case BuffType.AttactSpeed:
                 attackSpeed = BuffChange(type, originalAttackSpeed);
                 break;
-            case BuffType.Slow:
+            case BuffType.PowerDown:
+                deBuffDamage = BuffChange(type, 1.0f);
+                TowerStateUpdate();
                 break;
             case BuffType.Stun:
                 break;
@@ -266,7 +261,7 @@ public class Tower : MonoBehaviour
 
     void TowerStateUpdate()
     {
-        attackDamage = originalAttackDamage * synergyDamage * buffDamage;
+        attackDamage = (originalAttackDamage * synergyDamage * buffDamage) * deBuffDamage;
     }
 
 #if UNITY_EDITOR
