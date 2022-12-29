@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Skill_DamageDown : MonoBehaviour
+public class Boss_Skill_AttackSpeedDown : MonoBehaviour
 {
     [Range(0f, 1f)]
-    public float reduceDamage;          // 데미지 감소율
+    public float reduceAttackSpeed;     // 공격속도 감소율
     public float skillCoolTime;         // 스킬 쿨타임
     public float skillDuration;         // 스킬 지속시간
 
-    BuffType tpye = BuffType.PowerDown;
+    BuffType tpye = BuffType.AttackSpeedDown;
     BuffManager buffManager;
 
     WaitForSeconds time;
@@ -31,7 +31,7 @@ public class Boss_Skill_DamageDown : MonoBehaviour
 
             foreach (var tower in towers)                           // 모든 타워한테 디버프 주기
             {
-                buffManager.CreateBuff(tpye, reduceDamage, skillDuration, tower);      // 해당 타워에게 적용
+                buffManager.CreateBuff(tpye, reduceAttackSpeed, skillDuration, tower);      // 해당 타워에게 적용
             }
         }
     }
