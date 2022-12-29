@@ -21,9 +21,12 @@ public class Tower : MonoBehaviour
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage = 50.0f; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
-    float synergyDamage;
     float originalAttackSpeed;      // 타워 원래 공격 주기
-    float buffDamage;
+    float synergyDamage;            // 시너지 공격력 데미지
+    float buffDamage;               // 버프 데미지  (증가)
+    float deBuffDamage;             // 디버프 데미지(감소)
+    float buffAttackSpeed;          // 버프 공격속도  (증가)
+    float deBuffAttaackSpeed;       // 디버프 공격속도(감소)
 
     protected bool isphysics = false; // 물리/마법 타워 구별
     protected bool isAttackFly = false; // 공중 공격 가능 true 가능 false 불가
@@ -32,8 +35,7 @@ public class Tower : MonoBehaviour
     protected int level; //타워 레벨
     protected int maxTowerLevel = 3;
     protected int[] towerUpgradeCost;
-
-    IEnumerator attackOnOff;
+    IEnumerator attackStop;
 
     // 타워 승급 ------------------------------------------------------------------------------------
 
@@ -68,24 +70,18 @@ public class Tower : MonoBehaviour
 
     protected virtual void Start()
     {
-        attackOnOff = PeriodAttack();
-        StartCoroutine(attackOnOff);
-        //StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
+        attackStop = PeriodAttack();
+        StartCoroutine(attackStop); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
         originalAttackSpeed = attackSpeed;
         synergyDamage = 1.0f;
         buffDamage = 1.0f;
+        deBuffDamage = 1.0f;
+        buffAttackSpeed = 1.0f;
+        deBuffAttaackSpeed = 1.0f;
 
         TowerSpwaner setUpSynergy = FindObjectOfType<TowerSpwaner>();
         setUpSynergy.onTowerSetUp += TowerSynergy;
-    }
-
-    private void Update()
-    {
-        if (Keyboard.current.digit1Key.IsPressed())
-        {
-            TowerSynergy();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -204,21 +200,24 @@ public class Tower : MonoBehaviour
         switch (type)
         {
             case BuffType.Power:
-                buffDamage = BuffChange(type, originalAttackDamage) * 0.01f;
-                TowerStateUpdate();
+                buffDamage = BuffChange(type, 1.0f);
                 break;
             case BuffType.AttactSpeed:
-                attackSpeed = BuffChange(type, originalAttackSpeed);
+                buffAttackSpeed = BuffChange(type, 1.0f);
                 break;
-            case BuffType.Slow:
+            case BuffType.PowerDown:
+                deBuffDamage = BuffChange(type, 1.0f);
                 break;
             case BuffType.Stun:
                 StopCoroutine(attackOnOff);
                 StartCoroutine(StartAttack());
+            case BuffType.AttackSpeedDown:
+                deBuffAttaackSpeed = BuffChange(type, 1.0f);
                 break;
             default:
                 break;
         }
+        TowerStateUpdate();
     }
     
     // --------------------------------------------------------------------------------------------------------------
@@ -277,7 +276,8 @@ public class Tower : MonoBehaviour
 
     void TowerStateUpdate()
     {
-        attackDamage = originalAttackDamage * synergyDamage * buffDamage;
+        attackDamage = (originalAttackDamage * synergyDamage * buffDamage) * deBuffDamage;
+        attackSpeed = (originalAttackSpeed * buffAttackSpeed) * deBuffAttaackSpeed;
     }
 
 #if UNITY_EDITOR
