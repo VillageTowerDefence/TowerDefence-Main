@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
   - component: {fileID: 2857632334665287933}
-  - component: {fileID: 3539442944168652754}
+  - component: {fileID: -2227862438565460093}
   m_Layer: 0
   m_Name: Boss3
   m_TagString: Enemy
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPrefab_BossSkill: {fileID: 7637169531954950712, guid: a75445407c01809479a3d009ad9057d6, type: 3}
   interval: 2
---- !u!114 &3539442944168652754
+--- !u!114 &-2227862438565460093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637169531954950712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdfe108a53bf2464489fd036b9fa9788, type: 3}
+  m_Script: {fileID: 11500000, guid: 05e2959f0c775d9498d7c72701136341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1

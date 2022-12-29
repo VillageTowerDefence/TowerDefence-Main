@@ -33,6 +33,7 @@ public class Tower : MonoBehaviour
     protected int maxTowerLevel = 3;
     protected int[] towerUpgradeCost;
 
+    IEnumerator attackOnOff;
 
     // 타워 승급 ------------------------------------------------------------------------------------
 
@@ -67,7 +68,9 @@ public class Tower : MonoBehaviour
 
     protected virtual void Start()
     {
-        StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
+        attackOnOff = PeriodAttack();
+        StartCoroutine(attackOnOff);
+        //StartCoroutine(PeriodAttack()); // 공격 코루틴 시작
         originalAttackDamage = attackDamage;
         originalAttackSpeed = attackSpeed;
         synergyDamage = 1.0f;
@@ -139,6 +142,12 @@ public class Tower : MonoBehaviour
         }
     }
 
+    IEnumerator StartAttack()   // 타워 스턴후 복구용
+    {
+        yield return new WaitForSeconds(2.0f);
+        StartCoroutine(attackOnOff);
+    }
+
     public virtual void towerUpgrade()
     {
 
@@ -204,11 +213,14 @@ public class Tower : MonoBehaviour
             case BuffType.Slow:
                 break;
             case BuffType.Stun:
+                StopCoroutine(attackOnOff);
+                StartCoroutine(StartAttack());
                 break;
             default:
                 break;
         }
     }
+    
     // --------------------------------------------------------------------------------------------------------------
 
     // 타워 승급 -----------------------------------------------------------------------------------
