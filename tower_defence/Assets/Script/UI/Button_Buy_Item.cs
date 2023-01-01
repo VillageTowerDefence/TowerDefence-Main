@@ -12,6 +12,7 @@ public class Button_Buy_Item : MonoBehaviour
     TextMeshProUGUI text_item_name;
     TextMeshProUGUI text_item_price;
     TextMeshProUGUI text_item_script;
+    TextMeshProUGUI text_item_count;
 
     Button button_buy;
     Button button_cancle;
@@ -24,9 +25,10 @@ public class Button_Buy_Item : MonoBehaviour
         text_item_name = window_buy.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         text_item_price = window_buy.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         text_item_script = window_buy.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        text_item_count = window_buy.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
 
-        button_buy = window_buy.transform.GetChild(4).GetComponent<Button>();
-        button_cancle = window_buy.transform.GetChild(5).GetComponent<Button>();
+        button_buy = window_buy.transform.GetChild(5).GetComponent<Button>();
+        button_cancle = window_buy.transform.GetChild(6).GetComponent<Button>();
 
         button_buy.onClick.AddListener(Buy_Item);
         button_cancle.onClick.AddListener(Buy_Cancle);
@@ -38,6 +40,7 @@ public class Button_Buy_Item : MonoBehaviour
         text_item_name.text = buy_item.itemName;
         text_item_price.text = buy_item.itemCost.ToString();
         text_item_script.text = buy_item.description;
+        text_item_count.text = $"보유 수 : {buy_item.count}";
     }
 
     void Buy_Item()

@@ -49,13 +49,11 @@ public class Button_Pause : MonoBehaviour
     
     void Click_NewGame_Button()
     {
-        Manager_Scene manager_Scene = new Manager_Scene();
-        manager_Scene.moveScene(SceneManager.GetActiveScene().name);
+        manager_UI.manager_Scene.moveScene(SceneManager.GetActiveScene().name);
     }
 
     void Click_ExitGame_Button()
     {
-        Manager_Scene manager_Scene = new Manager_Scene();
-        manager_Scene.moveScene("UI_MainScene");
+        manager_UI.manager_Scene.moveScene("UI_MainScene");
     }
 }

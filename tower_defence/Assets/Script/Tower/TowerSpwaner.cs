@@ -16,11 +16,11 @@ public class TowerSpwaner : MonoBehaviour
         
         Tile tile = tileTransform.GetComponent<Tile>();
 
-        if (!tile.isBulidTower && towerCost[index] < GameManager.Instance.energy)
+        if (!tile.isBulidTower && towerCost[index] < GameManager.Instance.Energy_Count)
         {
 
             Instantiate(towers[index], tileTransform.transform.position, Quaternion.identity);
-            GameManager.Instance.energy -= towerCost[index];
+            GameManager.Instance.Energy_Count -= towerCost[index];
             tile.isBulidTower = true;
             onTowerSetUp?.Invoke();
         }

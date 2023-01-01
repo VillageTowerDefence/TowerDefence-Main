@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Manager_UI : Singleton<Manager_UI>
 {
+    public Manager_Scene manager_Scene;
+
     //일시정지
     bool game_pause_flag = false;
     public bool Game_Pause_Flag

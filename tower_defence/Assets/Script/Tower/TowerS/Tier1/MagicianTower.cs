@@ -14,11 +14,11 @@ public class MagicianTower : Tower
 
     public override void towerUpgrade()
     {
-        if (GameManager.Instance.energy > towerUpgradeCost[level - 1] && level < maxTowerLevel)
+        if (GameManager.Instance.Energy_Count > towerUpgradeCost[level - 1] && level < maxTowerLevel)
         {
             level++;
             attackDamage += 10;
-            GameManager.Instance.energy -= towerUpgradeCost[level - 1];
+            GameManager.Instance.Energy_Count -= towerUpgradeCost[level - 1];
         }
         else
         {

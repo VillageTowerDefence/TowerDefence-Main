@@ -58,8 +58,6 @@ public class GameManager : Singleton<GameManager>
     public Action refresh_Money;
 
 
-    public int energy = 1000;
-
     ItemDataManager itemData;
     TowerDataManager towerData;
 
@@ -82,7 +80,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Initialize()
     {
         player_HP = player_HP_Max;
-        Energy_Count = 0;
+        Energy_Count = 1000;
         Money_Count = 0;
         itemData = GetComponent<ItemDataManager>();
         towerData = GetComponent<TowerDataManager>();
