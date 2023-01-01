@@ -814,6 +814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7151557119046715890, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
+      propertyPath: onBuff.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9034060581423525227, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1055,7 +1059,7 @@ PrefabInstance:
     - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7637169531954950712, guid: 53f99d763af091e41b744e77bf665715, type: 3}
+      objectReference: {fileID: 7637169531954950712, guid: a5774420e59028c48881868ab2735a7a, type: 3}
     - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: wayPoints.Array.size
       value: 14

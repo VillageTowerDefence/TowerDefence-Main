@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy_Life_Boss : Enemy
 {
-    
-
     protected override void Awake()
     {
         base.Awake();
