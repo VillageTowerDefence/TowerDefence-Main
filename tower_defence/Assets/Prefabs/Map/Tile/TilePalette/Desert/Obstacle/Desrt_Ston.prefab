@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4351326112759838719}
   - component: {fileID: 4351326112759838718}
   m_Layer: 7
-  m_Name: Tree
+  m_Name: Ston
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1249507065
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0e839f0458eee0048bfb70d395c8cbf9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d1b45fa9d6b5874190dd6ec464a63bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7466761604789699808}
   - component: {fileID: 1360748528043510475}
   m_Layer: 7
-  m_Name: ObstacleTile
+  m_Name: Desrt_Ston
   m_TagString: ObstacleTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e558ff276f6da2b4fa0f4ad0663a85f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 286b0617b2a5c6640a4590400efec9aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
