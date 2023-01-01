@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss_Skill_AttackSpeedDown : MonoBehaviour
 {
-    [Range(0f, 1f)]
+    [Range(1.0f, 10.0f)]
     public float reduceAttackSpeed;     // 공격속도 감소율
     public float skillCoolTime;         // 스킬 쿨타임
     public float skillDuration;         // 스킬 지속시간
