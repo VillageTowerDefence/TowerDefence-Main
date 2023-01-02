@@ -47,7 +47,7 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         parent = transform.parent;      // parent의 부모 트랜스폼을 넣는다.
         transform.position = parent.position;   // 자신의 위치를 parent의 위치로 가게한다.
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();      // 하이라키창에 있는 게임오브젝트 중에 "MainCamera"이름이 들어간 오브젝트 찾기
-        itemDataManager = GameManager.Instance.ItemDta;
+        itemDataManager = GameManager.Instance.ItemData;
         item_out_image.sprite = itemDataManager[itemIndex].itemIcon;
         image.sprite = itemDataManager[itemIndex].itemIcon;
         transform.parent.name = itemDataManager[itemIndex].itemName;
