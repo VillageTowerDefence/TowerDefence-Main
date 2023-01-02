@@ -138,6 +138,12 @@ public class Tower : MonoBehaviour
         }
     }
 
+    IEnumerator StartAttack()   // 타워 스턴후 복구용
+    {
+        yield return new WaitForSeconds(2.0f);
+        StartCoroutine(attackStop);
+    }
+
     public virtual void towerUpgrade()
     {
 
@@ -202,6 +208,10 @@ public class Tower : MonoBehaviour
             case BuffType.PowerDown:
                 deBuffDamage = BuffChange(type, 1.0f);
                 break;
+            case BuffType.Stun:
+                StopCoroutine(attackStop);
+                StartCoroutine(StartAttack());
+                break;
             case BuffType.AttackSpeedDown:
                 deBuffAttaackSpeed = BuffChange(type, 1.0f);
                 break;
@@ -210,6 +220,7 @@ public class Tower : MonoBehaviour
         }
         TowerStateUpdate();
     }
+    
     // --------------------------------------------------------------------------------------------------------------
 
     // 타워 승급 -----------------------------------------------------------------------------------
