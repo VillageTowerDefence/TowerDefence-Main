@@ -172,7 +172,7 @@ MonoBehaviour:
   bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
   tpye: 1
   attackSpeed: 1
-  attackDamage: 0
+  attackDamage: 2
   advanceTower: {fileID: 2671994373607651297, guid: 38ad5d9be8d32d34997b55d8ec781333, type: 3}
   onBuff: []
 --- !u!61 &798776361532654848

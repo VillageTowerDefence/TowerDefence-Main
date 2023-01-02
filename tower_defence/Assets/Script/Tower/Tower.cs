@@ -72,6 +72,9 @@ public class Tower : MonoBehaviour
         originalAttackSpeed = attackSpeed;
         synergyDamage = 1.0f;
         buffDamage = 1.0f;
+
+        TowerSpwaner setUpSynergy = FindObjectOfType<TowerSpwaner>();
+        setUpSynergy.onTowerSetUp += TowerSynergy;
     }
 
     private void Update()
@@ -254,8 +257,6 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
-
-
         }
         synergyDamage = ((float)count * 0.5f) + 1.0f;
         TowerStateUpdate();
