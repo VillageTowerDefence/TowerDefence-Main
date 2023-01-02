@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     public int maxHP = 100;         // 최대 HP
     int hp;                         // 현재 HP
 
+    float currentSlowCount = 0.0f;
+    float SlowCount = 3.0f;
+    bool isSlow = false;
+
     // 아이템 관련 ----------------------------------------------------------
     public List<BuffBase> onBuff;
     // ---------------------------------------------------------------------
@@ -80,10 +84,36 @@ public class Enemy : MonoBehaviour
     //    }
     //}
 
-    public virtual void onHit(float damage,bool IsPhysics)
+
+    private void Update()
+    {
+        if (isSlow)
+        {
+            currentSlowCount += Time.deltaTime;
+        }
+        if(currentSlowCount > SlowCount)
+        {
+            movement.MoveSpeed = movement.OriginalMoveSpeed;
+            isSlow = false;
+        }
+    }
+
+    /// <summary>
+    /// 총알에 대미지가 들어올때
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="IsPhysics"></param>
+    /// <param name="isSlowAttack"></param>
+    public virtual void onHit(float damage,bool IsPhysics, bool isSlowAttack)
     {
         Hp -= (int)damage;
         Debug.Log($"플레이어의 HP는 {Hp}");
+        if (isSlowAttack)
+        {
+            currentSlowCount = 0.0f;
+            movement.MoveSpeed = movement.OriginalMoveSpeed * 0.5f;
+            isSlow = true;
+        }
     }
 
     public void Setup(Transform[] wayPoints,int index = 0)
@@ -191,6 +221,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         StopCoroutine(fireItemDamage);                      // 5초후에 fireItemDamage 코루틴 끄기 (fireItem 효과 삭제)
     }
+
 
     //public void BuffOnOff(float value, bool onbuff, int buffIdax)
     //{

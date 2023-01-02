@@ -22,7 +22,7 @@ public class Enemy_Magic_Up : Enemy
     //    }
     //}
 
-    public override void onHit(float damage, bool IsPhysics)
+    public override void onHit(float damage, bool IsPhysics, bool isSlowAttack)
     {
         if (!IsPhysics)   // 물리공격이 아니면(마법공격이면)
         {
