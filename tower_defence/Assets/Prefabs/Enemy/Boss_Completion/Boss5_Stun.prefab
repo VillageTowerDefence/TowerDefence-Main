@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 3484627753286271741}
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
+  - component: {fileID: 4672344284127277099}
   - component: {fileID: 6267211481572574869}
-  - component: {fileID: -1906974451347944564}
   m_Layer: 0
-  m_Name: Boss2_AttackSpeedDown
+  m_Name: Boss5_Stun
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1557064803
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 25852788203bb47459a9a33d03d235b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a114df6ce8152c4abf5e6fa79200920, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,6 +154,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 9999
   onBuff: []
+--- !u!114 &4672344284127277099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3476ffe2d9ce8b84b96d9ea32a349022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
+  type: 3
 --- !u!114 &6267211481572574869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,18 +181,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
---- !u!114 &-1906974451347944564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637169531954950712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1682e957ae9a5949901f93b365efefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reduceAttackSpeed: 1.84
-  skillCoolTime: 10
-  skillDuration: 4

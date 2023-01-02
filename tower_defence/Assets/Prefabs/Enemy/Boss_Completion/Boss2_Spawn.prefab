@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 3484627753286271741}
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
-  - component: {fileID: 6267211481572574869}
-  - component: {fileID: -1906974451347944564}
+  - component: {fileID: 2857632334665287933}
+  - component: {fileID: -2227862438565460093}
   m_Layer: 0
-  m_Name: Boss2_AttackSpeedDown
+  m_Name: Boss2_Spawn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,9 +152,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d1612b1859c049a61be358f170dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 9999
+  maxHP: 100
   onBuff: []
---- !u!114 &6267211481572574869
+--- !u!114 &2857632334665287933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac95d8aa17a4f746b9a9fe192c90d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPrefab_BossSkill: {fileID: 7637169531954950712, guid: a75445407c01809479a3d009ad9057d6, type: 3}
+  interval: 2
+--- !u!114 &-2227862438565460093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,18 +181,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
---- !u!114 &-1906974451347944564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637169531954950712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1682e957ae9a5949901f93b365efefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reduceAttackSpeed: 1.84
-  skillCoolTime: 10
-  skillDuration: 4

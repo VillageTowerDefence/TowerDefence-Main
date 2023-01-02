@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 3484627753286271741}
   - component: {fileID: 3753863703295047958}
   - component: {fileID: -7978365624072182835}
-  - component: {fileID: 6267211481572574869}
-  - component: {fileID: -1906974451347944564}
+  - component: {fileID: 5205113358286308559}
+  - component: {fileID: 4708751961853062222}
   m_Layer: 0
-  m_Name: Boss2_AttackSpeedDown
+  m_Name: Boss1_LifeUp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,9 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d1612b1859c049a61be358f170dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 9999
+  maxHP: 100
   onBuff: []
---- !u!114 &6267211481572574869
+--- !u!114 &5205113358286308559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b83655e3a339d541a9b7bb937a0d725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameobjForHP: {fileID: 7637169531954950712, guid: 8484a13cfb4fdf34bb31b0ebcfff7535, type: 3}
+--- !u!114 &4708751961853062222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,18 +180,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
---- !u!114 &-1906974451347944564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7637169531954950712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1682e957ae9a5949901f93b365efefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reduceAttackSpeed: 1.84
-  skillCoolTime: 10
-  skillDuration: 4
