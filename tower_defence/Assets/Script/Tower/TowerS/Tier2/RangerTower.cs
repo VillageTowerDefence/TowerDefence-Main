@@ -7,6 +7,14 @@ public class RangerTower : ArcherTower
     Transform[] targets;
     int targetAttackCount =3;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        towerUpgradeCost = new int[] { 50, 100, 150 };
+        isphysics = true;
+        isAttackFly = true;
+    }
+
     protected override void Start()
     {
         targets = new Transform[targetAttackCount];

@@ -11,6 +11,8 @@ public class ArcherTower : Tower
     {
         base.Awake();
         towerUpgradeCost = new int[] { 50, 100, 150 };
+        isphysics = true;
+        isAttackFly = true;
 
     }
 
