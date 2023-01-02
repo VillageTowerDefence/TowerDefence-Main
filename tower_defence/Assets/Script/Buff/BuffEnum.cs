@@ -3,5 +3,7 @@ public enum BuffType
     Power = 0,
     AttactSpeed,
     Slow,
-    Stun
+    Stun,
+    PowerDown,
+    AttackSpeedDown
 }
