@@ -16,7 +16,7 @@ public class Count_Money : MonoBehaviour
     private void Start()
     {
         manager_UI = Manager_UI.Instance;
-
+        money_text.text = manager_UI.UI_Money_Count.ToString("D3");
         GameManager.Instance.refresh_Money = Refresh_Progress_Money;
     }
 
