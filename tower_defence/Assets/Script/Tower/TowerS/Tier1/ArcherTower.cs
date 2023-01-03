@@ -5,7 +5,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ArcherTower : Tower
 {
-    
+
+    public Sprite[] sprite;
+    SpriteRenderer spriteRenderer;
 
     protected override void Awake()
     {
@@ -14,12 +16,10 @@ public class ArcherTower : Tower
         isphysics = true;
         isAttackFly = true;
 
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+
 
     public override void towerUpgrade()
     {
@@ -27,6 +27,7 @@ public class ArcherTower : Tower
         {
             level++;
             attackDamage += 10;
+            spriteRenderer.sprite = sprite[level-2];
             GameManager.Instance.Energy_Count -= towerUpgradeCost[level - 1];
         }
         else

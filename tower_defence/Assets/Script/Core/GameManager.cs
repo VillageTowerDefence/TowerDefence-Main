@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
     public Action refresh_HP;
 
     //에너지
-    int energy_count = 0;
+    public int energy_count = 10000;
 
     public int Energy_Count
     {

@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class MagicianTower : Tower
 {
+
+    public Sprite[] sprite;
+    SpriteRenderer spriteRenderer;
+
     protected override void Awake()
     {
         base.Awake();
         towerUpgradeCost = new int[] { 200, 400, 600 };
         isphysics = false;
         isAttackFly = true;
+
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public override void towerUpgrade()
@@ -19,6 +25,7 @@ public class MagicianTower : Tower
         {
             level++;
             attackDamage += 10;
+            spriteRenderer.sprite = sprite[level - 2];
             GameManager.Instance.Energy_Count -= towerUpgradeCost[level - 1];
         }
         else
