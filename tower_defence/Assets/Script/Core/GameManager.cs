@@ -80,7 +80,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Initialize()
     {
         player_HP = player_HP_Max;
-        Energy_Count = 1000;
+        Energy_Count = 100000;
         Money_Count = 0;
         itemData = GetComponent<ItemDataManager>();
         towerData = GetComponent<TowerDataManager>();
