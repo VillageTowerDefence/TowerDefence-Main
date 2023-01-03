@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager_Scene: {fileID: 4013255943059150537, guid: 315c7eb344aca61489b8e1ed64535820, type: 3}
+  enemySpawner: {fileID: 0}
