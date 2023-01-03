@@ -70,7 +70,7 @@ public class Item_Base : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         transform.position = parent.position;   // 자신의 위치를 parent의 위치로 가게한다.
         //itemText.text = $"{itemDataManager.itemData[itemIndex].count}";        // 현재 아이템 소유량
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();      // 하이라키창에 있는 게임오브젝트 중에 "MainCamera"이름이 들어간 오브젝트 찾기
-        itemDataManager = GameManager.Instance.ItemDta;
+        itemDataManager = GameManager.Instance.ItemData;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)  // 드래그 시작

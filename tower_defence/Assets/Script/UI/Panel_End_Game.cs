@@ -9,23 +9,25 @@ public class Panel_End_Game : MonoBehaviour
     public GameObject panel_clear;
     public GameObject panel_over;
     Manager_UI manager_UI;
+    GameManager gameManager;
 
     private void Awake()
     {
         manager_UI = Manager_UI.Instance;
+        gameManager = GameManager.Instance;
     }
 
     private void Start()
     {
-        manager_UI.refresh_Progress += Game_Clear;
-        GameManager.Instance.refresh_HP += Game_Over;
+        gameManager.refresh_Progress += Game_Clear;
+        gameManager.refresh_HP += Game_Over;
         panel_clear.SetActive(false);
         panel_over.SetActive(false);
     }
 
     void Game_Clear()
     {
-        if (manager_UI.Game_Progress_Current == manager_UI.Game_Progress_Max)
+        if (manager_UI.UI_Game_Progress_Current == manager_UI.UI_Game_Progress_Max)
         {
             if((panel_over != null) && (!panel_over.activeSelf))
             {
@@ -46,8 +48,8 @@ public class Panel_End_Game : MonoBehaviour
 
     void Unconnect_Action()
     {
-        GameManager.Instance.refresh_HP -= Game_Over;
-        manager_UI.refresh_Progress -= Game_Clear;
+        gameManager.refresh_HP -= Game_Over;
+        gameManager.refresh_Progress -= Game_Clear;
     }
 
 
