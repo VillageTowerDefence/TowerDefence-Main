@@ -30,6 +30,7 @@ public class Show_Item : MonoBehaviour
             button_Items[i].ItemInitialize((uint)i);
             button_Items[i].StartButton();
             button_Items[i].Refresh();
+            button_Items[i].ParentTransform(item_panel.transform.GetChild(0));
         }
     }
 

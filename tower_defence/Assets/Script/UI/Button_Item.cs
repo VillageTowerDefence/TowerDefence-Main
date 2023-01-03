@@ -10,6 +10,7 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Transform root;                     // 최상단 부모
     Transform parent;                   // 자기 부모를 찾음
     TextMeshProUGUI itemText;           // 아이템 수량 표시용
+    RectTransform rectTransform;         //
     new Camera camera;                  // 마우스 좌표을 신 좌표 값으로 변환하기 용
     public Image image;
     public Image item_out_image;
@@ -92,7 +93,7 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             else                        // 검출할 레이어가 있다면 (해당 구역만 설치 가능)
             {
-                if (Physics2D.Raycast(ray.origin, ray.direction, distance, LayerMask.GetMask(itemDataManager[itemIndex].layerNames)))       // 그 해당 좌표에 해당 레이어가 있으면 동작
+                if (!IsValidPostion(eventData.position) && Physics2D.Raycast(ray.origin, ray.direction, distance, LayerMask.GetMask(itemDataManager[itemIndex].layerNames)))       // 그 해당 좌표에 해당 레이어가 있으면 동작
                 {
                     hit = Physics2D.Raycast(ray.origin, ray.direction, distance, LayerMask.GetMask(itemDataManager[itemIndex].layerNames));
                     ItemSawpn();
@@ -159,5 +160,18 @@ public class Button_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             image.color = Color.white;          // 1이면 정상으로 바꾸기
         }
+    }
+
+    public void ParentTransform(Transform transform)
+    {
+        rectTransform = (RectTransform)transform;
+    }
+
+    bool IsValidPostion(Vector2 screenPos)
+    {
+        Vector2 min = new Vector2(rectTransform.position.x - rectTransform.sizeDelta.x / 2, (rectTransform.position.y + 10.0f) - rectTransform.sizeDelta.y / 2);
+        Vector2 max = new Vector2(rectTransform.position.x + rectTransform.sizeDelta.x / 2, (rectTransform.position.y - 10.0f) + rectTransform.sizeDelta.y / 2);
+        
+        return (min.x < screenPos.x && screenPos.x < max.x && min.y < screenPos.y && screenPos.y < max.y);      // min, max 사이에 있는지 확인
     }
 }
