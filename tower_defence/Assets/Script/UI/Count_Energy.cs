@@ -17,7 +17,7 @@ public class Count_Energy : MonoBehaviour
     private void Start()
     {
         manager_UI = Manager_UI.Instance;
-
+        energy_text.text = manager_UI.UI_Energy_Count.ToString("D3");
         GameManager.Instance.refresh_Energy = Refresh_Progress_Energy;
     }
 
