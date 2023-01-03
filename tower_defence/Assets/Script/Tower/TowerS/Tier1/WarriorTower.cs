@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WarriorTower : Tower
 {
+    public Sprite[] sprite;
+    SpriteRenderer spriteRenderer;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -11,6 +15,7 @@ public class WarriorTower : Tower
         isphysics = true;
         isAttackFly = false;
 
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public override void towerUpgrade()
@@ -19,6 +24,7 @@ public class WarriorTower : Tower
         {
             level++;
             attackDamage += 10;
+            spriteRenderer.sprite = sprite[level - 2];
             GameManager.Instance.Energy_Count -= towerUpgradeCost[level - 1];
         }
         else

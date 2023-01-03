@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1613423375995521837}
   - component: {fileID: 5249979281500955528}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet_Magic
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 325616369
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36586f9e70906b84b8782f53c32150ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,3 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e402208771e374e8c633cec51a406c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSlowAttack: 0
+  isStunAttack: 0

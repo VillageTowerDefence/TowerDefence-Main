@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
     public Action refresh_HP;
 
     //에너지
-    int energy_count = 0;
+    public int energy_count = 10000;
 
     public int Energy_Count
     {
@@ -41,6 +41,22 @@ public class GameManager : Singleton<GameManager>
     }
 
     public Action refresh_Energy;
+
+    //진행도
+    int game_progress_current = 0;
+
+    public int Game_Progress_Current
+    {
+        get => game_progress_current;
+        set
+        {
+            game_progress_current = value;
+            refresh_Progress?.Invoke();
+        }
+    }
+
+    public Action refresh_Progress;
+
 
     //돈
     int money_count = 0;
@@ -66,7 +82,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// 아이템 데이터 메니저 (읽기 전용) 프로퍼티
     /// </summary>
-    public ItemDataManager ItemDta => itemData;
+    public ItemDataManager ItemData => itemData;
 
     /// <summary>
     /// 타워 데이터 메니저 (일기 전용) 프로퍼티
@@ -79,11 +95,12 @@ public class GameManager : Singleton<GameManager>
     public BuffManager Buff => buff;
     protected override void Initialize()
     {
-        player_HP = player_HP_Max;
-        Energy_Count = 1000;
-        Money_Count = 0;
         itemData = GetComponent<ItemDataManager>();
         towerData = GetComponent<TowerDataManager>();
         buff = GetComponent<BuffManager>();
+        player_HP = player_HP_Max;
+        Energy_Count = 10000;
+        Money_Count = 0;
+        Game_Progress_Current = 0;
     }
 }
