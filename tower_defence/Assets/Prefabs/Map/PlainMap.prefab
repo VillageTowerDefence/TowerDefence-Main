@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 452804684502219048}
   - component: {fileID: 452804684502219049}
   m_Layer: 0
-  m_Name: TileMapWayPoints
+  m_Name: WayPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 452804684906017382}
   - component: {fileID: 452804684906017383}
   m_Layer: 0
-  m_Name: TileMapTiles
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
