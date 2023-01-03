@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 
 #if UNITY_EDITOR
@@ -239,8 +240,10 @@ public class Tower : MonoBehaviour
     public void TowerSynergy()
     {
         int count = 0;
-        List<Collider2D> widhtCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")));
-        List<Collider2D> heightCollider = new List<Collider2D>(Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")));
+        List<Collider2D> widhtCollider = new List<Collider2D>();
+        widhtCollider = Physics2D.OverlapBoxAll(transform.position, new Vector2(3.0f, 1.0f), 0, LayerMask.GetMask("Tower")).ToList();
+        List<Collider2D> heightCollider = new List<Collider2D>();
+        heightCollider = Physics2D.OverlapBoxAll(transform.position, new Vector2(1.0f, 3.0f), 0, LayerMask.GetMask("Tower")).ToList();
         widhtCollider.Remove(this.GetComponent<Collider2D>());
         heightCollider.Remove(this.GetComponent<Collider2D>());
         if (widhtCollider != null || heightCollider != null)
