@@ -21,15 +21,28 @@ public class ObjectDetector : MonoBehaviour
     public GameObject selectTile;
     public GameObject selectTower;
 
-    bool isSelect = false; // 타일이 골라진다면
+    bool isTileSelect = false; // 타일이 골라진다면
     bool isPointerOverGameObject = false;
 
-    public bool IsSelect
+    bool isTowerSelect = false;
+
+    public bool IsTileSelect
     {
-        get { return isSelect; }
-        set 
+        get { return isTileSelect; }
+        set
         {
-            isSelect = value; 
+            isTileSelect = value;
+        }
+    }
+
+
+
+    public bool IsTowerSelect
+    {
+        get { return isTowerSelect; }
+        set
+        {
+            isTowerSelect = value;
         }
     }
 
@@ -73,7 +86,7 @@ public class ObjectDetector : MonoBehaviour
     /// <param name="context"></param>
     private void DetectTile(InputAction.CallbackContext context)
     {
-        if (!isSelect) // 선택된 타일이 없다면
+        if (!isTileSelect) // 선택된 타일이 없다면
         {
             if (context.performed && !isPointerOverGameObject) // 마우스가 눌릴때 && 마우스가 UI를 가리키지 않았을 때
             {
@@ -88,15 +101,15 @@ public class ObjectDetector : MonoBehaviour
                     if (hit2D.transform.CompareTag("Tower") && hit2D.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
                     {
                         selectTower = hit2D.collider.gameObject;
-                        isSelect = true; // 타일이 선택되었다고 알려둠
+                        IsTowerSelect = true; // 타일이 선택되었다고 알려둠
                         Debug.Log("타워 선택");
                     }
-                    if (hit2D.transform.CompareTag("WallTile") && !isSelect) //WallTile이면
+                    if (hit2D.transform.CompareTag("WallTile") && !isTileSelect) //WallTile이면
                     {
                         //towerSpwaner.SpawnTower(hit.transform); // 타워 설치
                         selectTile = hit2D.collider.gameObject; // 타일에 저장
                         
-                        isSelect = true; // 타일이 선택되었다고 알려둠
+                        IsTileSelect = true; // 타일이 선택되었다고 알려둠
                         Debug.Log("타일 선택");
                     }
 

@@ -35,7 +35,7 @@ public class Panel_TowerInformation : MonoBehaviour
     }
     private void Update()
     {
-        if (detector.IsSelect && !panel_towerInfo.activeSelf)
+        if (detector.IsTowerSelect && !panel_towerInfo.activeSelf)
         {
             if (detector.selectTower && !detector.selectTile)
             {
@@ -57,7 +57,7 @@ public class Panel_TowerInformation : MonoBehaviour
 
     public void Close_Panel()
     {
-        detector.IsSelect = false;
+        detector.IsTowerSelect = false;
         detector.selectTower = null;
         panel_closeButton.SetActive(false);
         panel_towerInfo.SetActive(false);
