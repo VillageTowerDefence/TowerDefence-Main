@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4351326112759838719}
   - component: {fileID: 4351326112759838718}
   m_Layer: 7
-  m_Name: Cactus
+  m_Name: tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1249507065
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 499139a5025b4ec4892158631e2073a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b63ab69d690879a4c80794a7952b8f18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7466761604789699808}
   - component: {fileID: 1360748528043510475}
   m_Layer: 7
-  m_Name: Cactus 1
+  m_Name: Winter_Tree
   m_TagString: ObstacleTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 286b0617b2a5c6640a4590400efec9aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e1db31fd8c953d43bbc436d8560ab94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

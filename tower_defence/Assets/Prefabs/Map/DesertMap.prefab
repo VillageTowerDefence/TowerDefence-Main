@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 6720234666439036922}
   - component: {fileID: 6720234666439036923}
   m_Layer: 0
-  m_Name: WapPoint
+  m_Name: WayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
