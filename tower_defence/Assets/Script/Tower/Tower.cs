@@ -83,6 +83,7 @@ public class Tower : MonoBehaviour
 
         TowerSpwaner setUpSynergy = FindObjectOfType<TowerSpwaner>();
         setUpSynergy.onTowerSetUp += TowerSynergy;
+        TowerSynergy();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -231,6 +232,8 @@ public class Tower : MonoBehaviour
         if (advanceTower != null)
         {
             Instantiate(advanceTower, transform.position, Quaternion.identity);
+            TowerSpwaner setUpSynergy = FindObjectOfType<TowerSpwaner>();
+            setUpSynergy.onTowerSetUp -= TowerSynergy;
             Destroy(this.gameObject);
         }
     }
