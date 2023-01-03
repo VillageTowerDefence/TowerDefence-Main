@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321c215b72e161d47afc4af4a9e7a79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSpwaner: {fileID: 0}
+  towerSpwaner: {fileID: 4093360563688746877, guid: 7a7a6ff3b98fb4046a6e4445c5d06418, type: 3}
   selectTile: {fileID: 0}
   selectTower: {fileID: 0}
