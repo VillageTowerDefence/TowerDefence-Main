@@ -22,6 +22,7 @@ public class ObjectDetector : MonoBehaviour
     public GameObject selectTower;
 
     bool isSelect = false; // 타일이 골라진다면
+    bool isPointerOverGameObject = false;
 
     public bool IsSelect
     {
@@ -53,6 +54,18 @@ public class ObjectDetector : MonoBehaviour
         controller.Disable();
     }
 
+    private void Update()
+    {
+        if(EventSystem.current.IsPointerOverGameObject() == false)
+        {
+            isPointerOverGameObject = false;
+        }
+        else
+        {
+            isPointerOverGameObject = true;
+        }
+    }
+
 
     /// <summary>
     /// 타일 확인
@@ -62,7 +75,7 @@ public class ObjectDetector : MonoBehaviour
     {
         if (!isSelect) // 선택된 타일이 없다면
         {
-            if (context.performed && (EventSystem.current.IsPointerOverGameObject() == false)) // 마우스가 눌릴때 && 마우스가 UI를 가리키지 않았을 때
+            if (context.performed && !isPointerOverGameObject) // 마우스가 눌릴때 && 마우스가 UI를 가리키지 않았을 때
             {
                 Vector2 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 Debug.Log(pos);
