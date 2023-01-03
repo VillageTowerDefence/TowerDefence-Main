@@ -95,12 +95,12 @@ public class GameManager : Singleton<GameManager>
     public BuffManager Buff => buff;
     protected override void Initialize()
     {
+        itemData = GetComponent<ItemDataManager>();
+        towerData = GetComponent<TowerDataManager>();
+        buff = GetComponent<BuffManager>();
         player_HP = player_HP_Max;
         Energy_Count = 1000;
         Money_Count = 0;
         Game_Progress_Current = 0;
-        itemData = GetComponent<ItemDataManager>();
-        towerData = GetComponent<TowerDataManager>();
-        buff = GetComponent<BuffManager>();
     }
 }
