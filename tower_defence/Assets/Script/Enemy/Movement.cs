@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
 
     bool isStun = false;
 
+    SpriteRenderer rend;
+
     public float MoveSpeed
     {
         get => moveSpeed;
@@ -36,6 +38,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         originalMoveSpeed = MoveSpeed;
+        rend = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -43,6 +46,15 @@ public class Movement : MonoBehaviour
         if (!isStun)            // 스턴 상태가 아니면
         {
             transform.position += moveSpeed * Time.deltaTime * moveDir; 
+            //transform.rotation = Quaternion.LookRotation(moveDir);
+            if(moveDir.x > 0)
+            {
+                rend.flipX = true;
+            }
+            else
+            {
+                rend.flipX = false;
+            }
         }
     }
 
