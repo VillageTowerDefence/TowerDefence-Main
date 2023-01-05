@@ -73,6 +73,17 @@ public class GameManager : Singleton<GameManager>
 
     public Action refresh_Money;
 
+    int enemy_Spawn_Count = 0;
+
+    public int Enemy_Spawn_Count
+    {
+        get => enemy_Spawn_Count;
+        set
+        {
+            enemy_Spawn_Count = value;
+        }
+    }
+
 
     ItemDataManager itemData;
     TowerDataManager towerData;
@@ -102,5 +113,6 @@ public class GameManager : Singleton<GameManager>
         Energy_Count = 10000;
         Money_Count = 0;
         Game_Progress_Current = 0;
+        Enemy_Spawn_Count = 10;
     }
 }

@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     IEnumerator fireItemDamage;
 
+    SpriteRenderer rend;
+
     public Transform[] WayPoints
     {
         get => wayPoints;
@@ -71,6 +73,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         hp = maxHP;
+        rend = GetComponent<SpriteRenderer>();
     }
 
     //protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -95,7 +98,7 @@ public class Enemy : MonoBehaviour
         {
             movement.MoveSpeed = movement.OriginalMoveSpeed;
             isSlow = false;
-        }
+        }   
     }
 
     /// <summary>
