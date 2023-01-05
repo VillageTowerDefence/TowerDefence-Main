@@ -1785,6 +1785,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: wayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 2039123562}
@@ -1840,6 +1844,26 @@ PrefabInstance:
       propertyPath: wayPoints.Array.data[13]
       value: 
       objectReference: {fileID: 1801635124}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 7637169531954950712, guid: 8484a13cfb4fdf34bb31b0ebcfff7535, type: 3}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 7637169531954950712, guid: 797c49d9af2e5c44797f357dfc08c2a7, type: 3}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 7637169531954950712, guid: 44a45ff5ff01bfd4f94fed4d582175c1, type: 3}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 7637169531954950712, guid: a91b3da2e2f634b4e8a06f813d4458cb, type: 3}
+    - target: {fileID: 9099957284494798792, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+      propertyPath: enemyPrefab.Array.data[4]
+      value: 
+      objectReference: {fileID: 7637169531954950712, guid: 7765f81fd467c13448918029c86173c0, type: 3}
     - target: {fileID: 9099957284494798797, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
       propertyPath: m_Name
       value: EnemySpawn

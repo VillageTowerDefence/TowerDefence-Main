@@ -81,9 +81,39 @@ public class GameManager : Singleton<GameManager>
         set
         {
             enemy_Spawn_Count = value;
+            Enemy_Alive_Count = Enemy_Spawn_Count;
         }
     }
 
+    int enemy_Alive_Count = 0;
+    public int Enemy_Alive_Count
+    {
+        get => enemy_Alive_Count;
+        set
+        {
+            enemy_Alive_Count = value;
+            Debug.Log(enemy_Alive_Count);
+            if(enemy_Alive_Count == 0)
+            {
+                Round++;
+            }
+        }
+    }
+
+    int round = 0;
+
+    public int Round
+    {
+        get => round;
+        set
+        {
+            round = value;
+            Debug.Log(round);
+            roundUp?.Invoke();
+        }
+    }
+
+    public Action roundUp;
 
     ItemDataManager itemData;
     TowerDataManager towerData;
@@ -114,5 +144,6 @@ public class GameManager : Singleton<GameManager>
         Money_Count = 0;
         Game_Progress_Current = 0;
         Enemy_Spawn_Count = 10;
+        Round = 0;
     }
 }

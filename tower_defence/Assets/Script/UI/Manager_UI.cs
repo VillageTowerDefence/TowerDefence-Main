@@ -53,7 +53,7 @@ public class Manager_UI : Singleton<Manager_UI>
 
     public int UI_Game_Progress_Max
     {
-        get => enemySpawner.enemySpawnCount;
+        get => GameManager.Instance.Enemy_Spawn_Count;
     }
 
     //에너지

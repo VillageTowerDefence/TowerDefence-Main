@@ -172,7 +172,7 @@ MonoBehaviour:
   bullet: {fileID: 1956374595165956689, guid: 48d5531c01d1ea44a956734e15930079, type: 3}
   tpye: 0
   attackSpeed: 1
-  attackDamage: 1
+  attackDamage: 100
   advanceTower: {fileID: 9085064763569266882, guid: 16fd35cd87ff9324c9abfde97cbe9f7a, type: 3}
   onBuff: []
   sprite:
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3, y: 1.66}
+    oldSize: {x: 0.9285714, y: 1.1857142}
     newSize: {x: 0.49, y: 0.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
