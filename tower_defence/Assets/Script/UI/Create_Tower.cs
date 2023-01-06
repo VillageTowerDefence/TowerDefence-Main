@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Create_Tower : MonoBehaviour
 {
     GameObject create_panel;
+    GameObject panel_background;
     Button cancel;
     Tile tile;
 
@@ -20,7 +21,8 @@ public class Create_Tower : MonoBehaviour
 
     private void Awake()
     {
-        create_panel = transform.GetChild(0).gameObject;
+        panel_background = transform.GetChild(0).gameObject;
+        create_panel = transform.GetChild(1).gameObject;
         cancel = create_panel.transform.GetChild(0).GetComponent<Button>();
 
         cancel.onClick.AddListener(OnClick_Cancel);
@@ -46,6 +48,7 @@ public class Create_Tower : MonoBehaviour
             tower.transform.GetComponent<Image>().SetNativeSize();
         }
 
+        panel_background.SetActive(false);
         create_panel.SetActive(false);
     }
 
@@ -71,6 +74,7 @@ public class Create_Tower : MonoBehaviour
 
     void Open_Panel()
     {
+        panel_background.SetActive(true);
         create_panel.SetActive(true);
         create_panel.transform.position = Camera.main.WorldToScreenPoint(detector.selectTile.transform.position);
         for(int i = 0; i < current_tower; i++)
@@ -83,6 +87,7 @@ public class Create_Tower : MonoBehaviour
 
     private void OnClick_Cancel()
     {
+        panel_background.SetActive(false);
         create_panel.SetActive(false);
         detector.IsTileSelect = false;
         detector.selectTile = null;
@@ -91,6 +96,7 @@ public class Create_Tower : MonoBehaviour
     public void OnClick_BuildButton(int towerIndex)
     {
         BuildTower(towerIndex);
+        panel_background.SetActive(false);
         create_panel.SetActive(false);
     }
 

@@ -15,10 +15,10 @@ public class Test_UI : MonoBehaviour
     //    manager.Test_Damage_HP();
     //}
 
-    public void Test_Progress()
-    {
-        manager.Test_UP_Progress();
-    }
+    //public void Test_Progress()
+    //{
+    //    manager.Test_UP_Progress();
+    //}
     //public void Test_Energy()
     //{
     //    manager.Test_UP_Energy();

@@ -7,7 +7,6 @@ using UnityEngine;
 public class Manager_UI : Singleton<Manager_UI>
 {
     public Manager_Scene manager_Scene;
-    public EnemySpawner enemySpawner;
 
     //일시정지
     bool game_pause_flag = false;
@@ -48,12 +47,12 @@ public class Manager_UI : Singleton<Manager_UI>
 
     public int UI_Game_Progress_Current
     {
-        get => GameManager.Instance.Game_Progress_Current;
+        get => GameManager.Instance.Round;
     }
 
     public int UI_Game_Progress_Max
     {
-        get => GameManager.Instance.Enemy_Spawn_Count;
+        get => GameManager.Instance.MaxRound;
     }
 
     //에너지
@@ -105,14 +104,14 @@ public class Manager_UI : Singleton<Manager_UI>
     //    Debug.Log(Player_HP + " / " + Player_HP_Max);
     //}
 
-    public void Test_UP_Progress()
-    {
-        if (UI_Game_Progress_Current < UI_Game_Progress_Max)
-        {
-            GameManager.Instance.Game_Progress_Current++;
-            Debug.Log(UI_Game_Progress_Current + " / " + UI_Game_Progress_Max);
-        }
-    }
+    //public void Test_UP_Progress()
+    //{
+    //    if (UI_Game_Progress_Current < UI_Game_Progress_Max)
+    //    {
+    //        GameManager.Instance.Game_Progress_Current++;
+    //        Debug.Log(UI_Game_Progress_Current + " / " + UI_Game_Progress_Max);
+    //    }
+    //}
 
     //public void Test_UP_Energy()
     //{

@@ -19,7 +19,7 @@ public class Panel_End_Game : MonoBehaviour
 
     private void Start()
     {
-        gameManager.refresh_Progress += Game_Clear;
+        gameManager.roundUp += Game_Clear;
         gameManager.refresh_HP += Game_Over;
         panel_clear.SetActive(false);
         panel_over.SetActive(false);
@@ -49,7 +49,7 @@ public class Panel_End_Game : MonoBehaviour
     void Unconnect_Action()
     {
         gameManager.refresh_HP -= Game_Over;
-        gameManager.refresh_Progress -= Game_Clear;
+        gameManager.roundUp -= Game_Clear;
     }
 
 

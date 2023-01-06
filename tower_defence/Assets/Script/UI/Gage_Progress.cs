@@ -18,7 +18,7 @@ public class Gage_Progress : MonoBehaviour
         manager_UI = Manager_UI.Instance;
         progress_gage.maxValue = manager_UI.UI_Game_Progress_Max;
 
-        GameManager.Instance.refresh_Progress += Refresh_Progress_Gage;
+        GameManager.Instance.roundUp += Refresh_Progress_Gage;
     }
 
     void Refresh_Progress_Gage()
