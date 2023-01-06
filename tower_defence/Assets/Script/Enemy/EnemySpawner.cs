@@ -21,7 +21,12 @@ public class EnemySpawner : MonoBehaviour
         GameManager.Instance.roundUp += StartSpawnEnemy;
         GameManager.Instance.MaxRound = enemyPrefab.Length;
     }
-    
+
+    private void OnDisable()
+    {
+        GameManager.Instance.roundUp -= StartSpawnEnemy;
+    }
+
     void StartSpawnEnemy()
     {
         if (enemyPrefab.Length > GameManager.Instance.Round)
