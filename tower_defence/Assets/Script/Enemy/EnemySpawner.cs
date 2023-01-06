@@ -19,12 +19,15 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
         
         GameManager.Instance.roundUp += StartSpawnEnemy;
+        GameManager.Instance.MaxRound = enemyPrefab.Length;
     }
     
     void StartSpawnEnemy()
     {
-        
-        StartCoroutine(SpawnEnemy());
+        if (enemyPrefab.Length > GameManager.Instance.Round)
+        {
+            StartCoroutine(SpawnEnemy());
+        }
     }
 
     IEnumerator SpawnEnemy()

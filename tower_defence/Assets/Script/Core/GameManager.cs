@@ -113,6 +113,17 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    int maxRound = 5;
+
+    public int MaxRound
+    {
+        get => maxRound;
+        set
+        {
+            maxRound = value;
+        }
+    }
+
     public Action roundUp;
 
     ItemDataManager itemData;
