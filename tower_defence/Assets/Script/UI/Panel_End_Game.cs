@@ -61,7 +61,7 @@ public class Panel_End_Game : MonoBehaviour
 
     public void Click_ExitGame_Button()
     {
-        manager_UI.manager_Scene.moveScene("UI_MainScene");
+        manager_UI.manager_Scene.moveScene("MainMoveScene");
         Unconnect_Action();
     }
 }
