@@ -27,7 +27,7 @@ public class Panel_End_Game : MonoBehaviour
 
     void Game_Clear()
     {
-        if (manager_UI.UI_Game_Progress_Current == manager_UI.UI_Game_Progress_Max)
+        if (gameManager.Round == gameManager.MaxRound)
         {
             if((panel_over != null) && (!panel_over.activeSelf))
             {

@@ -114,7 +114,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    int maxRound = 5;
+    int maxRound = 0;
 
     public int MaxRound
     {
@@ -157,5 +157,6 @@ public class GameManager : Singleton<GameManager>
         //Game_Progress_Current = 0;
         Enemy_Spawn_Count = 10;
         Round = 0;
+        MaxRound = 0;
     }
 }
