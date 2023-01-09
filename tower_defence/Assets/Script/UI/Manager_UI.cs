@@ -31,11 +31,11 @@ public class Manager_UI : Singleton<Manager_UI>
         }
     }
 
-    ////체력 관련
-    //public float UI_Player_HP
-    //{
-    //    get => GameManager.Instance.Player_HP;
-    //}
+    //체력 관련
+    public float UI_Player_HP
+    {
+        get => GameManager.Instance.Player_HP;
+    }
 
     public float UI_Player_HP_Max
     {
