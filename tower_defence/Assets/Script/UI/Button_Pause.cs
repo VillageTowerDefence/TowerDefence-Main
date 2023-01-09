@@ -54,6 +54,6 @@ public class Button_Pause : MonoBehaviour
 
     void Click_ExitGame_Button()
     {
-        manager_UI.manager_Scene.moveScene("UI_MainScene");
+        manager_UI.manager_Scene.moveScene("MainMoveScene");
     }
 }
