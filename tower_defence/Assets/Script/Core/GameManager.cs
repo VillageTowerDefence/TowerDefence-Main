@@ -157,5 +157,6 @@ public class GameManager : Singleton<GameManager>
         Enemy_Spawn_Count = 10;
         Round = 0;
         MaxRound = 0;
+        refresh_HP = null;
     }
 }

@@ -7,6 +7,7 @@ public class Gage_HP : MonoBehaviour
 {
     Image hp_gage;
     Manager_UI manager_UI;
+    GameManager gameManager;
 
     private void Awake()
     {
@@ -15,9 +16,10 @@ public class Gage_HP : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         manager_UI = Manager_UI.Instance;
 
-        GameManager.Instance.refresh_HP += Refresh_HP_Gage;
+        gameManager.refresh_HP += Refresh_HP_Gage;
     }
 
     void Refresh_HP_Gage()
