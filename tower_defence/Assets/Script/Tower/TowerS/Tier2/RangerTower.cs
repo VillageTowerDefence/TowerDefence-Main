@@ -20,6 +20,23 @@ public class RangerTower : ArcherTower
         targets = new Transform[targetAttackCount];
         base.Start();
     }
+
+    public override void towerUpgrade()
+    {
+        if (GameManager.Instance.Energy_Count > towerUpgradeCost[level - 1] && level < maxTowerLevel)
+        {
+            level++;
+            attackDamage += 10;
+            GameManager.Instance.Energy_Count -= towerUpgradeCost[level - 1];
+        }
+        else
+        {
+            Debug.Log("업그레이드 실패");
+        }
+
+        Debug.Log($"{level}   {attackDamage}");
+    }
+
     protected override void Attack()
     {
         for (int i = 0; i < targetAttackCount; i++)

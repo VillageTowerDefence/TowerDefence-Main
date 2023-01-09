@@ -153,7 +153,6 @@ public class GameManager : Singleton<GameManager>
         buff = GetComponent<BuffManager>();
         player_HP = player_HP_Max;
         Energy_Count = 10000;
-        Money_Count = 0;
         //Game_Progress_Current = 0;
         Enemy_Spawn_Count = 10;
         Round = 0;
