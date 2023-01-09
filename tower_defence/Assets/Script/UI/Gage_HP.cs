@@ -17,11 +17,11 @@ public class Gage_HP : MonoBehaviour
     {
         manager_UI = Manager_UI.Instance;
 
-        GameManager.Instance.refresh_HP = Refresh_HP_Gage;
+        GameManager.Instance.refresh_HP += Refresh_HP_Gage;
     }
 
     void Refresh_HP_Gage()
     {
-        hp_gage.fillAmount = manager_UI.UI_Player_HP / manager_UI.UI_Player_HP_Max;
+        hp_gage.fillAmount = GameManager.Instance.Player_HP / manager_UI.UI_Player_HP_Max;
     }
 }

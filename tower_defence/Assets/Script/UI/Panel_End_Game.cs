@@ -37,7 +37,7 @@ public class Panel_End_Game : MonoBehaviour
     }
     void Game_Over()
     {
-        if (manager_UI.UI_Player_HP <= 0 && !panel_clear.activeSelf)
+        if (gameManager.Player_HP <= 0 && !panel_clear.activeSelf)
         {
             if ((panel_clear != null) && (!panel_clear.activeSelf))
             {
