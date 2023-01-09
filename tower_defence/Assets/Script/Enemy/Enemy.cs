@@ -191,6 +191,8 @@ public class Enemy : MonoBehaviour
     {
         //GameManager.Instance.Game_Progress_Current++;   //진행도 증가
         GameManager.Instance.Enemy_Alive_Count--;
+        GameManager.Instance.Energy_Count += 50;
+        GameManager.Instance.Money_Count += 50;
         Destroy(this.gameObject);           // 죽으면 오브젝트 삭제
         StopAllCoroutines();                // 모든 코루틴 끄기
     }
