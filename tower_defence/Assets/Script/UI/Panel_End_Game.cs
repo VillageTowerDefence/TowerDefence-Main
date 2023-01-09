@@ -42,6 +42,7 @@ public class Panel_End_Game : MonoBehaviour
             if ((panel_clear != null) && (!panel_clear.activeSelf))
             {
                 panel_over.SetActive(true);
+                Time.timeScale = 0.0f;
             }
         }
     }

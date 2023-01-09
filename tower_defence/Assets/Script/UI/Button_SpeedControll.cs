@@ -22,6 +22,7 @@ public class Button_SpeedControll : MonoBehaviour
     {
         manager_UI = Manager_UI.Instance;
         speed_down_button.gameObject.SetActive(false);
+        Click_Speed_Down_Button();
     }
 
     void Click_Speed_Up_Button()

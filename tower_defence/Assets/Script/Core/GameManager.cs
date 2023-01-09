@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 
     //체력 관련
     float player_HP = 10.0f;
-    float player_HP_Max = 10.0f;
+    public float player_HP_Max = 10.0f;
 
     public float Player_HP
     {
@@ -157,5 +157,6 @@ public class GameManager : Singleton<GameManager>
         //Game_Progress_Current = 0;
         Enemy_Spawn_Count = 10;
         Round = 0;
+        refresh_HP = null;
     }
 }

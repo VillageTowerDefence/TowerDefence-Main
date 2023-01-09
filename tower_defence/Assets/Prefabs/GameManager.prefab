@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494d810dfcf695b4eba23e0c24c98e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 1000
+  player_HP_Max: 5
+  energy_count: 10000
 --- !u!114 &6964490743866815828
 MonoBehaviour:
   m_ObjectHideFlags: 0
