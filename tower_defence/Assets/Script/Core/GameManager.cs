@@ -109,7 +109,7 @@ public class GameManager : Singleton<GameManager>
         set
         {
             round = value;
-            Debug.Log(round);
+            Debug.Log("현재 라운드 : " + round);
             roundUp?.Invoke();
         }
     }
@@ -153,7 +153,6 @@ public class GameManager : Singleton<GameManager>
         buff = GetComponent<BuffManager>();
         player_HP = player_HP_Max;
         Energy_Count = 10000;
-        //Game_Progress_Current = 0;
         Enemy_Spawn_Count = 10;
         Round = 0;
         MaxRound = 0;

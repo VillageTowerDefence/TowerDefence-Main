@@ -18,10 +18,10 @@ public class EnemySpawner : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         gameManager.Player_HP = gameManager.Player_HP_Max;        // 플레이어 HP를 최대치로 설정
-        StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
 
-        gameManager.roundUp += StartSpawnEnemy;
         gameManager.MaxRound = enemyPrefab.Length;
+        gameManager.roundUp += StartSpawnEnemy;
+        StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
     }
 
     private void OnDisable()

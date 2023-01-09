@@ -16,13 +16,15 @@ public class Gage_Progress : MonoBehaviour
     private void Start()
     {
         manager_UI = Manager_UI.Instance;
-        progress_gage.maxValue = GameManager.Instance.MaxRound;
+        progress_gage.value = manager_UI.UI_Current_Round;
 
+        progress_gage.maxValue = manager_UI.UI_Max_Round;
         GameManager.Instance.roundUp += Refresh_Progress_Gage;
     }
 
     void Refresh_Progress_Gage()
     {
-        progress_gage.value = GameManager.Instance.Round;
+        progress_gage.maxValue = manager_UI.UI_Max_Round;
+        progress_gage.value = manager_UI.UI_Current_Round;
     }
 }

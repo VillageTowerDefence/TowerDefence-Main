@@ -43,17 +43,17 @@ public class Manager_UI : Singleton<Manager_UI>
     }
 
 
-    ////진행도
+    //진행도
 
-    //public int Round
-    //{
-    //    get => GameManager.Instance.Round;
-    //}
+    public int UI_Current_Round
+    {
+        get => GameManager.Instance.Round;
+    }
 
-    //public int maxRound
-    //{
-    //    get => GameManager.Instance.MaxRound;
-    //}
+    public int UI_Max_Round
+    {
+        get => GameManager.Instance.MaxRound;
+    }
 
     //에너지
     public int UI_Energy_Count
