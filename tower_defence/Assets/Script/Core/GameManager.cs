@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
     public int Money_Count
     {
         get => money_count;
-        private set
+        set
         {
             money_count = value;
             refresh_Money?.Invoke();
