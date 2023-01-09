@@ -12,20 +12,21 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform[] wayPoints;       // 현재 스테이지 이동 경로
 
-    
+    GameManager gameManager;
 
     private void Start()
     {
-        GameManager.Instance.Player_HP = GameManager.Instance.Player_HP_Max;        // 플레이어 HP를 최대치로 설정
+        gameManager = GameManager.Instance;
+        gameManager.Player_HP = gameManager.Player_HP_Max;        // 플레이어 HP를 최대치로 설정
         StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
-        
-        GameManager.Instance.roundUp += StartSpawnEnemy;
-        GameManager.Instance.MaxRound = enemyPrefab.Length;
+
+        gameManager.roundUp += StartSpawnEnemy;
+        gameManager.MaxRound = enemyPrefab.Length;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.roundUp -= StartSpawnEnemy;
+        gameManager.roundUp -= StartSpawnEnemy; 
     }
 
     void StartSpawnEnemy()
