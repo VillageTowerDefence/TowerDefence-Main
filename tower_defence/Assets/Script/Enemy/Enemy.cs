@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
 
     SpriteRenderer rend;
 
+    GameManager gameManager;
+
     public Transform[] WayPoints
     {
         get => wayPoints;
@@ -74,6 +76,7 @@ public class Enemy : MonoBehaviour
     {
         hp = maxHP;
         rend = GetComponent<SpriteRenderer>();
+        gameManager = GameManager.Instance;
     }
 
     //protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -179,6 +182,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            gameManager.Player_HP--;            // 도착지점에 가면 Player_HP감소
             Die();   // 다음 목적지가 없다면 삭제
         }
     }

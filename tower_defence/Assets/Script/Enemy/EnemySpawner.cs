@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.Player_HP = GameManager.Instance.Player_HP_Max;        // 플레이어 HP를 최대치로 설정
         StartCoroutine(SpawnEnemy());   // SpawnEnemy코루틴 시작
         
         GameManager.Instance.roundUp += StartSpawnEnemy;

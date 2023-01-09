@@ -13,9 +13,10 @@ public class GameManager : Singleton<GameManager>
     public float Player_HP
     {
         get => player_HP;
-        private set
+        set
         {
-            player_HP = value;
+            player_HP = Mathf.Clamp(value, 0, player_HP_Max);
+
             refresh_HP?.Invoke();
         }
     }
