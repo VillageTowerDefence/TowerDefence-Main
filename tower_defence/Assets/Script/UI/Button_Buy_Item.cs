@@ -6,6 +6,7 @@ using TMPro;
 
 public class Button_Buy_Item : MonoBehaviour
 {
+    public GameManager gameManager;
     ItemData buy_item;
     GameObject panel_buy;
     GameObject window_buy;
@@ -45,6 +46,8 @@ public class Button_Buy_Item : MonoBehaviour
 
     void Buy_Item()
     {
+        gameManager.Money_Count -= (int)buy_item.itemCost;
+        buy_item.count++;
         panel_buy.SetActive(false);
     }
 
