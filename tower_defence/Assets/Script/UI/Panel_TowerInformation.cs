@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+using Unity.VisualScripting;
 
 public class Panel_TowerInformation : MonoBehaviour
 {
@@ -51,7 +53,7 @@ public class Panel_TowerInformation : MonoBehaviour
         panel_towerInfo.transform.position = Camera.main.WorldToScreenPoint(detector.selectTower.transform.position);
 
         GameObject info_tower = detector.selectTower;
-        tower_name.text = info_tower.name;
+        tower_name.text = info_tower.GetComponent<Tower>().tpye.ToString();
         tower_info.text = $"타워 공격력 : {info_tower.GetComponent<Tower>().attackDamage}";
     }
 
