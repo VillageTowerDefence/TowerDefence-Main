@@ -53,8 +53,9 @@ public class Panel_TowerInformation : MonoBehaviour
         panel_towerInfo.transform.position = Camera.main.WorldToScreenPoint(detector.selectTower.transform.position);
 
         GameObject info_tower = detector.selectTower;
-        tower_name.text = info_tower.GetComponent<Tower>().tpye.ToString();
-        tower_info.text = $"타워 공격력 : {info_tower.GetComponent<Tower>().attackDamage}";
+        tower_name.text = info_tower.GetComponent<Tower>().type.ToString();
+        tower_info.text = $"공격력 : {info_tower.GetComponent<Tower>().attackDamage}\n" +
+            $"공격속도 : {info_tower.GetComponent<Tower>().attackSpeed}";
     }
 
     public void Close_Panel()
