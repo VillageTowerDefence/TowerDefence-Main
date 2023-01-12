@@ -197,8 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4662977269016762466, guid: 2a69cc28176671f4797e1c0ce070e014, type: 3}
   tpye: 2
-  attackSpeed: 1
-  attackDamage: 0
+  attackSpeed: 1.5
+  attackDamage: 30
   advanceTower: {fileID: 0}
   onBuff: []
   sprite: []

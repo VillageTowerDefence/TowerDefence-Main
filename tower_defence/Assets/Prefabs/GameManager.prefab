@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_HP_Max: 5
-  energy_count: 10000
+  energy_count: 300
 --- !u!114 &6964490743866815828
 MonoBehaviour:
   m_ObjectHideFlags: 0
