@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
     GameObject target;
     Vector2 direction;
 
+    Transform targetPos;
+
     public bool isSlowAttack = false; // true 슬로우공격 false 기본 공격
     public bool isStunAttack = false; // true 스턴공격 false 기본공격
 
@@ -56,12 +58,13 @@ public class Bullet : MonoBehaviour
         //rb.velocity = transform.right * speed; // 총알에게 velocity값을 준다.(일정하게 움직이기 위해)
         if (target != null)
         {
+            targetPos = target.transform;
             direction = (target.transform.position - transform.position).normalized; // 방향지정
             rb.MovePosition(rb.position + Time.fixedDeltaTime * speed * direction); //방향으로 이동
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
