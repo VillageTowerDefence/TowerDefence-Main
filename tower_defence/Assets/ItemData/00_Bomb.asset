@@ -15,8 +15,8 @@ MonoBehaviour:
   id: 0
   itemName: "\uD3ED\uD0C4"
   modelprefab: {fileID: 1872276375245095028, guid: f5259a82cabb70b478ac1ecc5ec4e446, type: 3}
-  itemCost: 0
-  count: 5
+  itemCost: 10
+  count: 6
   layerNames:
   - ObstacleTile
   itemIcon: {fileID: 21300000, guid: 8a6ff5df3f509c74ab20dc6a38605d42, type: 3}
