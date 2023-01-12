@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     float player_HP = 10.0f;
     public float player_HP_Max = 10.0f;
 
-    const int startEnergy = 500;
+    const int startEnergy = 300;
 
     public float Player_HP
     {
