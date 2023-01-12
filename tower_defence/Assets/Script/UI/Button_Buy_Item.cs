@@ -6,7 +6,7 @@ using TMPro;
 
 public class Button_Buy_Item : MonoBehaviour
 {
-    public GameManager gameManager;
+    GameManager gameManager;
     ItemData buy_item;
     GameObject panel_buy;
     GameObject window_buy;
@@ -33,6 +33,11 @@ public class Button_Buy_Item : MonoBehaviour
 
         button_buy.onClick.AddListener(Buy_Item);
         button_cancle.onClick.AddListener(Buy_Cancle);
+    }
+
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
     }
 
     public void Display_ShopWindow(ItemData data)

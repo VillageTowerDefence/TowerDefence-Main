@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager>
 
 
     //돈
-    int money_count = 0;
+    int money_count = 100;
 
     public int Money_Count
     {

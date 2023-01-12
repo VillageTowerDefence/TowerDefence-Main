@@ -23,6 +23,6 @@ public class Count_Money : MonoBehaviour
     void Refresh_Progress_Money()
     {
         //Debug.Log("갱신");
-        money_text.text = manager_UI.UI_Money_Count.ToString("D3");
+        money_text.text = $"{manager_UI.UI_Money_Count}";
     }
 }
