@@ -16,5 +16,5 @@ MonoBehaviour:
   towerName: "\uC544\uCC98 \uD0C0\uC6CC"
   modelprefab: {fileID: 9034060581423525229, guid: 6fe7c2abaacf6de40a1ad1ca3074371d, type: 3}
   towerCost: 0
-  towerIcon: {fileID: 21300000, guid: b670c6526b93f53408b63896115c1a10, type: 3}
+  towerIcon: {fileID: 21300000, guid: 0a0b70cfd52e574419e377163923b946, type: 3}
   description: 

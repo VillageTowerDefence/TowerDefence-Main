@@ -169,10 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853175fd699d7b240a22faf6b8b98a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1956374595165956689, guid: f25f6637ed020ae4e9c10445e3c55fbd, type: 3}
+  bullet: {fileID: 4662977269016762466, guid: 2a69cc28176671f4797e1c0ce070e014, type: 3}
   tpye: 2
   attackSpeed: 1
-  attackDamage: 100
+  attackDamage: 0
   advanceTower: {fileID: 3600404446205465882, guid: 3e89235f82e66a642b3223aac38d0577, type: 3}
   onBuff: []
   sprite:
