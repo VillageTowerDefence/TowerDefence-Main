@@ -18,7 +18,7 @@ public class Tower : MonoBehaviour
 
     // 타워 상태 ---------------------------------------------------------------------------
 
-    public TowerType tpye = TowerType.Archer;
+    public TowerType type = TowerType.Archer;
     public float attackSpeed = 1.0f; // 타워 공격 주기
     public float attackDamage = 50.0f; // 타워 공격력
     float originalAttackDamage;     // 타워 원래 데미지
@@ -278,7 +278,7 @@ public class Tower : MonoBehaviour
                 foreach (var tower in widhtCollider)
                 {
                     nearTower = tower.GetComponent<Tower>();
-                    if (tpye == nearTower.tpye)
+                    if (type == nearTower.type)
                     {
                         count++;
                     }
@@ -290,7 +290,7 @@ public class Tower : MonoBehaviour
                 foreach (var tower in heightCollider)
                 {
                     nearTower = tower.GetComponent<Tower>();
-                    if (tpye == nearTower.tpye)
+                    if (type == nearTower.type)
                     {
                         count++;
                     }
