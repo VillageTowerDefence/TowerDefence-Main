@@ -15,6 +15,7 @@ public class ArcherTower : Tower
         towerUpgradeCost = new int[] { 50, 100, 150 };
         isphysics = true;
         isAttackFly = true;
+        type = TowerType.Archer;
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }

@@ -14,6 +14,7 @@ public class WarriorTower : Tower
         towerUpgradeCost = new int[] { 100, 200, 300 };
         isphysics = true;
         isAttackFly = false;
+        type = TowerType.Warrior;
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }

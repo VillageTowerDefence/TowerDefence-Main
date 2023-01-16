@@ -12,6 +12,8 @@ public class KinghtTower : WarriorTower
         towerUpgradeCost = new int[] { 50, 100, 150 };
         isphysics = true;
         isAttackFly = false;
+
+        type = TowerType.Kinght;
     }
 
     public override void towerUpgrade()
