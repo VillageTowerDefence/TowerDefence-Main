@@ -82,7 +82,14 @@ public class Manager_UI : Singleton<Manager_UI>
     public void ContinueGame()
     {
         Game_Pause_Flag = false;
-        Time.timeScale = 1;
+        if (game_speedUp_flag)
+        {
+            Time.timeScale = 2.0f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
     }
 
 
