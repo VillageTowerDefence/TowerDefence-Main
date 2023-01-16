@@ -41,11 +41,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyPrefab[GameManager.Instance.Round].GetComponent<Enemy_Spawn_Count_Up>() != null)
         {
-            GameManager.Instance.Enemy_Spawn_Count *= 2;
+            GameManager.Instance.Enemy_Spawn_Count = 20;
         }
         else if (enemyPrefab[GameManager.Instance.Round].GetComponent<Enemy_Spawn_Count_Down>() != null)
         {
-            GameManager.Instance.Enemy_Spawn_Count -= 5;
+            GameManager.Instance.Enemy_Spawn_Count = 5;
         }
         else if (enemyPrefab[GameManager.Instance.Round].GetComponent<Enemy_Spawn_Count_Boss>() != null)
         {

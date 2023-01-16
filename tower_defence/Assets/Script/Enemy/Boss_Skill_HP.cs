@@ -18,7 +18,7 @@ public class Boss_Skill_HP : MonoBehaviour
         {
             yield return new WaitForSeconds(10.0f);                        // 10초마다
             enemy.Hp += (enemy.MaxHP / 4);    // 최대 hp의 4분의1 회복
-            Debug.Log("HP가 MaxHP/4만큼 회복");
+            Debug.Log($"HP가 MaxHP/4만큼 회복. 현재 HP:{enemy.Hp}");
         }
     }
 }

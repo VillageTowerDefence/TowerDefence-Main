@@ -198,7 +198,7 @@ MonoBehaviour:
   bullet: {fileID: 1569066857338137813, guid: 48d5531c01d1ea44a956734e15930079, type: 3}
   tpye: 0
   attackSpeed: 1
-  attackDamage: 0
+  attackDamage: 50
   advanceTower: {fileID: 0}
   onBuff: []
   sprite: []

@@ -178,6 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1682e957ae9a5949901f93b365efefb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reduceAttackSpeed: 1.84
+  reduceAttackSpeed: 1.85
   skillCoolTime: 10
-  skillDuration: 4
+  skillDuration: 5

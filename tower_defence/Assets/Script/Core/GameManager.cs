@@ -93,7 +93,7 @@ public class GameManager : Singleton<GameManager>
         set
         {
             enemy_Alive_Count = value;
-            Debug.Log(enemy_Alive_Count);
+            //Debug.Log(enemy_Alive_Count);
             if(enemy_Alive_Count == 0)
             {
                 Round++;
@@ -109,7 +109,7 @@ public class GameManager : Singleton<GameManager>
         set
         {
             round = value;
-            Debug.Log("현재 라운드 : " + round);
+            //Debug.Log("현재 라운드 : " + round);
             roundUp?.Invoke();
         }
     }

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d1612b1859c049a61be358f170dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 9999
+  maxHP: 10000
   onBuff: []
 --- !u!114 &6267211481572574869
 MonoBehaviour:
@@ -180,4 +180,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reduceDamage: 0.5
   skillCoolTime: 10
-  skillDuration: 4
+  skillDuration: 5

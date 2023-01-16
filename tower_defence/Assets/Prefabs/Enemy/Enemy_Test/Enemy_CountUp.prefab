@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6774666371171404200}
   - component: {fileID: 3484627753286271741}
   - component: {fileID: -6110507709051731832}
+  - component: {fileID: -12731522750206265}
   m_Layer: 0
   m_Name: Enemy_CountUp
   m_TagString: Enemy
@@ -114,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0df0071754affb42b7564a130117fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  maxHP: 100
+  onBuff: []
 --- !u!50 &6774666371171404200
 Rigidbody2D:
   serializedVersion: 4
@@ -164,4 +166,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94635296e5de79469149cfacd056ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameobjForEnemyCount: {fileID: 9099957284494798797, guid: b3e53dada824b1c4c8626bda65cc77bf, type: 3}
+--- !u!95 &-12731522750206265
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b5f09cca0f938747afad17f1429c8ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

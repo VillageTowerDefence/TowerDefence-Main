@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5249340521283646092}
   - component: {fileID: 6774666371171404200}
   - component: {fileID: 3484627753286271741}
+  - component: {fileID: 9076202062930182852}
   m_Layer: 0
   m_Name: Enemy_Fly
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -1557064803
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 4740742658319907719, guid: d4f2f936f814df24fb7559370c465cdc, type: 3}
+  m_Sprite: {fileID: 6055667495070531183, guid: 3315bdad18a105d49a220419bb2c813f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f857dff16f14047947019adda4bf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 100
+  onBuff: []
 --- !u!50 &6774666371171404200
 Rigidbody2D:
   serializedVersion: 4
@@ -150,3 +153,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.56
+--- !u!95 &9076202062930182852
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637169531954950712}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b5f09cca0f938747afad17f1429c8ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
