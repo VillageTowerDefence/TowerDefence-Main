@@ -13,6 +13,8 @@ public class RangerTower : ArcherTower
         towerUpgradeCost = new int[] { 50, 100, 150 };
         isphysics = true;
         isAttackFly = true;
+
+        type = TowerType.Ranger;
     }
 
     protected override void Start()

@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1569066857338137813, guid: 48d5531c01d1ea44a956734e15930079, type: 3}
-  tpye: 0
+  type: 0
   attackSpeed: 1
-  attackDamage: 0
+  attackDamage: 20
   advanceTower: {fileID: 9085064763569266882, guid: 16fd35cd87ff9324c9abfde97cbe9f7a, type: 3}
   onBuff: []
   sprite:

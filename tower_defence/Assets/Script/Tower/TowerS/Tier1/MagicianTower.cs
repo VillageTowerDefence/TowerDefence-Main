@@ -15,6 +15,7 @@ public class MagicianTower : Tower
         towerUpgradeCost = new int[] { 200, 400, 600 };
         isphysics = false;
         isAttackFly = true;
+        type = TowerType.Magician;
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
