@@ -82,8 +82,34 @@ public class Create_Tower : MonoBehaviour
             float tower_angle = Mathf.PI * 0.5f - i * (Mathf.PI * 2.0f) / current_tower;
             GameObject child_tower = create_panel.transform.GetChild(i + 1).gameObject;
             child_tower.transform.position = create_panel.transform.position + (new Vector3(Mathf.Cos(tower_angle), Mathf.Sin(tower_angle), 0)) * tower_radius;
+            Panel_Position(child_tower, child_tower.transform.position);
         }
     }
+
+    void Panel_Position(GameObject child_tower, Vector3 pos)
+    {
+        RectTransform rect = (RectTransform)child_tower.transform;
+
+        if (pos.x + rect.sizeDelta.x > Screen.width)
+        {
+            pos.x -= rect.sizeDelta.x;
+        }
+        if (pos.x - rect.sizeDelta.x < 0)
+        {
+            pos.x += rect.sizeDelta.x;
+        }
+        if (pos.y + rect.sizeDelta.y > Screen.height)
+        {
+            pos.y -= tower_radius * 2;
+        }
+        if (pos.y - rect.sizeDelta.y < 0)
+        {
+            pos.y += tower_radius * 2;
+        }
+
+        child_tower.transform.position = pos;
+    }
+
 
     private void OnClick_Cancel()
     {

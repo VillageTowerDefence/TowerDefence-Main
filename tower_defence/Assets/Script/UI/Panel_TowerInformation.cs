@@ -50,12 +50,55 @@ public class Panel_TowerInformation : MonoBehaviour
     {
         panel_closeButton.SetActive(true);
         panel_towerInfo.SetActive(true);
-        panel_towerInfo.transform.position = Camera.main.WorldToScreenPoint(detector.selectTower.transform.position);
+        Panel_Position(Camera.main.WorldToScreenPoint(detector.selectTower.transform.position));
+        //panel_towerInfo.transform.position = Camera.main.WorldToScreenPoint(detector.selectTower.transform.position);
 
         GameObject info_tower = detector.selectTower;
-        tower_name.text = info_tower.GetComponent<Tower>().type.ToString();
+
+        if (info_tower.GetComponent<ArcherTower>())
+        {
+            tower_name.text = "아처";
+        }
+        if (info_tower.GetComponent<RangerTower>())
+        {
+            tower_name.text = "레인저";
+        }
+        if (info_tower.GetComponent<MagicianTower>())
+        {
+            tower_name.text = "수습마법사";
+        }
+        if (info_tower.GetComponent<MageTower>())
+        {
+            tower_name.text = "마법사";
+        }
+        if (info_tower.GetComponent<WarriorTower>())
+        {
+            tower_name.text = "전사";
+        }
+        if (info_tower.GetComponent<KinghtTower>())
+        {
+            tower_name.text = "기사";
+        }
+
+        //tower_name.text = info_tower.GetComponent<Tower>().type.ToString();
         tower_info.text = $"공격력 : {info_tower.GetComponent<Tower>().attackDamage}\n" +
             $"공격속도 : {info_tower.GetComponent<Tower>().attackSpeed}";
+    }
+
+    void Panel_Position(Vector3 pos)
+    {
+        RectTransform rect = (RectTransform)panel_towerInfo.transform.GetChild(0).transform;
+
+        if (pos.x + rect.sizeDelta.x > Screen.width)
+        {
+            pos.x -= rect.sizeDelta.x;
+        }
+        if (pos.y + rect.sizeDelta.y > Screen.height)
+        {
+            pos.y -= (rect.sizeDelta.y + 100);
+        }
+
+        panel_towerInfo.transform.position = pos;
     }
 
     public void Close_Panel()
