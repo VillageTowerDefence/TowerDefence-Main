@@ -11,6 +11,9 @@ public enum TowerIDCode
 public enum TowerType
 {
     Archer = 0,
-    Maaictan,
-    Warrior
+    Ranger,
+    Magician,
+    Mage,
+    Warrior,
+    Kinght
 }

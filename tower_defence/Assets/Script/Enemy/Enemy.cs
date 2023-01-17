@@ -58,8 +58,8 @@ public class Enemy : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
-                GameManager.Instance.Energy_Count += 50;
-                GameManager.Instance.Money_Count += 50;
+                GameManager.Instance.Energy_Count += 10;
+                GameManager.Instance.Money_Count += 5;
                 Die();
             }
         }
@@ -217,7 +217,8 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            hp -= damage;              // damage만큼 hp 감소
+            Hp -= damage;              // damage만큼 hp 감소
+            Hp -= damage;              // damage만큼 hp 감소
 
             yield return new WaitForSeconds(1.0f);          // 1초마다 damage의 데미지를 줌 (나중에 변수로 만들어야함)
         }

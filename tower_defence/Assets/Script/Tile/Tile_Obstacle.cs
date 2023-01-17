@@ -39,6 +39,7 @@ public class Tile_Obstacle : MonoBehaviour
         this.gameObject.tag = "WallTile";               // 오브젝트 태그를 "WallTile"로 변경
         gameObject.name = "WallTile";
         Destroy(tree.gameObject);                       // 자식(장애물)를 삭제
+        gameObject.AddComponent<Tile>();
         Destroy(this.gameObject.GetComponent<Tile_Obstacle>());
     }
 

@@ -10,6 +10,8 @@ public class MageTower : MagicianTower
         towerUpgradeCost = new int[] { 50, 100, 150 };
         isphysics = false;
         isAttackFly = true;
+
+        type = TowerType.Mage;
     }
 
     public override void towerUpgrade()

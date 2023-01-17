@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     float player_HP = 10.0f;
     public float player_HP_Max = 10.0f;
 
+    const int startEnergy = 300;
+
     public float Player_HP
     {
         get => player_HP;
@@ -152,7 +154,7 @@ public class GameManager : Singleton<GameManager>
         towerData = GetComponent<TowerDataManager>();
         buff = GetComponent<BuffManager>();
         player_HP = player_HP_Max;
-        Energy_Count = 10000;
+        Energy_Count = startEnergy;
         Enemy_Spawn_Count = 10;
         Round = 0;
         MaxRound = 0;
